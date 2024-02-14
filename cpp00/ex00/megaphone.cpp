@@ -6,11 +6,12 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:13:13 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/14 18:24:55 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/14 21:23:58 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <ostream>
 
 static void	arg_check(int ac, int *error);
 static void	capitalice_string(char ***av, int error);
@@ -55,8 +56,7 @@ static void	capitalice_line(char **line)
 {
 	for(int i = 0; (*line)[i] != '\0'; i++)
 	{
-		*(line)[i] = std::toupper(*(line)[i]);
-		std::cout << "string " << (*line) << std::endl;
+		(*line)[i] = std::toupper((*line)[i]);
 	}
 }
 
@@ -70,6 +70,8 @@ static void	print_input(char **av, int error)
 
 	while (av[i] != NULL)
 	{
+		std::cout << av[i];
 		i++;
 	}
+	std::cout << std::endl;
 }
