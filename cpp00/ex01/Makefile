@@ -1,4 +1,5 @@
-NAME			=		megaphone
+
+NAME			=		PhoneBook
 
 ###############################################################################
 ###############################################################################
@@ -6,12 +7,16 @@ NAME			=		megaphone
 CC				=		g++
 CFLAGS			=		-Wall -Werror -Wextra
 CPPFLAG			=		-std=c++98
+HEADERS			=		-I./Include -I./Include/Objects -I./Include/Structures
 
 ###############################################################################
 ###############################################################################
 
-SRC_MEGAPHONE	=		megaphone.cpp
-SRC				=		$(SRC_MEGAPHONE)
+VPATH			:=		Src Src/DisplayPromt
+
+SRC_BOOK		=		PhoneBook.cpp
+SRC_PROMT		=		HeaderPrint.cpp
+SRC				=		$(SRC_BOOK) $(SRC_PROMT)
 
 ###############################################################################
 ###############################################################################
@@ -26,11 +31,16 @@ all:		$(NAME)
 
 $(NAME):	$(LIBS_NAME) $(OBJ)
 	@echo	$(YELLOW)Compiling [$(NAME)]...$(RESET)
+	@printf $(UP)$(CUT)
 	@$(CC)	$(CFLAGS) $(OBJ) -o $(NAME)
 	@echo	$(GREEN)Success [$(NAME)] is compiled$(RESET)
 
 $(OBJ_DIR)/%.o: %.cpp
-	@mkdir -p _obj
+	@echo $(YELLOW)Compiling [$@]...$(RESET)
+	@printf $(UP)$(CUT)
+	@if	[ ! -d "{OBJ_DIR}" ]; then						\
+		mkdir -p _obj;									\
+	fi
 	@$(CC) $(CFLAGS) -c $< $(HEADERS) -o $@
 
 ###############################################################################
