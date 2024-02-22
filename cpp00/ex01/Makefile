@@ -12,11 +12,12 @@ HEADERS			=		-I./Include -I./Include/Objects -I./Include/Structures
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		Src Src/DisplayPromt
+VPATH			:=		Src Src/DisplayPromt Src/ObjectMethods
 
 SRC_BOOK		=		PhoneBook.cpp
 SRC_PROMT		=		HeaderPrint.cpp
-SRC				=		$(SRC_BOOK) $(SRC_PROMT)
+SRC_OBJECTS		=		ContactMethods.cpp
+SRC				=		$(SRC_BOOK) $(SRC_PROMT) $(SRC_OBJECTS)
 
 ###############################################################################
 ###############################################################################

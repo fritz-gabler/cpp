@@ -11,23 +11,21 @@ class	Contact
 	std::string		FirstName;
 	std::string		LastName;
 	std::string		BirthDate;
-	std::string		FavoriteAnimal;
+	std::string		DarkestSecret;
 
 	public	:
-	Contact();
+	Contact(void);
 	void	AddFirstName();
+	void	AddDarkestSecret(void);
+	void	AddBirthDate(void);
+	void	AddLastName(void);
+
+
+
 };
 
 ////////////////////////////////////METHODS//////////////////////////////////-//
 
-Contact::Contact(void)
-{
-	id = 0;
-}
 
-void	Contact::AddFirstName()
-{
-	 FirstName = "hallo";
-}
 #endif
 
