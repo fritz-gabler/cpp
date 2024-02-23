@@ -4,6 +4,7 @@
 
 ////////////////////////////////////CLASS///////////////////////////////////////
 
+#include <string>
 class	Contact
 {
 	private	:
@@ -15,13 +16,10 @@ class	Contact
 
 	public	:
 	Contact(void);
-	void	AddFirstName();
-	void	AddDarkestSecret(void);
-	void	AddBirthDate(void);
-	void	AddLastName(void);
-
-
-
+	void	AddFirstName(std::string Input);
+	void	AddDarkestSecret(std::string Input);
+	void	AddBirthDate(std::string Input);
+	void	AddLastName(std::string Input);
 };
 
 ////////////////////////////////////METHODS//////////////////////////////////-//

@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   IsString.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 11:17:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/23 09:33:19 by fgabler          ###   ########.fr       */
+/*   Created: 2024/02/22 16:11:39 by fgabler           #+#    #+#             */
+/*   Updated: 2024/02/23 11:00:53 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-int	main(void)
+int	IsString(std::string str)
 {
-	Process		Process;
-	PhoneBook	PhoneBook;
+	int		i;
 
-	HeaderPrint();
-	Process.Status = Start;
-	while(Process.Status != Exit)
+	i = 0;
+	while(str[i] != '\0')
 	{
-		Process.PrintedLines = 0;
-		GetCommand(&Process);
-		SetAction(&PhoneBook, &Process);
+		if (std::isalpha(str[i]) == false)
+			return (false);
+		i++;
 	}
-	return (0);
+	return (true);
 }

@@ -8,5 +8,7 @@ class	PhoneBook
 	Contact		Contact[8];
 
 	public	:
+	void	AddNewContact(int *LinesPrinted);
+	void	GetFirstName(int *LinesPrinted);
 };
 #endif

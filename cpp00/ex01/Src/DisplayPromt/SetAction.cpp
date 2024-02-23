@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   SetAction.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 11:17:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/23 09:33:19 by fgabler          ###   ########.fr       */
+/*   Created: 2024/02/22 18:06:19 by fgabler           #+#    #+#             */
+/*   Updated: 2024/02/22 18:16:15 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-int	main(void)
+void	SetAction(PhoneBook *PhoneBook, Process *Process)
 {
-	Process		Process;
-	PhoneBook	PhoneBook;
-
-	HeaderPrint();
-	Process.Status = Start;
-	while(Process.Status != Exit)
-	{
-		Process.PrintedLines = 0;
-		GetCommand(&Process);
-		SetAction(&PhoneBook, &Process);
-	}
-	return (0);
+	if (Process->Status == Exit)
+		return ;
+	else if (Process->Status == Add)
+		PhoneBook->AddNewContact(&Process->PrintedLines);
+	else if (Process->Status == Search)
+		std::cout << "function is coming" << std::endl;
 }

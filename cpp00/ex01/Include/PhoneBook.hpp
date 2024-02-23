@@ -23,6 +23,8 @@ void	HeaderPrint(void);
 
 //INPUT PARSING
 void	GetCommand(Process *Process);
+int		IsString(std::string str);
+void	SetAction(PhoneBook *PhoneBook, Process *Process);
 
 //////////////////////////////////////COLORS////////////////////////////////////
 
