@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 09:25:11 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/25 21:29:19 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/26 12:30:52 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ void	Contact::DisplayContact(int ContactNumber)
 	std::cout << "_________________________________________________________\n";
 	std::cout << "|  INDEX  |  FIRST NAME  |   Last Name   |   Nickname   |\n";
 	std::cout << "|    " << ContactNumber << "    |";
-	DisplayFeeld(FirstName);
+	DisplayFeeld(firstName);
 	std::cout << ' ';
-	DisplayFeeld(LastName);
-	std::cout << LastName;
-	DisplayFeeld(NickName);
+	DisplayFeeld(lastName);
+	DisplayFeeld(nickName);
 	std::cout << "\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾\n";
 }
 

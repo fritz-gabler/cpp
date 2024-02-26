@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 13:28:36 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/26 11:59:11 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/26 12:26:47 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	PhoneBook::AddNewContact(int	*LinesPrinted)
 
 void	PhoneBook::SetContactNumber(void)
 {
-	if (NumberOfContacts > 7)
-		NumberOfContacts = 0;
+	if (numberOfContacts > 7)
+		numberOfContacts = 0;
 	else
-		NumberOfContacts++;
+		numberOfContacts++;
 }
 
 void	PhoneBook::GetFirstName(int *LinesPrinted)
@@ -40,7 +40,7 @@ void	PhoneBook::GetFirstName(int *LinesPrinted)
 	*LinesPrinted += 1;
 	std::getline(std::cin, FirstName);
 	if (IsString(FirstName) == true)
-		Contact[NumberOfContacts].AddFirstName(FirstName);
+		contact[numberOfContacts].AddFirstName(FirstName);
 	else
 	{
 		std::cout << RED
@@ -58,7 +58,7 @@ void	PhoneBook::GetLastName(int *LinesPrinted)
 	*LinesPrinted += 1;
 	std::getline(std::cin, LastName);
 	if (IsString(LastName) == true)
-		Contact[NumberOfContacts].AddLastName(LastName);
+		contact[numberOfContacts].AddLastName(LastName);
 	else
 	{
 		std::cout << RED
@@ -76,7 +76,7 @@ void	PhoneBook::GetNickName(int *LinesPrinted)
 	*LinesPrinted += 1;
 	std::getline(std::cin, NickName);
 	if (IsString(NickName) == true)
-		Contact[NumberOfContacts].NickNameAdd(NickName);
+		contact[numberOfContacts].NickNameAdd(NickName);
 	else
 	{
 		std::cout << RED << "Wrong input. Try again\n" << RESET;
@@ -93,7 +93,7 @@ void	PhoneBook::GetPhoneNumber(int *LinesPrinted)
 	*LinesPrinted += 1;
 	std::getline(std::cin, PhoneNumber);
 	if (ValidePhoneNumber(PhoneNumber) == true)
-		Contact[NumberOfContacts].PhoneNumberAdd(PhoneNumber);
+		contact[numberOfContacts].PhoneNumberAdd(PhoneNumber);
 	else
 	{
 		std::cout << RED << WRONG_NUMBER;
@@ -111,7 +111,7 @@ void	PhoneBook::GetDarkestSecret(int *LinesPrinted)
 	*LinesPrinted += 1;
 	std::getline(std::cin, DarkesSecret);
 	if (IsString(DarkesSecret) == true)
-		Contact[NumberOfContacts].AddDarkestSecret(DarkesSecret);
+		contact[numberOfContacts].AddDarkestSecret(DarkesSecret);
 	else
 	{
 		std::cout << RED << WRONG_NUMBER;
@@ -126,6 +126,6 @@ void	PhoneBook::print(void)
 	int		i;
 
 	i = 0;
-	while (i != NumberOfContacts)
-		Contact[i++].print();
+	while (i != numberOfContacts)
+		contact[i++].print();
 }

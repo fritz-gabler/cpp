@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:06:14 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/25 17:37:27 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/26 12:27:29 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	PhoneBook::SearchContact(int *LinesPrinted)
 	int		i;
 
 	i = 0;
-	while (i < NumberOfContacts)
+	while (i < numberOfContacts)
 	{
-		Contact[i].DisplayContact(i);
+		contact[i].DisplayContact(i);
 		*LinesPrinted += 4;
 		i++;
 	}
@@ -27,7 +27,7 @@ void	PhoneBook::SearchContact(int *LinesPrinted)
 
 bool	PhoneBook::ContactExist()
 {
-	if (NumberOfContacts > 0)
+	if (numberOfContacts > 0)
 		return (true);
 	return (false);
 }

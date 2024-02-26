@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 09:13:36 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/26 11:49:13 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/26 12:30:20 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,34 @@
 
 void	Contact::AddFirstName(std::string Input)
 {
-		FirstName = Input;
+	firstName = Input;
 }
 
 void	Contact::AddLastName(std::string Input)
 {
-	LastName = Input;
+	lastName = Input;
 }
 
 void	Contact::NickNameAdd(std::string Input)
 {
-	NickName = Input;
+	nickName = Input;
 }
 
 void	Contact::PhoneNumberAdd(std::string Input)
 {
-	PhoneNumber = Input;
+	phoneNumber = Input;
 }
 
 void	Contact::AddDarkestSecret(std::string Input)
 {
-	DarkestSecret = Input;
-	print();
+	darkestSecret = Input;
 }
 
 void	Contact::print(void)
 {
-	std::cout << FirstName << std::endl;
-	std::cout << LastName << std::endl;
-	std::cout << NickName << std::endl;
-	std::cout << PhoneNumber << std::endl;
-	std::cout << DarkestSecret << std::endl;
+	std::cout << firstName << std::endl;
+	std::cout << lastName << std::endl;
+	std::cout << nickName << std::endl;
+	std::cout << phoneNumber << std::endl;
+	std::cout << darkestSecret << std::endl;
 }
