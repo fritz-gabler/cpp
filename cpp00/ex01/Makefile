@@ -13,13 +13,18 @@ HEADERS			=		-I./Include -I./Include/Objects -I./Include/Structures
 ###############################################################################
 
 VPATH			:=		Src Src/DisplayPromt Src/ObjectMethods				\
-						Src/InputParsing
+						Src/InputParsing Src/ProcessFunctions
 
 SRC_BOOK		=		PhoneBook.cpp
-SRC_PROMT		=		HeaderPrint.cpp
-SRC_OBJECTS		=		ContactMethods.cpp PhoneBookMethods.cpp
-SRC_PARSING		=		GetCommand.cpp IsString.cpp SetAction.cpp
-SRC				=		$(SRC_BOOK) $(SRC_PROMT) $(SRC_OBJECTS) $(SRC_PARSING)
+SRC_PROMT		=		HeaderPrint.cpp ResetPromt.cpp 
+SRC_METHODS		=		ContactMethods.cpp AddNewContact.cpp				\
+						PhoneBookConstructor.cpp DisplayContact.cpp			\
+						SearchContact.cpp
+SRC_PARSING		=		GetCommand.cpp IsString.cpp SetAction.cpp			\
+						ValidePhoneNumber.cpp
+SRC_PROCESS		=		ResetProcess.cpp SetProcess.cpp
+SRC				=		$(SRC_BOOK) $(SRC_PROMT) $(SRC_METHODS)				\
+						$(SRC_PARSING) $(SRC_PROCESS)
 
 ###############################################################################
 ###############################################################################

@@ -13,7 +13,8 @@ typedef enum	EStatus
 	Search		=	1,
 	Exit		=	2,
 	FalseInput	=	3,
-	Start		=	4
+	Start		=	4,
+	NoContact	=	5
 }	TStatus;
 
 ////////////////////////////////////STRUCT//////////////////////////////////////

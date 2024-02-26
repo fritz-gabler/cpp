@@ -6,11 +6,13 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:06:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/22 18:16:15 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/25 17:38:34 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+static void	SetSearch(PhoneBook *PhoneBook, Process *Process);
 
 void	SetAction(PhoneBook *PhoneBook, Process *Process)
 {
@@ -19,5 +21,14 @@ void	SetAction(PhoneBook *PhoneBook, Process *Process)
 	else if (Process->Status == Add)
 		PhoneBook->AddNewContact(&Process->PrintedLines);
 	else if (Process->Status == Search)
-		std::cout << "function is coming" << std::endl;
+		SetSearch(PhoneBook, Process);
+}
+
+static void	SetSearch(PhoneBook *PhoneBook, Process *Process)
+{
+	std::cout << "hallo\n";
+	if (PhoneBook->ContactExist() == false)
+		Process->Status = NoContact;
+	else
+		PhoneBook->SearchContact(&(Process->PrintedLines));
 }

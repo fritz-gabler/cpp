@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:17:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/23 09:33:19 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/26 11:49:59 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ int	main(void)
 	PhoneBook	PhoneBook;
 
 	HeaderPrint();
-	Process.Status = Start;
+	SetProcess(&Process);
 	while(Process.Status != Exit)
 	{
-		Process.PrintedLines = 0;
 		GetCommand(&Process);
 		SetAction(&PhoneBook, &Process);
+		PhoneBook.print();
+	//	ResetPromt(&Process);
+		ResetProcess(&Process);
 	}
 	return (0);
 }
