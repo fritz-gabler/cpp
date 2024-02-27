@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBookConstructor.cpp                           :+:      :+:    :+:   */
+/*   DisplayContactSnipet.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 18:47:08 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/26 12:27:07 by fgabler          ###   ########.fr       */
+/*   Created: 2024/02/27 12:36:31 by fgabler           #+#    #+#             */
+/*   Updated: 2024/02/27 12:50:02 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void)
+void	DisplayFeeldStr(std::string Content)
 {
-	numberOfContacts = 0;
+	if (Content.length() < 11)
+	{
+		std::cout << std::right << std::setw(10) << Content;
+		std::cout << "|";
+	}
+	else
+	{
+		std::cout << std::right << std::setw(9) << Content.substr(0, 9);
+		std::cout << ".|";
+	}
 }
+
+void	DisplayFeeldInt(int Content)
+{
+	std::cout << std::right << std::setw(10) << Content;
+	std::cout << "|";
+}
+

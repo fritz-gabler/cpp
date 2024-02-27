@@ -6,6 +6,7 @@
 # include <iostream>
 # include <ostream>
 # include <stdio.h>
+# include <iomanip>
 
 ////////////////////////////////////OBJECTS/////////////////////////////////////
 
@@ -32,6 +33,11 @@ bool	ContactExist(int NumberOfContacts);
 //Process Functions
 void	ResetProcess(Process *Process);
 void	SetProcess(Process *Process);
+
+//Methods
+void	DisplayFeeldStr(std::string Content);
+void	DisplayFeeldInt(int Content);
+void	WaitTillInput(int &LinesPrinted);
 
 //////////////////////////////////////COLORS////////////////////////////////////
 

@@ -17,9 +17,11 @@ class	PhoneBook
 	void	GetNickName(int *LinesPrinted);
 	void	GetPhoneNumber(int *LinesPrinted);
 	void	GetDarkestSecret(int *LinesPrinted);
-	void	SearchContact(int *LinesPrinted);
+	void	SearchContact(int &linesPrinted);
+	void	DisplayContactSnipet(int &linesPrinted);
+	void	DisplaySpecificContact(int &linesPrinted);
+	void	GetValideContactNumber(int &Number, int &LinesPrinted);
 	bool	ContactExist();
-	void	print(void);
 };
 
 #endif

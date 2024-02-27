@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:17:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/26 12:21:09 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/26 18:38:11 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	main(void)
 	{
 		GetCommand(&process);
 		SetAction(&phoneBook, &process);
-		phoneBook.print();
-	//	ResetPromt(&Process);
+		ResetPromt(&process);
 		ResetProcess(&process);
 	}
 	return (0);

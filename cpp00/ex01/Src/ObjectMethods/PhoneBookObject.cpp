@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AddNewContact.cpp                                  :+:      :+:    :+:   */
+/*   PhoneBookObject.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 13:28:36 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/26 12:26:47 by fgabler          ###   ########.fr       */
+/*   Created: 2024/02/26 19:06:26 by fgabler           #+#    #+#             */
+/*   Updated: 2024/02/27 13:28:30 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook(void)
+{
+	numberOfContacts = 0;
+}
+
 void	PhoneBook::AddNewContact(int	*LinesPrinted)
 {
 	std::cout << NEW_CONTACT;
-	SetContactNumber();
+	*LinesPrinted += 1;
 	GetFirstName(LinesPrinted);
 	GetLastName(LinesPrinted);
 	GetNickName(LinesPrinted);
 	GetPhoneNumber(LinesPrinted);
 	GetDarkestSecret(LinesPrinted);
-	*LinesPrinted += 2;
+	SetContactNumber();
 }
 
 void	PhoneBook::SetContactNumber(void)
@@ -115,17 +120,61 @@ void	PhoneBook::GetDarkestSecret(int *LinesPrinted)
 	else
 	{
 		std::cout << RED << WRONG_NUMBER;
-		std::cout << RED << "Wrong input. Try again\n" << RESET;
+		std::cout << RESET;
 		*LinesPrinted += 1;
 		GetDarkestSecret(LinesPrinted);
 	}
 }
 
-void	PhoneBook::print(void)
+bool	PhoneBook::ContactExist()
 {
-	int		i;
+	if (numberOfContacts > 0)
+		return (true);
+	return (false);
+}
+
+void	PhoneBook::SearchContact(int &linesPrinted)
+{
+	DisplayContactSnipet(linesPrinted);
+	DisplaySpecificContact(linesPrinted);
+	WaitTillInput(linesPrinted);
+}
+
+void	PhoneBook::DisplayContactSnipet(int &linesPrinted)
+{
+	int				i;
 
 	i = 0;
-	while (i != numberOfContacts)
-		contact[i++].print();
+	while (i < numberOfContacts)
+	{
+		contact[i].DisplayContactSnipet(i);
+		linesPrinted += 4;
+		i++;
+	}
+}
+
+void	PhoneBook::DisplaySpecificContact(int &linesPrinted)
+{
+	int		Number;
+	GetValideContactNumber(Number, linesPrinted);
+	contact[Number].DisplayAllConatctData();
+	linesPrinted += 7;
+}
+
+void	PhoneBook::GetValideContactNumber(int &Number, int &LinesPrinted)
+{
+	int		Input;
+
+	std::cout << "Please enter the contact index your searching for: ";
+	LinesPrinted += 1;
+	std::cin >> Input;
+	std::cin.ignore();
+	if (Input >= numberOfContacts)
+	{
+		std::cout << "Contact number does not exist\n";
+		LinesPrinted += 1;
+		GetValideContactNumber(Number, LinesPrinted);
+	}
+	else
+		Number = Input;
 }

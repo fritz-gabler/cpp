@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:06:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/25 17:38:34 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/27 12:46:53 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ void	SetAction(PhoneBook *PhoneBook, Process *Process)
 
 static void	SetSearch(PhoneBook *PhoneBook, Process *Process)
 {
-	std::cout << "hallo\n";
 	if (PhoneBook->ContactExist() == false)
 		Process->Status = NoContact;
 	else
-		PhoneBook->SearchContact(&(Process->PrintedLines));
+		PhoneBook->SearchContact(Process->PrintedLines);
 }

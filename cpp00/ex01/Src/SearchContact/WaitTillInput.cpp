@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SearchContact.cpp                                  :+:      :+:    :+:   */
+/*   WaitTillInput.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 19:06:14 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/26 12:27:29 by fgabler          ###   ########.fr       */
+/*   Created: 2024/02/27 12:51:15 by fgabler           #+#    #+#             */
+/*   Updated: 2024/02/27 12:51:40 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void	PhoneBook::SearchContact(int *LinesPrinted)
+void	WaitTillInput(int &LinesPrinted)
 {
-	int		i;
+	int				status;
+	std::string		input;
 
-	i = 0;
-	while (i < numberOfContacts)
+	status = Start;
+	while (status != Exit)
 	{
-		contact[i].DisplayContact(i);
-		*LinesPrinted += 4;
-		i++;
+		std::cout << "To Close enter y: ";
+		std::getline(std::cin, input);
+		if (input.compare("y") == 0 && input.length() == 1)
+			status = Exit;
+		else
+		{
+			std::cout << "Wrong Input\n";
+			LinesPrinted += 1;
+		}
+		LinesPrinted += 1;
 	}
-}
-
-bool	PhoneBook::ContactExist()
-{
-	if (numberOfContacts > 0)
-		return (true);
-	return (false);
 }

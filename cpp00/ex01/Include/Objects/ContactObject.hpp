@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 17:42:45 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/26 12:29:32 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/02/27 13:01:03 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ class	Contact
 	void	NickNameAdd(std::string Input);
 	void	PhoneNumberAdd(std::string Input);
 	void	AddDarkestSecret(std::string Input);
-	void	DisplayContact(int ContactNumber);
-	void	print();
+	void	DisplayContactSnipet(int ContactNumber);
+	void	DisplayAllConatctData(void);
 };
 
 #endif
