@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:22:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/03 12:02:09 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/04 08:58:12 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,12 @@ int		Account::getTotalAmount(void)
 
 int		Account::getNbDeposits(void)
 {
-	return (_nbDeposits);
+	return (_totalNbDeposits);
 }
 
 int		Account::getNbWithdrawals(void)
 {
-	return (_nbWithdrawals);
-}
-
-Account::Account(int initial_deposit)
-{
-	
+	return (_totalNbWithdrawals);
 }
 
 void	Account::displayAccountsInfos(void)
@@ -44,12 +39,20 @@ void	Account::displayAccountsInfos(void)
 	std::cout
 		<< "accounts:" << _nbAccounts << ";"
 		<< "total:" << _totalAmount << ";"
-		<< "deposits:" << _nbDeposits << ";"
-		<< "withdrawls" << _nbWithdrawals << ";"
+		<< "deposits:" << _totalNbDeposits << ";"
+		<< "withdrawls" << _totalNbWithdrawals << ";"
 		<< std::endl;
 }
 
 void	Account::_displayTimestamp(void)
 {
-	
+	time_t		currentTime;
+	struct tm	*localTime;
+	char		displayTime[18];
+
+	std::time(&currentTime);
+	localTime = localtime(&currentTime);
+	strftime(displayTime, 18, "[%Y%m%d_%H%M%S]", localTime);
+	std::cout << displayTime << std::endl;
+
 }
