@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:22:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/05 16:16:44 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/05 17:47:06 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	Account::displayAccountsInfos(void)
 		<< "accounts:" << _nbAccounts << ";"
 		<< "total:" << _totalAmount << ";"
 		<< "deposits:" << _totalNbDeposits << ";"
-		<< "withdrawls" << _totalNbWithdrawals
+		<< "withdrawals:" << _totalNbWithdrawals
 		<< std::endl;
 }
 
@@ -96,28 +96,28 @@ bool	Account::makeWithdrawal(int withdrawal)
 {
 	bool		withdrawalPossible;
 
-	_displayTimestamp();
 	withdrawalPossible = false;
+	_displayTimestamp();
 	std::cout
 		<< "index:" << this->_accountIndex << ";"
 		<< "p_amount:" << this->_amount << ";";
-
-	if ((_nbWithdrawals - withdrawal) >= 0)
+	if ((_amount - withdrawal) >= 0)
 	{
-		this->_nbWithdrawals += withdrawal;
-		_totalNbWithdrawals++;
 		withdrawalPossible = true;
+		this->_amount -= withdrawal;
+		_totalAmount -= withdrawal;
+		_nbWithdrawals++;
+		_totalNbWithdrawals++;
 		std::cout
-			<< "deposit:" << this->_nbDeposits << ";"
-			<< "withdrawal:" << withdrawal
+			<< "withdrawal:" << withdrawal << ";"
 			<< "amount:" << this->_amount << ";"
-			<< "nb_withdrawal:" << this->_totalNbWithdrawals
+			<< "nb_withdrawals:" << this->_nbWithdrawals
 			<< std::endl;
 	}
 	else
 	{
 		std::cout
-			<< "withdrawals:refused"
+			<< "withdrawal:refused"
 			<< std::endl;
 	}
 	return (withdrawalPossible);
@@ -136,10 +136,9 @@ void	Account::displayStatus(void) const
 		<< "index:" << this->_accountIndex << ";"
 		<< "amount:" << this->_amount << ";"
 		<< "deposits:" << _nbDeposits << ";"
-		<< "withdrawls:" << _totalNbWithdrawals
+		<< "withdrawals:" << _nbWithdrawals
 		<< std::endl;
 }
-
 void	Account::_displayTimestamp(void)
 {
 	time_t		currentTime;
