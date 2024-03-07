@@ -13,9 +13,14 @@
 
 class	Zombie
 {
+
+	public:
+						Zombie( void );
+						Zombie( std::string NewZombieName);
+						~Zombie( void );
+		void			announce( void );
 	private:
-		std::string		name;
-	
+		std::string		_name;
 };
 
 #endif
