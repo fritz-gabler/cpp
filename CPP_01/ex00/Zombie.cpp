@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:00:45 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/07 16:43:45 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/08 10:02:26 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Zombie::~Zombie(void)
 {
 	std::cout
 			<< _name
-			<< "bids farewell and dies"
+			<< ": says farewell and dies"
 			<< std::endl;
 }
 
