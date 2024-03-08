@@ -1,0 +1,1 @@
+#ifndef WEAPON_HPP
