@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fgabler <fgabler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:13:13 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/14 21:23:58 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/08 18:12:03 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <ostream>
 
 static void	arg_check(int ac, int *error);
-static void	capitalice_string(char ***av, int error);
-static void	capitalice_line(char **line);
+static void	capitalice_string(char **av, int error);
+static void	capitalice_line(char *line);
 static void	print_input(char **av, int error);
 
 int	main(int ac, char **av)
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	int	error = false;
 
 	arg_check(ac, &error);
-	capitalice_string(&av, error);
+	capitalice_string(av, error);
 	print_input(av, error);
 	return (0);
 }
@@ -38,25 +38,25 @@ static void	arg_check(int ac, int *error)
 	std::cout << no_argument << std::endl;
 }
 
-static void	capitalice_string(char ***av, int error)
+static void	capitalice_string(char **av, int error)
 {
 	int	i;
 
 	if (error == true)
 		return ;
 	i = 1;
-	while ((*av)[i] != NULL)
+	while (av[i] != NULL)
 	{
-		capitalice_line(&(*av)[i]);
+		capitalice_line(av[i]);
 		i++;
 	}
 }
 
-static void	capitalice_line(char **line)
+static void	capitalice_line(char *line)
 {
-	for(int i = 0; (*line)[i] != '\0'; i++)
+	for(int i = 0; line[i] != '\0'; i++)
 	{
-		(*line)[i] = std::toupper((*line)[i]);
+		line[i] = std::toupper(line[i]);
 	}
 }
 
