@@ -4,7 +4,7 @@ NAME			=		PhoneBook
 ###############################################################################
 ###############################################################################
 
-CC				=		g++
+CC				=		c++
 CFLAGS			=		-Wall -Werror -Wextra
 CPPFLAG			=		-std=c++98
 HEADERS			=		-I./Include -I./Include/Objects -I./Include/Structures
