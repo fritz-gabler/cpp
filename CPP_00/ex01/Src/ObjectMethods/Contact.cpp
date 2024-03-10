@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ContactObject.cpp                                  :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:23:38 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/27 13:10:09 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/10 12:00:22 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Header.hpp"
 
 void	Contact::AddFirstName(std::string Input)
 {
@@ -37,7 +37,7 @@ void	Contact::AddDarkestSecret(std::string Input)
 	darkestSecret = Input;
 }
 
-void	Contact::DisplayContactSnipet(int ContactNumber)
+void	Contact::DisplayContactSnippet(int ContactNumber)
 {
 	std::cout << "_____________________________________________\n";
 	std::cout << "|";

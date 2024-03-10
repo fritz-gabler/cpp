@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DisplayContactSnipet.cpp                           :+:      :+:    :+:   */
+/*   ResetPromt.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 12:36:31 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/27 12:50:02 by fgabler          ###   ########.fr       */
+/*   Created: 2024/02/24 18:17:28 by fgabler           #+#    #+#             */
+/*   Updated: 2024/03/10 11:42:05 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Header.hpp"
 
-void	DisplayFeeldStr(std::string Content)
+void	ResetPromt(Process *Process)
 {
-	if (Content.length() < 11)
+	int	i;
+
+	i = 0;
+	while (Process->PrintedLines != i)
 	{
-		std::cout << std::right << std::setw(10) << Content;
-		std::cout << "|";
-	}
-	else
-	{
-		std::cout << std::right << std::setw(9) << Content.substr(0, 9);
-		std::cout << ".|";
+		std::cout << UP << CUT;
+		i++;
 	}
 }
-
-void	DisplayFeeldInt(int Content)
-{
-	std::cout << std::right << std::setw(10) << Content;
-	std::cout << "|";
-}
-

@@ -17,14 +17,13 @@ VPATH			:=		Src Src/DisplayPromt Src/ObjectMethods				\
 						Src/SearchContact
 
 SRC_BOOK		=		main.cpp
-SRC_PROMT		=		HeaderPrint.cpp ResetPromt.cpp 
-SRC_METHODS		=		PhoneBookObject.cpp									\
-						ContactObject.cpp
+SRC_PROMPT		=		HeaderPrint.cpp ResetPrompt.cpp 
+SRC_METHODS		=		PhoneBook.cpp Contact.cpp
 SRC_PARSING		=		GetCommand.cpp IsString.cpp SetAction.cpp			\
-						ValidePhoneNumber.cpp
+						ValidPhoneNumber.cpp
 SRC_PROCESS		=		ResetProcess.cpp SetProcess.cpp
-SRC_SEARCH		=		WaitTillInput.cpp DisplayContactSnipet.cpp
-SRC				=		$(SRC_BOOK) $(SRC_PROMT) $(SRC_METHODS)				\
+SRC_SEARCH		=		WaitTillInput.cpp DisplayContactSnippet.cpp
+SRC				=		$(SRC_BOOK) $(SRC_PROMPT) $(SRC_METHODS)				\
 						$(SRC_PARSING) $(SRC_PROCESS) $(SRC_SEARCH)
 
 ###############################################################################

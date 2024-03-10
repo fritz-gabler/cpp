@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBookObject.cpp                                :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:06:26 by fgabler           #+#    #+#             */
-/*   Updated: 2024/02/27 17:57:27 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/10 12:00:36 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Header.hpp"
 
 PhoneBook::PhoneBook(void)
 {
@@ -143,19 +143,19 @@ bool	PhoneBook::ContactExist()
 
 void	PhoneBook::SearchContact(int &linesPrinted)
 {
-	DisplayContactSnipet(linesPrinted);
+	DisplayContactSnippet(linesPrinted);
 	DisplaySpecificContact(linesPrinted);
 	WaitTillInput(linesPrinted);
 }
 
-void	PhoneBook::DisplayContactSnipet(int &linesPrinted)
+void	PhoneBook::DisplayContactSnippet(int &linesPrinted)
 {
 	int				i;
 
 	i = 0;
 	while (i < numberOfContacts)
 	{
-		contact[i].DisplayContactSnipet(i);
+		contact[i].DisplayContactSnippet(i);
 		linesPrinted += 4;
 		i++;
 	}
@@ -164,12 +164,12 @@ void	PhoneBook::DisplayContactSnipet(int &linesPrinted)
 void	PhoneBook::DisplaySpecificContact(int &linesPrinted)
 {
 	int		Number;
-	GetValideContactNumber(Number, linesPrinted);
+	GetValidContactNumber(Number, linesPrinted);
 	contact[Number].DisplayAllConatctData();
 	linesPrinted += 7;
 }
 
-void	PhoneBook::GetValideContactNumber(int &Number, int &LinesPrinted)
+void	PhoneBook::GetValidContactNumber(int &Number, int &LinesPrinted)
 {
 	int		Input;
 
@@ -181,7 +181,7 @@ void	PhoneBook::GetValideContactNumber(int &Number, int &LinesPrinted)
 	{
 		std::cout << "Contact number does not exist\n";
 		LinesPrinted += 1;
-		GetValideContactNumber(Number, LinesPrinted);
+		GetValidContactNumber(Number, LinesPrinted);
 	}
 	else
 		Number = Input;
