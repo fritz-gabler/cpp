@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:06:26 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/10 12:00:36 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/10 18:39:10 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ void	PhoneBook::GetValidContactNumber(int &Number, int &LinesPrinted)
 	LinesPrinted += 1;
 	std::cin >> Input;
 	std::cin.ignore();
-	if (Input >= numberOfContacts)
+	if (Input >= numberOfContacts || Input < 0)
 	{
 		std::cout << "Contact number does not exist\n";
 		LinesPrinted += 1;
