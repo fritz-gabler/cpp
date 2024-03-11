@@ -9,21 +9,22 @@
 
 typedef enum	EStatus
 {
-	Add			=	0,
-	Search		=	1,
-	Exit		=	2,
-	FalseInput	=	3,
-	Start		=	4,
-	NoContact	=	5
+	Add				=	0,
+	Search			=	1,
+	Exit			=	2,
+	FalseInput		=	3,
+	Start			=	4,
+	ColseContact	=	5,
+	NoContact		=	6
 }	TStatus;
 
 ////////////////////////////////////STRUCT//////////////////////////////////////
 
 typedef struct	s_Process
 {
-	std::string		Input;
-	int				Status;
-	int				PrintedLines;
+	std::string			Input;
+	int					Status;
+	int					PrintedLines;
 } Process;
 
 #endif
