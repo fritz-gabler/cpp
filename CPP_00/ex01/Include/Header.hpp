@@ -9,27 +9,28 @@
 # include <iomanip>
 #include <sstream>
 
+////////////////////////////////////STRUCTURES//////////////////////////////////
+
+# include "Structures.hpp"
+
 ////////////////////////////////////OBJECTS/////////////////////////////////////
 
 # include "Contact.hpp"
 # include "PhoneBook.hpp"
 
-////////////////////////////////////STRUCTURES//////////////////////////////////
-
-# include "Structures.hpp"
-
 ////////////////////////////////////FUNCTIONS///////////////////////////////////
 
-//DISPLAY PROMT
+//DISPLAY PROMPT
 void	HeaderPrint(void);
 void	ResetPromt(Process *Process);
 
 //INPUT PARSING
 void	GetCommand(Process *Process);
 int		IsString(std::string str);
-void	SetAction(PhoneBook *PhoneBook, Process *Process);
+void	SetAction(PhoneBook &phoneBook, Process &process);
 bool	ValidePhoneNumber(std::string PhoneNumber);
 bool	ContactExist(int NumberOfContacts);
+void	getStringSave(std::string &input, Process &process);
 
 //Process Functions
 void	ResetProcess(Process *Process);
@@ -38,11 +39,11 @@ void	SetProcess(Process *Process);
 //Methods
 void	DisplayFeeldStr(std::string Content);
 void	DisplayFeeldInt(int Content);
-void	WaitTillInput(int &LinesPrinted);
 
 //Search contact
-bool	isValidContactNumber(int input, int numberOfContacts);
+bool	isValidContactNumber(int input, int numberOfContacts, Process process);
 void	convertStringToInt(std::string string, int &convertedString);
+void	WaitTillInput(Process &process);
 
 //////////////////////////////////////COLORS////////////////////////////////////
 

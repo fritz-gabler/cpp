@@ -20,7 +20,7 @@ SRC_BOOK		=		main.cpp
 SRC_PROMPT		=		HeaderPrint.cpp ResetPrompt.cpp 
 SRC_METHODS		=		PhoneBook.cpp Contact.cpp
 SRC_PARSING		=		GetCommand.cpp IsString.cpp SetAction.cpp			\
-						ValidPhoneNumber.cpp
+						ValidPhoneNumber.cpp getStringSave.cpp
 SRC_PROCESS		=		ResetProcess.cpp SetProcess.cpp
 SRC_SEARCH		=		WaitTillInput.cpp DisplayContactSnippet.cpp			\
 						isValidContactNumber.cpp convertStringToInt.cpp
@@ -41,7 +41,7 @@ all:		$(NAME)
 $(NAME):	$(LIBS_NAME) $(OBJ)
 	@echo	$(YELLOW)Compiling [$(NAME)]...$(RESET)
 	@printf $(UP)$(CUT)
-	@$(CC)	$(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CC)	$(CFLAGS) $(CPPFLAG) $(OBJ) -o $(NAME)
 	@echo	$(GREEN)Success [$(NAME)] is compiled$(RESET)
 
 $(OBJ_DIR)/%.o: %.cpp

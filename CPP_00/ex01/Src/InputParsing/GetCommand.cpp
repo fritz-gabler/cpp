@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 09:45:59 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/10 11:42:39 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/11 13:19:40 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,21 @@ void	GetCommand(Process *Process)
 void	GetInput(Process *Process)
 {
 	std::cout << "Please enter a valid command\n:";
-	Process->PrintedLines += 2;
 	std::getline(std::cin, (*Process).Input);
+	if (std::cin.eof())
+	{
+		Process->Status = Exit;
+		return ;
+	}
+	Process->PrintedLines += 2;
 }
 
 void	CapitaliceInput(Process *Process)
 {
 	int		i;
 
+	if (Process->Status == Exit)
+		return ;
 	i = 0;
 	while(Process->Input[i] != '\0')
 	{
@@ -44,7 +51,9 @@ void	CapitaliceInput(Process *Process)
 
 void	SpecifyCommand(Process *Process)
 {
-	if (Process->Input.compare("EXIT") == 0 && Process->Input.length() == 4)
+	if (Process->Status == Exit)
+		return ;
+	else if (Process->Input.compare("EXIT") == 0 && Process->Input.length() == 4)
 		(*Process).Status = Exit;
 	else if (Process->Input.compare("SEARCH") == 0
 			&& Process->Input.length() == 6)

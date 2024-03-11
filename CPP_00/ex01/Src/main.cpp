@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:17:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/10 11:44:33 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/11 14:04:26 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	while(process.Status != Exit)
 	{
 		GetCommand(&process);
-		SetAction(&phoneBook, &process);
+		SetAction(phoneBook, process);
 		ResetPromt(&process);
 		ResetProcess(&process);
 	}

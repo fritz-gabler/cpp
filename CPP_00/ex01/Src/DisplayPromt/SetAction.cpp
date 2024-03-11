@@ -6,28 +6,28 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:06:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/10 11:42:12 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/11 14:06:01 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Header.hpp"
 
-static void	SetSearch(PhoneBook *PhoneBook, Process *Process);
+static void	SetSearch(PhoneBook &phoneBook, Process &process);
 
-void	SetAction(PhoneBook *PhoneBook, Process *Process)
+void	SetAction(PhoneBook &phoneBook, Process &process)
 {
-	if (Process->Status == Exit)
+	if (process.Status == Exit)
 		return ;
-	else if (Process->Status == Add)
-		PhoneBook->AddNewContact(&Process->PrintedLines);
-	else if (Process->Status == Search)
-		SetSearch(PhoneBook, Process);
+	else if (process.Status == Add)
+		phoneBook.AddNewContact(process);
+	else if (process.Status == Search)
+		SetSearch(phoneBook, process);
 }
 
-static void	SetSearch(PhoneBook *PhoneBook, Process *Process)
+static void	SetSearch(PhoneBook &phoneBook, Process &process)
 {
-	if (PhoneBook->ContactExist() == false)
-		Process->Status = NoContact;
+	if (phoneBook.ContactExist() == false)
+		process.Status = NoContact;
 	else
-		PhoneBook->SearchContact(Process->PrintedLines);
+		phoneBook.SearchContact(process);
 }

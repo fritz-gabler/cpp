@@ -6,7 +6,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "Header.hpp"
-#include "Contact.hpp"
 
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////CLASSES////////////////////////////////////
@@ -22,16 +21,16 @@ class	PhoneBook
 
 	public	:
 	PhoneBook(void);
-	void	AddNewContact(int *LinesPrinted);
-	void	GetFirstName(int *LinesPrinted);
-	void	GetLastName(int *LinesPrinted);
-	void	GetNickName(int *LinesPrinted);
-	void	GetPhoneNumber(int *LinesPrinted);
-	void	GetDarkestSecret(int *LinesPrinted);
-	void	SearchContact(int &linesPrinted);
-	void	DisplayContactSnippet(int &linesPrinted);
-	void	DisplaySpecificContact(int &linesPrinted);
-	void	GetValidContactNumber(int &Number, int &LinesPrinted);
+	void	AddNewContact(Process &process);
+	void	GetFirstName(Process &process);
+	void	GetLastName(Process &process);
+	void	GetNickName(Process &process);
+	void	GetPhoneNumber(Process &process);
+	void	GetDarkestSecret(Process &process);
+	void	SearchContact(Process &process);
+	void	DisplayContactSnippet(Process &process);
+	void	DisplaySpecificContact(Process &process);
+	void	GetValidContactNumber(int &Number, Process &process);
 	void	SetNumber(void);
 	void	ResetNumber(void);
 	bool	ContactExist();
