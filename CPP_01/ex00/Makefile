@@ -26,7 +26,7 @@ all:		$(NAME)
 
 $(NAME):	$(LIBS_NAME) $(OBJ)
 	@echo	$(YELLOW)Compiling [$(NAME)]...$(RESET)
-	@$(CC)	$(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CC)	$(CFLAGS) $(CPPFLAG) $(OBJ) -o $(NAME)
 	@echo	$(GREEN)Success [$(NAME)] is compiled$(RESET)
 
 $(OBJ_DIR)/%.o: %.cpp
