@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:06:26 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/10 18:39:10 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/11 11:11:41 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,18 +171,19 @@ void	PhoneBook::DisplaySpecificContact(int &linesPrinted)
 
 void	PhoneBook::GetValidContactNumber(int &Number, int &LinesPrinted)
 {
-	int		Input;
+	std::string	input;
+	int			inputNumber;
 
 	std::cout << "Please enter the contact index your searching for: ";
 	LinesPrinted += 1;
-	std::cin >> Input;
-	std::cin.ignore();
-	if (Input >= numberOfContacts || Input < 0)
+	std::getline(std::cin, input);
+	convertStringToInt(input, inputNumber);
+	if (isValidContactNumber(inputNumber, numberOfContacts) == false)
 	{
-		std::cout << "Contact number does not exist\n";
+		std::cout << "Contact number does not exist or invalid input\n";
 		LinesPrinted += 1;
 		GetValidContactNumber(Number, LinesPrinted);
 	}
 	else
-		Number = Input;
+		Number = inputNumber;
 }

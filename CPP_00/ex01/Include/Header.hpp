@@ -7,6 +7,7 @@
 # include <ostream>
 # include <stdio.h>
 # include <iomanip>
+#include <sstream>
 
 ////////////////////////////////////OBJECTS/////////////////////////////////////
 
@@ -38,6 +39,10 @@ void	SetProcess(Process *Process);
 void	DisplayFeeldStr(std::string Content);
 void	DisplayFeeldInt(int Content);
 void	WaitTillInput(int &LinesPrinted);
+
+//Search contact
+bool	isValidContactNumber(int input, int numberOfContacts);
+void	convertStringToInt(std::string string, int &convertedString);
 
 //////////////////////////////////////COLORS////////////////////////////////////
 

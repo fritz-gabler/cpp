@@ -22,8 +22,9 @@ SRC_METHODS		=		PhoneBook.cpp Contact.cpp
 SRC_PARSING		=		GetCommand.cpp IsString.cpp SetAction.cpp			\
 						ValidPhoneNumber.cpp
 SRC_PROCESS		=		ResetProcess.cpp SetProcess.cpp
-SRC_SEARCH		=		WaitTillInput.cpp DisplayContactSnippet.cpp
-SRC				=		$(SRC_BOOK) $(SRC_PROMPT) $(SRC_METHODS)				\
+SRC_SEARCH		=		WaitTillInput.cpp DisplayContactSnippet.cpp			\
+						isValidContactNumber.cpp convertStringToInt.cpp
+SRC				=		$(SRC_BOOK) $(SRC_PROMPT) $(SRC_METHODS)			\
 						$(SRC_PARSING) $(SRC_PROCESS) $(SRC_SEARCH)
 
 ###############################################################################
