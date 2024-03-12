@@ -6,12 +6,11 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 12:51:15 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/11 15:00:06 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/12 12:16:17 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Header.hpp"
-#include <string>
 
 static void	scanForExitMessage(std::string input, Process &process);
 
@@ -22,7 +21,7 @@ void	WaitTillInput(Process &process)
 	if (process.Status == Exit)
 		return ;
 	process.Status = Start;
-	while (process.Status != ColseContact)
+	while (process.process != Exit && process.Status != ColseContact)
 	{
 		std::cout << "To Close enter y: ";
 		getStringSave(input, process);
