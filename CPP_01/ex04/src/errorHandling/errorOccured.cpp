@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   errorOccured.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:21:04 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/17 15:42:31 by fgabler          ###   ########.fr       */
+/*   Created: 2024/03/16 12:00:09 by fgabler           #+#    #+#             */
+/*   Updated: 2024/03/17 16:14:57 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
+#include <iostream>
 
-int	main(int ac, char **av)
+void	errorOccured(char *errorMessage, Input &input)
 {
-	Input	input;
-
-	inptCheck(input, ac, av);
-	return (0);
+	input->process->status = Error;
+	std::cout
+		<< errorMessage
+		<< std::endl;
 }
-

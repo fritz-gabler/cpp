@@ -15,7 +15,7 @@ enum
 
 typedef struct	SProcess
 {
-
+	bool	status;
 }	Process;
 
 #endif

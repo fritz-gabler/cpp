@@ -6,25 +6,20 @@ NAME			=		sedIsForLosers
 CC				=		c++
 CFLAGS			=		-Wall -Werror -Wextra
 CPPFLAG			=		-std=c++98
-HEADERS			=		-I./Include -I./Include/Objects -I./Include/Structures
+HEADERS			=		-I./include -I./include/structure					\
+						-I./include/errorMessage
 
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		Src Src/DisplayPromt Src/ObjectMethods				\
-						Src/InputParsing Src/ProcessFunctions				\
-						Src/SearchContact
+VPATH			:=		src src/errorHandling src/inputCheck				\
+						src/structure
 
-SRC_BOOK		=		main.cpp
-SRC_PROMPT		=		HeaderPrint.cpp ResetPrompt.cpp 
-SRC_METHODS		=		PhoneBook.cpp Contact.cpp
-SRC_PARSING		=		GetCommand.cpp IsString.cpp SetAction.cpp			\
-						ValidPhoneNumber.cpp getStringSave.cpp
-SRC_PROCESS		=		ResetProcess.cpp SetProcess.cpp
-SRC_SEARCH		=		WaitTillInput.cpp DisplayContactSnippet.cpp			\
-						isValidContactNumber.cpp convertStringToInt.cpp
-SRC				=		$(SRC_BOOK) $(SRC_PROMPT) $(SRC_METHODS)			\
-						$(SRC_PARSING) $(SRC_PROCESS) $(SRC_SEARCH)
+SRC_FILE		=		main.cpp
+SRC_INPUT		=		inputCheck.cpp
+SRC_SETUP		=		setupStruct.cpp
+
+SRC				=		$(SRC_FILE) $(SRC_INPUT) $(SRC_SETUO)
 
 ###############################################################################
 ###############################################################################
