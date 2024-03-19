@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:21:04 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/17 15:42:31 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/19 16:32:12 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ int	main(int ac, char **av)
 {
 	Input	input;
 
-	inptCheck(input, ac, av);
+	setupStruct(input, ac, av);
+	inptCheck(input);
+	while(input.process->status == RunLoop)
+	{
+		
+	}
 	return (0);
 }
-

@@ -4,22 +4,23 @@ NAME			=		sedIsForLosers
 ###############################################################################
 
 CC				=		c++
-CFLAGS			=		-Wall -Werror -Wextra
+CFLAGS			=		-Wall -Werror -Wextra -g
 CPPFLAG			=		-std=c++98
 HEADERS			=		-I./include -I./include/structure					\
-						-I./include/errorMessage
+						-I./include/errorMessage -I./include/object
 
 ###############################################################################
 ###############################################################################
 
 VPATH			:=		src src/errorHandling src/inputCheck				\
-						src/structure
+						src/structure src/setupStruct src/objectFunctions
 
 SRC_FILE		=		main.cpp
-SRC_INPUT		=		inputCheck.cpp
 SRC_SETUP		=		setupStruct.cpp
+SRC_INPUT		=		inputCheck.cpp
+SRC_ERROR		=		errorOccured.cpp
 
-SRC				=		$(SRC_FILE) $(SRC_INPUT) $(SRC_SETUO)
+SRC				=		$(SRC_FILE) $(SRC_INPUT) $(SRC_SETUP) $(SRC_ERROR)
 
 ###############################################################################
 ###############################################################################

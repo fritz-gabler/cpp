@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errorOccured.cpp                                   :+:      :+:    :+:   */
+/*   file.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 12:00:09 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/18 11:50:46 by fgabler          ###   ########.fr       */
+/*   Created: 2024/03/19 16:23:43 by fgabler           #+#    #+#             */
+/*   Updated: 2024/03/19 17:38:14 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.hpp"
-#include <iostream>
+#ifndef FILE_HPP
+#define FILE_HPP
 
-void	errorOccured(const char *errorMessage, Input &input)
+#include <fstream>
+class	File
 {
-	input.process->status = Error;
-	std::cout
-		<< errorMessage
-		<< std::endl;
-}
+	public:
+				File(void);
+		void	openFile(Input &input);
+
+	private:
+		std::ofstream	_outFile;
+		std::ifstream	_inFile;
+		std::string		_fileLine;
+};
+
+#endif

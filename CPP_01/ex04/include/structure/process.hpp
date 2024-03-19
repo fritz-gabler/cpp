@@ -10,12 +10,12 @@
 enum
 {
 	Error	=	0,
-	Start	=	1
+	RunLoop	=	1
 };
 
 typedef struct	SProcess
 {
-	bool	status;
+	int	status;
 }	Process;
 
 #endif

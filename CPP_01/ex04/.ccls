@@ -1,8 +1,6 @@
-c++
--Wall -Werror -Wextra
--I./inlcude/structure
--I./include
--I/Applications/xcode.app/Content
-c++
+-g++
+-Wall
+-Werror
+-Wextra
+-I.
 -std=c++98
--I/Applications/xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1
