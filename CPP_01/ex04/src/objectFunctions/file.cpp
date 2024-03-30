@@ -6,25 +6,22 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:27:01 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/19 17:54:15 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/30 07:36:24 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
+#include <string>
 
-File::File(void)
-{
-	_outFile = 0;
-	_infile = 0;
-	_fileLine = NULL;
-}
+File::File(void){}
+
 void	File::openFile(Input &input)
 {
 	std::string	replaceName;
 
 	if (input.process->status == Error)
 		return ;
-	replaceName = ".replace"
+	replaceName = ".replace";
 	_outFile.open(input.fileName + replaceName);
 	if (_outFile.fail() == true)
 		errorOccured(FileCantBeOpen, input);
@@ -37,9 +34,9 @@ void	File::readLineFromFile(Input &input)
 {
 	if (input.process->status == Error)
 		return ;
-	_infile >> _fileLine << std::endl;
-	if (_infile.eof() == true)
-		input.process
+	std::getline(_inFile, _fileLine);
+	if (_inFile.eof() == true)
+		input.process->status = StopLoop;
 }
 
 void	File::searchAndReplaceString(Input &input)
@@ -53,7 +50,7 @@ void	File::searchAndReplaceString(Input &input)
 	strLenght = input.stringOne.lenght;
 	while (_fileLine[i] != '\0')
 	{
-		if (std::strncmp(_fileLine[i], inpu.stringOne, strLenght)
+		if (std::strncmp(_fileLine[i], inpu.stringOne, strLenght) == true
 		i++;
 	}
 }
