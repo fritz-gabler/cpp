@@ -9,8 +9,9 @@
 
 enum
 {
-	Error	=	0,
-	RunLoop	=	1
+	Error		=	0,
+	RunLoop		=	1,
+	StopLoop	=	2
 };
 
 typedef struct	SProcess
