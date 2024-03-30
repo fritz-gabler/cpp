@@ -12,5 +12,9 @@ void	inptCheck(Input &input);
 //Setup Structs
 void	setupStruct(Input &input, int ac, char **av);
 
+//File Manipulation
+bool	isInputString(std::string fileLine, Input &input);
+void	replaceStrOneWithStrTow(Input &input, std::string &fileLine, int i);
+
 
 #endif

@@ -7,11 +7,16 @@
 
 #include "header.hpp"
 
-enum
+enum Eloop
 {
 	Error		=	0,
 	RunLoop		=	1,
 	StopLoop	=	2
+};
+
+enum EfileSearch
+{
+	FoundStr = 0
 };
 
 typedef struct	SProcess

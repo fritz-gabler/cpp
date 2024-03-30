@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.hpp                                           :+:      :+:    :+:   */
+/*   isInputString.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 16:23:43 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/30 20:46:29 by fgabler          ###   ########.fr       */
+/*   Created: 2024/03/30 08:27:06 by fgabler           #+#    #+#             */
+/*   Updated: 2024/03/30 13:21:18 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_HPP
-#define FILE_HPP
+#include "header.hpp"
 
-#include <fstream>
-class	File
+bool	isInputString(std::string fileLine, Input &input)
 {
-	public:
-				File(void);
-		void	openFile(Input &input);
-		void	readLineFromFile(Input &input);
-		void	searchAndReplaceString(Input &input);
-		void	writeLineToNewFile(Input &input);
-	private:
-		std::ofstream	_outFile;
-		std::ifstream	_inFile;
-		std::string		_fileLine;
-};
+	int	strLeng;
 
-#endif
+	strLeng = input.stringOne.length();
+	if (std::strncmp((fileLine.c_str()), input.stringOne.c_str(), strLeng) == FoundStr)
+		return (true);
+	return (false);
+}

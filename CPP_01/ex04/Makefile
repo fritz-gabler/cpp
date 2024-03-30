@@ -13,16 +13,18 @@ HEADERS			=		-I./include -I./include/structure					\
 ###############################################################################
 
 VPATH			:=		src src/errorHandling src/inputCheck				\
-						src/structure src/setupStruct src/objectFunctions
+						src/structure src/setupStruct src/objectFunctions	\
+						src/fileManipulation
 
 SRC_FILE		=		main.cpp
 SRC_FILE_FUNC	=		file.cpp
 SRC_SETUP		=		setupStruct.cpp
 SRC_INPUT		=		inputCheck.cpp
 SRC_ERROR		=		errorOccured.cpp
+SRC_MANIPUL		=		isInputString.cpp replaceStringOneWithStringTow.cpp
 
 SRC				=		$(SRC_FILE) $(SRC_INPUT) $(SRC_SETUP) $(SRC_ERROR)	\
-						$(SRC_FILE_FUNC)
+						$(SRC_FILE_FUNC) $(SRC_MANIPUL)
 
 ###############################################################################
 ###############################################################################

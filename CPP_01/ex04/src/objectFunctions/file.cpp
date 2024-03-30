@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:27:01 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/30 07:36:24 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/03/30 20:49:13 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,21 @@ void	File::readLineFromFile(Input &input)
 void	File::searchAndReplaceString(Input &input)
 {
 	int	i;
-	int	strLenght;
 
-	if (input.process->status == Error)
-		return ;
 	i = 0;
-	strLenght = input.stringOne.lenght;
+	if (input.process->status == Error || input.process->status == StopLoop)
+		return ;
 	while (_fileLine[i] != '\0')
 	{
-		if (std::strncmp(_fileLine[i], inpu.stringOne, strLenght) == true
+		if (isInputString((_fileLine.substr(i)), input) == true)
+			replaceStrOneWithStrTow(input, _fileLine, i);
 		i++;
 	}
+}
+
+void	File::writeLineToNewFile(Input &input)
+{
+	if (input.process->status == Error || input.process->status == StopLoop)
+		return ;
+	_outFile << _fileLine << std::endl;
 }
