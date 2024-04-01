@@ -1,12 +1,10 @@
 clang
 -g++
 -std=c++98
--Wall
--Werror
--Wextra
+-Wall -Werror -Wextra
 -I./include
--I./include/object
--I./include/structure
+-I./include/objects
+-I./include/defines
 -stdlib=libc++
 -isystem/usr/local/include
 -isystem/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1
