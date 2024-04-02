@@ -6,23 +6,22 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:44:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/01 16:26:50 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/02 13:36:05 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
 
-static bool	correctLevelNames(std::string level);
+//static bool	correctLevelNames(std::string level);
 
-bool	correctInput(int ac, char **av)
+bool	correctInput(int ac)
 {
 	if (ac != 2)
 		return (printErrorMessage(WRONG_NB_OF_ARGS), false);
-	else if (correctLevelNames(av[1]) == false)
-		return (false);
 	return (true);
 }
 
+/*
 static bool	correctLevelNames(std::string level)
 {
 	int	i;
@@ -44,3 +43,4 @@ static bool	correctLevelNames(std::string level)
 	printErrorMessage(WRONG_LEVEL_NAME);
 	return (false);
 }
+*/

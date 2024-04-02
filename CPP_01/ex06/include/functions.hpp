@@ -2,7 +2,7 @@
 #define	FUNCTIONS_HPP
 
 //INPUT CHECK
-bool	correctInput(int ac, char **av);
+bool	correctInput(int ac);
 
 //PRINT
 void	printErrorMessage(std::string message);

@@ -11,7 +11,8 @@ HEADERS			=		-I./include -I./include/objects -I./include/defines
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		src src/objectFunctions src/inputCheck	src/print
+VPATH			:=		src src/objectFunctions src/inputCheck	src/print	\
+						src/identifyLevel
 
 SRC_MAIN		=		main.cpp
 SRC_HARL		=		Harl.cpp

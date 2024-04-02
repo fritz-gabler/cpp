@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 14:31:42 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/02 11:25:52 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/02 13:35:41 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,20 @@ void	Harl::complain(std::string level)
 	int	caseLevel;
 
 	identifyLevel(level, caseLevel);
+
+	switch(caseLevel)
+	{
+		case DEBUG:
+			debug();
+		case INFO:
+			info();
+		case WARNING:
+			warning();
+		case ERROR:
+			error();
+			break ;
+		default:
+			printErrorMessage(DEFAULT_MESSAGE);
+	}
 }
 
