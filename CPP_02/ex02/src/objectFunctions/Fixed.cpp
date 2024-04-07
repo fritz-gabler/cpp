@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:22:05 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/05 12:59:34 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/07 17:13:16 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,80 @@ Fixed::Fixed(const Fixed &fixed)
 Fixed::~Fixed( void )
 {
 	std::cout << "Destructor called" << std::endl;
+}
+
+Fixed &Fixed::operator = (const Fixed &other)
+{
+	if (&other == this)
+		return (*this);
+	std::cout << "Copy assignment operator called" << std::endl;
+	this->_fixedPointNumber = other._fixedPointNumber;
+	return (*this);
+}
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////OPERATIONS//////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+bool Fixed::operator > (const Fixed &other) const
+{
+	return (this->_fixedPointNumber > other._fixedPointNumber);
+}
+
+
+bool Fixed::operator < (const Fixed &other) const
+{
+	return (this->_fixedPointNumber < other._fixedPointNumber);
+}
+
+bool Fixed::operator >= (const Fixed &other) const
+{
+	return (this->_fixedPointNumber >= other._fixedPointNumber);
+}
+
+bool Fixed::operator <= (const Fixed &other) const
+{
+	return (this->_fixedPointNumber <= other._fixedPointNumber);
+}
+
+bool Fixed::operator == (const Fixed &other) const
+{
+	return (this->_fixedPointNumber == other._fixedPointNumber);
+}
+
+bool Fixed::operator != (const Fixed &other) const
+{
+	return (this->_fixedPointNumber != other._fixedPointNumber);
+}
+
+Fixed Fixed::operator + ( const Fixed &other ) const
+{
+	return (this->toFloat() + other.toFloat());
+}
+
+Fixed Fixed::operator - ( const Fixed &other ) const
+{
+	return (this->toFloat() - other.toFloat());
+}
+
+Fixed Fixed::operator * ( const Fixed &other ) const
+{
+	return (this->toFloat() * other.toFloat());
+}
+
+Fixed Fixed::operator / ( const Fixed &other ) const
+{
+	if (other._fixedPointNumber == 0)
+	{
+		std::cout << "error division by 0 not possible" << std::endl;
+		return (*this);
+	}
+	return (this->toFloat() / other.toFloat());
+}
+
+std::ostream &operator << (std::ostream &outStream, const Fixed &fixed)
+{
+	outStream << fixed.toFloat();
+	return (outStream);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -98,82 +172,6 @@ const Fixed &Fixed::min( const Fixed &first, const Fixed &second )
 		return (first);
 	return (second);
 }
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////OPERATIONS//////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-Fixed &Fixed::operator = (const Fixed &other)
-{
-	if (&other == this)
-		return (*this);
-	std::cout << "Copy assignment operator called" << std::endl;
-	this->_fixedPointNumber = other._fixedPointNumber;
-	return (*this);
-}
-
-bool Fixed::operator > (const Fixed &other)
-{
-	return (this->_fixedPointNumber > other.getRawBits());
-}
-
-
-bool Fixed::operator < (const Fixed &other)
-{
-	return (this->_fixedPointNumber < other.getRawBits());
-}
-
-bool Fixed::operator >= (const Fixed &other)
-{
-	return (this->_fixedPointNumber >= other.getRawBits());
-}
-
-bool Fixed::operator <= (const Fixed &other)
-{
-	return (this->_fixedPointNumber <= other.getRawBits());
-}
-
-bool Fixed::operator == (const Fixed &other)
-{
-	return (this->_fixedPointNumber == other.getRawBits());
-}
-
-bool Fixed::operator != (const Fixed &other)
-{
-	return (this->_fixedPointNumber != other.getRawBits());
-}
-
-Fixed Fixed::operator + ( const Fixed &other )
-{
-	return (this->toFloat() + other.toFloat());
-}
-
-Fixed Fixed::operator - ( const Fixed &other )
-{
-	return (this->toFloat() - other.toFloat());
-}
-
-Fixed Fixed::operator * ( const Fixed &other )
-{
-	return (this->toFloat() * other.toFloat());
-}
-
-Fixed Fixed::operator / ( const Fixed &other )
-{
-	if (other._fixedPointNumber == 0)
-	{
-		std::cout << "error division by 0 not possible" << std::endl;
-		return (*this);
-	}
-	return (this->toFloat() / other.toFloat());
-}
-
-std::ostream &operator << (std::ostream &outStream, const Fixed &fixed)
-{
-	outStream << fixed.toFloat();
-	return (outStream);
-}
-
 
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////PROFIX AND POSTFIX INCREMENT///////////////////////////
