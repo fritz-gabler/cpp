@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:22:05 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/07 17:13:16 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/08 10:13:22 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ Fixed &Fixed::max( Fixed &first, Fixed &second )
 	return (second);
 }
 
-const Fixed &Fixed::min( const Fixed &first, const Fixed &second )
+const Fixed &Fixed::max( const Fixed &first, const Fixed &second )
 {
 	if (first > second)
 		return (first);
@@ -183,7 +183,7 @@ Fixed &Fixed::operator ++ ( void )
 	return (*this);
 }
 
-Fixed &Fixed::operator ++ ( int )
+Fixed Fixed::operator ++ ( int )
 {
 	Fixed	tempFixed(*this);
 
@@ -197,7 +197,7 @@ Fixed &Fixed::operator -- ( void )
 	return (*this);
 }
 
-Fixed &Fixed::operator -- ( int )
+Fixed Fixed::operator -- ( int )
 {
 	Fixed	tempFixed(*this);
 
