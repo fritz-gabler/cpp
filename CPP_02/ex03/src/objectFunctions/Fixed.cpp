@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:22:05 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/08 18:32:06 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/09 13:27:46 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,37 @@
 Fixed::Fixed( void )
 {
 	this->_fixedPointNumber = 0;
-	std::cout << "Default constructor called" << std::endl;
+//	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed( const int intNumber )
 {
-	std::cout << "Int constructor called" << std::endl;
+//	std::cout << "Int constructor called" << std::endl;
 	this->_fixedPointNumber = intNumber << _fractionalValue;
 }
 
 Fixed::Fixed( const float floatNumber)
 {
-	std::cout << "Int constructor called" << std::endl;
+//	std::cout << "Int constructor called" << std::endl;
 	this->_fixedPointNumber = roundf(floatNumber * (1 << _fractionalValue));
 }
 
 Fixed::Fixed(const Fixed &fixed)
 {
-	std::cout << "Copy constructor called" << std::endl;
+//	std::cout << "Copy constructor called" << std::endl;
 	this->_fixedPointNumber = fixed._fixedPointNumber;
 }
 
 Fixed::~Fixed( void )
 {
-	std::cout << "Destructor called" << std::endl;
+//	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed &Fixed::operator = (const Fixed &other)
 {
 	if (&other == this)
 		return (*this);
-	std::cout << "Copy assignment operator called" << std::endl;
+//	std::cout << "Copy assignment operator called" << std::endl;
 	this->_fixedPointNumber = other._fixedPointNumber;
 	return (*this);
 }

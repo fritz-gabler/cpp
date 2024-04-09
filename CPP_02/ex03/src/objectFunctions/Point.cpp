@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:47:25 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/08 18:38:54 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/09 16:39:34 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ Point &Point::operator = (const Point &other)
 
 Fixed Point::getX( void ) const
 {
-	return (this->_x.toFloat());
+	return (this->_x);
 }
 
 Fixed Point::getY( void ) const
 {
-	return (this->_y.toFloat());
+	return (this->_y);
 }
