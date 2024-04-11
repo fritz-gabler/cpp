@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 08:39:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/11 15:59:52 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/11 17:07:51 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ ClapTrap::ClapTrap( const ClapTrap &other )
 	std::cout << "[ Clap Trap ] Copy constructor called" << std::endl;
 }
 
-ClapTrap ClapTrap::&operator = ( const ClapTrap &other)
+ClapTrap &ClapTrap::operator = ( const ClapTrap &other)
 {
 	if (this != &other)
 	{
@@ -70,26 +70,26 @@ void ClapTrap::attack( const std::string &target)
 {
 	if (_energyPoints > 0 && _hitPoints > 0)
 	{
-		std::cout << "ClapTrap"
+		std::cout << "ClapTrap "
 			<< this->_name
-			<< "attack "
+			<< " attacks "
 			<< target
 			<< ", causing "
 			<< this->_attackDamage
 			<< " points of damage!"
 			<< std::endl;
-		this->_hitPoints--;
+		this->_energyPoints--;
 	}
 	else if (_energyPoints <= 0)
 	{
-		std::cout << "ClapTrap"
+		std::cout << "ClapTrap "
 			<< this->_name
 			<< "wants to attack but ain't got energy left"
 			<< std::endl;
 	}
 	else if (_hitPoints <= 0)
 	{
-		std::cout << "ClapTrap"
+		std::cout << "ClapTrap "
 			<< this->_name
 			<< "wants to attack but ain't got strength to move a finger"
 			<< std::endl;
@@ -130,13 +130,16 @@ void	ClapTrap::takeDamage( unsigned int amount )
 	}
 }
 
-	void	ClapTrap::beRapaired( unsigned int amount )
+	void	ClapTrap::beRepaired( unsigned int amount )
 	{
 		if (_energyPoints > 0 && _hitPoints > 0)
 		{
-			std::cout << "ClapTrap <name> repairs itself, gaining "
+			std::cout << "ClapTrap "
+			<< this->_name
+			<< " repairs itself, gaining "
 			<< amount
-			<< "hit points!"
+			<< " hit points!"
+			<< std::endl;
 			this->_hitPoints += amount;
 			this->_energyPoints -= 1;
 		}
@@ -145,7 +148,7 @@ void	ClapTrap::takeDamage( unsigned int amount )
 			std::cout << "Many have attempted "
 				<< "to reverse death in order to bring "
 				<< this->_name 
-				<< std::endl;
+				<< std::endl
 				<< " back to life, but greater miracles must "
 				<< "occur than just the mere attempt of healing."
 				<< std::endl;

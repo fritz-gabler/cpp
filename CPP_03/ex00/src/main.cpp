@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:52:57 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/11 15:54:01 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/11 16:59:35 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int	main(void)
 {
-	ClapTrap clapTrap("Clappy");
+	ClapTrap clappy("Clappy");
+	ClapTrap enemy("Enemy");
 
-	clapTrap.attack("Enemy");
-	clapTrap.takeDamage(5);
-	clapTrap.beRepaired(3);
+	clappy.attack("Enemy");
+	enemy.takeDamage(5);
+	enemy.beRepaired(3);
 
 	return (0);
 }
