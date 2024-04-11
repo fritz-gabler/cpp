@@ -8,7 +8,7 @@ class Fixed
 	public:
 		//Constructors
 		Fixed( void );
-		Fixed(	const Fixed &fixed );
+		Fixed( const Fixed &fixed );
 		~Fixed( void );
 		Fixed( const int intNumber );
 		Fixed( const float floatNumber );
