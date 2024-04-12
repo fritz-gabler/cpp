@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 08:39:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/11 17:07:51 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/12 13:32:50 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ void	ClapTrap::takeDamage( unsigned int amount )
 				<< this->_name
 				<< "gets brutally attacked and has no health left!"
 				<< std::endl;
-			_hitPoints -= amount;
 		}
 	}
 	else
