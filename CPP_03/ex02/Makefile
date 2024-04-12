@@ -1,4 +1,4 @@
-NAME			=		scavTrap
+NAME			=		fragTrap
 
 ###############################################################################
 ###############################################################################
@@ -14,7 +14,7 @@ HEADERS			=		-I./include -I./include/objects
 VPATH			:=		src src/objectFunctions
 
 SRC_MAIN		=		main.cpp
-SRC_TRAPS		=		ClapTrap.cpp ScavTrap.cpp
+SRC_TRAPS		=		ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 SRC				=		$(SRC_MAIN) $(SRC_TRAPS)
 

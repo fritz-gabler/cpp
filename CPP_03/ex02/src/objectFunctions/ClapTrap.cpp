@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 08:39:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/12 10:14:04 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/12 13:27:25 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,18 +115,18 @@ void	ClapTrap::takeDamage( unsigned int amount )
 			this->_hitPoints = 0;
 			std::cout << "ClapTrap "
 				<< this->_name
-				<< "gets brutally attacked and has no health left!"
+				<< " gets brutally attacked and has no health left!"
 				<< std::endl;
 			_hitPoints -= amount;
 		}
 	}
 	else
 	{
-			std::cout << "ClapTrap "
-				<< "please have mercy, "
-				<< this->_name
-				<< "is already dead"
-				<< std::endl;
+		std::cout << "ClapTrap "
+			<< "please have mercy, "
+			<< this->_name
+			<< "is already dead"
+			<< std::endl;
 	}
 }
 
