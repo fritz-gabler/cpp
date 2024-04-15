@@ -11,6 +11,7 @@ class	DiamondTrap : public ClapTrap ,FragTrap
 		DiamondTrap &operator = ( const DiamondTrap &other );
 		~DiamondTrap( void );
 
+		void	attack( const std::string &target);
 		void	whoAmI( void );
 	private:
 		std::string	_name;

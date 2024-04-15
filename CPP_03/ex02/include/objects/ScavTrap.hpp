@@ -2,6 +2,7 @@
 #define SAVE_TRAP
 
 #include "header.hpp"
+#include <string>
 
 class ScavTrap : public ClapTrap
 {
@@ -13,6 +14,7 @@ class ScavTrap : public ClapTrap
 		~ScavTrap( void );
 
 		void	guardGate( void );
+		void	attack ( const std::string &target );
 	private:
 		bool	_isProtecting;
 };

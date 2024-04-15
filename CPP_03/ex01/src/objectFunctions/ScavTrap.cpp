@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 10:22:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/12 11:40:59 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/15 12:58:43 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,34 @@ void	ScavTrap::guardGate( void )
 		std::cout << "true\n";
 	else
 		std::cout << "false\n";
+}
+
+void ScavTrap::attack( const std::string &target)
+{
+	if (_energyPoints > 0 && _hitPoints > 0)
+	{
+		std::cout << "ScavTrap "
+			<< this->_name
+			<< " attacks "
+			<< target
+			<< ", causing "
+			<< this->_attackDamage
+			<< " points of damage!"
+			<< std::endl;
+		this->_energyPoints--;
+	}
+	else if (_energyPoints <= 0)
+	{
+		std::cout << "ClapTrap "
+			<< this->_name
+			<< "wants to attack but ain't got energy left"
+			<< std::endl;
+	}
+	else if (_hitPoints <= 0)
+	{
+		std::cout << "ClapTrap "
+			<< this->_name
+			<< "wants to attack but ain't got strength to move a finger"
+			<< std::endl;
+	}
 }
