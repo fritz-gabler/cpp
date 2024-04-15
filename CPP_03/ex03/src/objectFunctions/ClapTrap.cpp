@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 08:39:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/15 18:48:40 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/15 19:29:57 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ ClapTrap::ClapTrap( void )
 ClapTrap::ClapTrap( const std::string name )
 {
 	this->_name = name;
+	std::cout << "ClapTrap Name: " << &this->_name << std::endl;
+	std::cout << "Content Name: " << this->_name << std::endl;
 	this->_hitPoints = 10;
 	this->_energyPoints = 10;
 	this->_attackDamage = 0;
