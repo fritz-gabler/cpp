@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 10:41:01 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/15 13:50:54 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/15 14:13:16 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ////////////////////////////CONSTRUCTOR AND DESTRUCTOR/////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-DiamondTrap::DimondTrap( void ) : ClapTrap(), FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap( void ) : ClapTrap(), FragTrap(), ScavTrap()
 {
 	this->_name = "Karl";
-	this->ClapTrap::_name = "Kalr" + "_clap_name";
+	this->ClapTrap::_name = "Kalr_clap_name";
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
@@ -29,7 +29,7 @@ DiamondTrap::DimondTrap( void ) : ClapTrap(), FragTrap(), ScavTrap()
 }
 
 
-DiamondTrap::DimondTrap( const std::string name )
+DiamondTrap::DiamondTrap( const std::string name )
 	: ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name)
 {
 	this->_name = name;
@@ -41,10 +41,10 @@ DiamondTrap::DimondTrap( const std::string name )
 		<< std::endl;
 }
 
-DiamondTrap::DimondTrap( const DiamondTrap &other)
+DiamondTrap::DiamondTrap( const DiamondTrap &other )
 	: ClapTrap(other), FragTrap(other), ScavTrap(other)
 {
-	*this->other;
+	*this= other;
 	std::cout << "[ Diamond Trap ] Copy constructor called: "
 		<< other._name
 		<< std::endl;
@@ -56,7 +56,7 @@ DiamondTrap &DiamondTrap::operator = ( const DiamondTrap &other )
 	{
 		this->_name = other._name;
 		this->_hitPoints = other._hitPoints;
-		this->_energyPoints = other._eneryPoints;
+		this->_energyPoints = other._energyPoints;
 		this->_attackDamage = other._attackDamage;
 	}
 	std::cout << "[ Diamond Trap ] Copy constructor called: "
@@ -65,7 +65,7 @@ DiamondTrap &DiamondTrap::operator = ( const DiamondTrap &other )
 	return (*this);
 }
 
-~DiamondTrap( void )
+DiamondTrap::~DiamondTrap( void )
 {
 	std::cout << "[ Diamond Trap ] Destructor called";
 }

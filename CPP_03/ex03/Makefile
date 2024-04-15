@@ -14,8 +14,7 @@ HEADERS			=		-I./include -I./include/objects
 VPATH			:=		src src/objectFunctions
 
 SRC_MAIN		=		main.cpp
-SRC_TRAPS		=		ClapTrap.cpp ScavTrap.cpp FragTrap.cpp				\
-						DiamondTrap.cpp
+SRC_TRAPS		=		ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 SRC				=		$(SRC_MAIN) $(SRC_TRAPS)
 
