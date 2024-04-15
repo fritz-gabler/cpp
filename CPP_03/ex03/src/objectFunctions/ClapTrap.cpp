@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 08:39:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/12 13:32:05 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/15 18:48:40 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ void ClapTrap::attack( const std::string &target)
 	{
 		std::cout << "ClapTrap "
 			<< this->_name
-			<< "wants to attack but ain't got energy left"
+			<< " wants to attack but ain't got energy left"
 			<< std::endl;
 	}
 	else if (_hitPoints <= 0)
 	{
 		std::cout << "ClapTrap "
 			<< this->_name
-			<< "wants to attack but ain't got strength to move a finger"
+			<< " wants to attack but ain't got strength to move a finger"
 			<< std::endl;
 	}
 }
@@ -124,7 +124,7 @@ void	ClapTrap::takeDamage( unsigned int amount )
 		std::cout << "ClapTrap "
 			<< "please have mercy, "
 			<< this->_name
-			<< "is already dead"
+			<< " is already dead"
 			<< std::endl;
 	}
 }
@@ -147,7 +147,6 @@ void	ClapTrap::takeDamage( unsigned int amount )
 			std::cout << "Many have attempted "
 				<< "to reverse death in order to bring "
 				<< this->_name 
-				<< std::endl
 				<< " back to life, but greater miracles must "
 				<< "occur than just the mere attempt of healing."
 				<< std::endl;
