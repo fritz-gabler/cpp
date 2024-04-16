@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:20:20 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/16 14:53:41 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/16 15:16:37 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 Animal::Animal( void )
 {
-	this->_type = "anUnidentifiableCreature";
+	this->_type = "An unidentifiable creature";
 	std::cout << "[ Animal ] Default constructor called" << std::endl;
 }
 
@@ -46,10 +46,15 @@ Animal::~Animal( void )
 
 void	Animal::makeSound( void )
 {
-	if (_type.compare("DOG"))
+	if (_type.compare("DOG") == sameString)
 		std::cout << "WAU WAU" << std::endl;
-	else if (_type.compare("CAT"))
+	else if (_type.compare("CAT") == sameString)
 		std::cout << "MIAUUUUU" << std::endl;
 	else
 		std::cout << "A crazy animal sound: QUAKIBAKI" << std::endl;
+}
+
+std::string	Animal::getType( void )
+{
+	return (this->_type);
 }

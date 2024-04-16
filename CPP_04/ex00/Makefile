@@ -1,10 +1,10 @@
-NAME			=		changeName
+NAME			=		animalCatAndDog
 
 ###############################################################################
 ###############################################################################
 
 CC				=		c++
-CFLAGS			=		-Wall -Werror -Wextra
+CFLAGS			=		-Wall -Werror -Wextra -g
 CPPFLAG			=		-std=c++98
 HEADERS			=		-I./include -I./include/objects
 
@@ -13,9 +13,10 @@ HEADERS			=		-I./include -I./include/objects
 
 VPATH			:=		src src/objectFunctions
 
+SRC_ANIMALS		=		animal.cpp
 SRC_MAIN		=		main.cpp
 
-SRC				=		$(SRC_MAIN)
+SRC				=		$(SRC_MAIN) $(SRC_ANIMALS)
 
 ###############################################################################
 ###############################################################################
