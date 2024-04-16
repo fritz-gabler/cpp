@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 10:41:01 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/16 11:21:31 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/16 14:45:40 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ DiamondTrap &DiamondTrap::operator = ( const DiamondTrap &other )
 		this->_energyPoints = other._energyPoints;
 		this->_attackDamage = other._attackDamage;
 	}
-	std::cout << "[ Diamond Trap ] Copy constructor called: "
+	std::cout << "[ Diamond Trap ] Copy assignment constructor called: "
 		<< other._name
 		<< std::endl;
 	return (*this);

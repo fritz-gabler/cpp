@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 08:39:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/12 13:32:38 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/16 14:47:25 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ ClapTrap &ClapTrap::operator = ( const ClapTrap &other)
 		this->_energyPoints = other._energyPoints;
 		this->_attackDamage = other._attackDamage;
 	}
-	std::cout << "[ Clap Trap ] Copy constructor called" << std::endl;
+	std::cout << "[ Clap Trap ] Copy assignment constructor called" << std::endl;
 	return (*this);
 }
 

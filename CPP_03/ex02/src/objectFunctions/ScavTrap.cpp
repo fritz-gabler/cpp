@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 10:22:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/15 18:08:46 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/16 14:46:55 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ ScavTrap &ScavTrap::operator = ( const ScavTrap &other)
 				this->_energyPoints = other._energyPoints;
 				this->_attackDamage = other._attackDamage;
 		}
-		std::cout << "[ Scav Trap ] Copy constructor called" << std::endl;
+		std::cout << "[ Scav Trap ] Copy assignment constructor called" << std::endl;
 		return (*this);
 }
 

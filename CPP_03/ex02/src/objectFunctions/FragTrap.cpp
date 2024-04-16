@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 12:26:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/12 12:40:10 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/16 14:46:40 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ FragTrap &FragTrap::operator = ( const FragTrap &other)
 		this->_energyPoints = other._energyPoints;
 		this->_attackDamage = other._attackDamage;
 	}
-	std::cout << "[ Frag Trap ] Copy constructor called" << std::endl;
+	std::cout << "[ Frag Trap ] Copy assignment constructor called" << std::endl;
 	return (*this);
 }
 
