@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:52:57 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/15 19:30:57 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/16 11:22:27 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,8 @@
 
 int	main(void)
 {
-	DiamondTrap	diamondy("Diamondy");
+	DiamondTrap	diamondy("Diamonty");
 
-	//diamondy.whoAmI();
-	/*
-	for (int i = 0; i < 31; i++)
-	{
-		diamondy.attack("Enemy");
-		diamondy.takeDamage(5);
-	}
-	diamondy.highFivesGuys();
-	diamondy.beRepaired(3);
-	*/
+	diamondy.whoAmI();
 	return (0);
 }

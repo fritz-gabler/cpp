@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 10:41:01 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/15 19:30:29 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/16 11:21:31 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,9 @@ DiamondTrap::DiamondTrap( void ) : ClapTrap(), FragTrap(), ScavTrap()
 
 
 DiamondTrap::DiamondTrap( const std::string name )
-	: ClapTrap("bitte klappe"), FragTrap(name), ScavTrap(name)
+	: ClapTrap(), FragTrap(), ScavTrap(name + "_clap_name")
 {
-	std::cout << this->ClapTrap::_name << std::endl;
-	std::cout << &this->ClapTrap::_name << std::endl;
-
-	//this->_name = name;
-	//this->ClapTrap::_name += "_clap_name";
-	//std::cout << &this->_name << std::endl;
-	//std::cout << &this->ClapTrap::_name << std::endl;
+	this->_name = name;
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
@@ -73,7 +67,7 @@ DiamondTrap &DiamondTrap::operator = ( const DiamondTrap &other )
 
 DiamondTrap::~DiamondTrap( void )
 {
-	std::cout << "[ Diamond Trap ] Destructor called";
+	std::cout << "[ Diamond Trap ] Destructor called\n";
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -87,15 +81,16 @@ void	DiamondTrap::attack( const std::string &target)
 
 void	DiamondTrap::whoAmI( void )
 {
-	std::cout << "May I introduce myself, my name is "
-		<< this->_name
-		<< ", and my great-grandfather is class ClapTrap, his name is "
-		<< ClapTrap::_name
-		<< std::endl;
-	std::cout << "This Name: "
+	std::cout << std::endl
+		<< "May I introduce myself,"
+		<< std::endl
+		<< "my name is: "
 		<< this->_name
 		<< std::endl
-		<< "ClapTrap Name: "
+		<< "and my great-grandfather is class ClapTrap,"
+		<< std::endl
+		<< "his name is: "
 		<< ClapTrap::_name
+		<< std::endl
 		<< std::endl;
 }
