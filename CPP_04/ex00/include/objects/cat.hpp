@@ -3,13 +3,15 @@
 
 #include "header.hpp"
 
-class	Cat
+class	Cat : public Animal
 {
 	public:
 		Cat( void );
 		Cat( const Cat &other );
-		Cat &operator = (const Animal &other );
+		Cat &operator = (const Cat &other );
 		~Cat( void );
+
+		virtual void	makeSound( void ) const;
 };
 
 #endif

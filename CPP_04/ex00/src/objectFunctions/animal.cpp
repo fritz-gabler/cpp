@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:20:20 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/16 15:16:37 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/17 14:55:37 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,12 @@ Animal::~Animal( void )
 ////////////////////////////////MEMBER FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-void	Animal::makeSound( void )
+void	Animal::makeSound( void ) const
 {
-	if (_type.compare("DOG") == sameString)
-		std::cout << "WAU WAU" << std::endl;
-	else if (_type.compare("CAT") == sameString)
-		std::cout << "MIAUUUUU" << std::endl;
-	else
-		std::cout << "A crazy animal sound: QUAKIBAKI" << std::endl;
+	std::cout << "A crazy animal sound: QUAKIBAKI" << std::endl;
 }
 
-std::string	Animal::getType( void )
+std::string	Animal::getType( void ) const
 {
 	return (this->_type);
 }
