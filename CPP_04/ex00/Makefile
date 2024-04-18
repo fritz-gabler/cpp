@@ -13,7 +13,8 @@ HEADERS			=		-I./include -I./include/objects
 
 VPATH			:=		src src/objectFunctions
 
-SRC_ANIMALS		=		animal.cpp cat.cpp dog.cpp
+SRC_ANIMALS		=		animal.cpp cat.cpp dog.cpp wrongAnimal.cpp			\
+						wrongDog.cpp wrongCat.cpp
 SRC_MAIN		=		main.cpp
 
 SRC				=		$(SRC_MAIN) $(SRC_ANIMALS)

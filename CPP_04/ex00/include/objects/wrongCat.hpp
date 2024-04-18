@@ -1,15 +1,15 @@
-#ifndef WRONG_ANIMAL_HPP
-#define WRONG_ANIMAL_HPP
+#ifndef WRONG_CAT_HPP
+#define WRONG_CAT_HPP
 
 #include "header.hpp"
 
-class	WrongAnimal
+class	WrongCat : public WrongAnimal
 {
 	public:
-		WrongAnimal( void );
-		WrongAnimal( const WrongAnimal &other );
-		WrongAnimal	&operator = ( const WrongAnimal &other );
-		~WrongAnimal( void );
+		WrongCat( void );
+		WrongCat( const WrongCat &other );
+		WrongCat	&operator = ( const WrongCat &other );
+		~WrongCat( void );
 
 		void		makeSound( void ) const; 
 		std::string	getType( void ) const;

@@ -1,55 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   animal.cpp                                         :+:      :+:    :+:   */
+/*   wrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 14:20:20 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/17 21:02:47 by fgabler          ###   ########.fr       */
+/*   Created: 2024/04/17 19:51:10 by fgabler           #+#    #+#             */
+/*   Updated: 2024/04/17 21:01:36 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "header.hpp"
+
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////CONSTRUCTOR AND DESTRUCTOR/////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-Animal::Animal( void )
+WrongAnimal::WrongAnimal( void )
 {
 	this->_type = "An unidentifiable creature";
-	std::cout << "[ ANIMAL ] Default constructor called" << std::endl;
+	std::cout << "[ WRONG ANIMAL ] Default constructor called" << std::endl;
 }
 
-Animal::Animal ( const Animal &other )
+WrongAnimal::WrongAnimal ( const WrongAnimal &other )
 {
 	this->_type = other._type;
-	std::cout << "[ ANIMAL ] Copy constructor called" << std::endl;
+	std::cout << "[ WRONG ANIMAL ] Copy constructor called" << std::endl;
 }
 
-Animal &Animal::operator = ( const Animal &other )
+WrongAnimal &WrongAnimal::operator = ( const WrongAnimal &other )
 {
 	if (this != &other)
 		this->_type = other._type;
-	std::cout << "[ ANIMAL ] Copy assignment constructor called" << std::endl;
+	std::cout << "[ WRONG ANIMAL ] Copy assignment constructor called" << std::endl;
 	return (*this);
 }
 
-Animal::~Animal( void )
+WrongAnimal::~WrongAnimal( void )
 {
-	std::cout << "[ ANIMAL ] Destructor called" << std::endl;
+	std::cout << "[ WRONG ANIMAL ] Destructor called" << std::endl;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////MEMBER FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-void	Animal::makeSound( void ) const
+void	WrongAnimal::makeSound( void ) const
 {
 	std::cout << "A crazy animal sound: QUAKIBAKI" << std::endl;
 }
 
-std::string	Animal::getType( void ) const
+std::string	WrongAnimal::getType( void ) const
 {
 	return (this->_type);
 }
