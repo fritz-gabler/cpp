@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:57:26 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/17 20:17:37 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/18 10:52:37 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ WrongDog::~WrongDog( void )
 
 void	WrongDog::makeSound() const
 {
-	std::cout << "A known WrongDog sound: WAFF WAFF" << std::endl;
+	std::cout << "An unknown WrongDog sound: WAFFEL RAUUFEL MUMPF MUMPF" << std::endl;
 }

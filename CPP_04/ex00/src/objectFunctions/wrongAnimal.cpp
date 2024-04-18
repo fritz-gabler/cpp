@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:51:10 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/17 21:01:36 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/18 10:54:08 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ WrongAnimal::~WrongAnimal( void )
 
 void	WrongAnimal::makeSound( void ) const
 {
-	std::cout << "A crazy animal sound: QUAKIBAKI" << std::endl;
+	std::cout << "That sounds linke a Wrong Animal: JANKY PANKY" << std::endl;
 }
 
 std::string	WrongAnimal::getType( void ) const

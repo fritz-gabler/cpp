@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:49:02 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/17 21:03:22 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/18 10:51:46 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ Cat::~Cat( void )
 
 void	Cat::makeSound( void ) const
 {
-	std::cout << "A usual cat sound: Miauuuu" << std::endl;
+	std::cout << "An usual cat sound: Miauuuu" << std::endl;
 }
