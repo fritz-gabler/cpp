@@ -12,6 +12,12 @@ class	Cat : public Animal
 		~Cat( void );
 
 		virtual void	makeSound( void ) const;
+		void			saveNewIdea( const std::string &idea );
+		void			changeAnIdea( const std::string &idea, int ideaNumber );
+		void			printIdeas( void ) const;
+		void			printAnSpecificIdea( int ideaNumber );
+	private:
+		Brain	*_brain;
 };
 
 #endif
