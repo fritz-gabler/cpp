@@ -12,6 +12,13 @@ class	Dog : public Animal
 		virtual ~Dog( void );
 
 		virtual void makeSound() const;
+		void			saveNewIdea( const std::string &idea );
+		void			changeAnIdea( const std::string &idea, int ideaNumber );
+		void			printIdeas( void );
+		void			printAnSpecificIdea( int ideaNumber );
+
+	private:
+		Brain	*_brain;
 };
 
 #endif
