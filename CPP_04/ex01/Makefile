@@ -1,23 +1,27 @@
-NAME			=		animalCatAndDog
+NAME			=		brain
 
 ###############################################################################
 ###############################################################################
 
 CC				=		c++
-CFLAGS			=		-Wall -Werror -Wextra -g
+CFLAGS			=		-Wall -Werror -Wextra -g -fsanitize=address
 CPPFLAG			=		-std=c++98
 HEADERS			=		-I./include -I./include/objects
 
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		src src/objectFunctions
+VPATH			:=		src src/objectFunctions src/checks src/tests
 
+SRC_MAIN		=		main.cpp
 SRC_ANIMALS		=		animal.cpp cat.cpp dog.cpp wrongAnimal.cpp			\
 						wrongDog.cpp wrongCat.cpp
-SRC_MAIN		=		main.cpp
+SRC_BRAIN		=		brain.cpp
+SRC_CHECKS		=		inBrainCapacityRange.cpp
+SRC_TESTS		=		boundaryTests.cpp copyTest.cpp pdfTest.cpp
 
-SRC				=		$(SRC_MAIN) $(SRC_ANIMALS)
+SRC				=		$(SRC_MAIN) $(SRC_ANIMALS) $(SRC_BRAIN)				\
+						$(SRC_CHECKS) $(SRC_TESTS)
 
 ###############################################################################
 ###############################################################################
