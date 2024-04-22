@@ -20,11 +20,12 @@ class	MateriaSource : public IMateriaSource
 		MateriaSource &operator = ( const MateriaSource &other );
 		~MateriaSource( void );
 
-		virtual void		learnMateria(AMateria *);
-		virtual AMateria *createMateria(const std::string &type);
+		virtual void		learnMateria(AMateria *materia);
+		virtual AMateria	*createMateria(const std::string &type);
 
 
 	private:
+		bool		inputCheckLearn( AMateria *materia );
 		AMateria	*_storage[INVENTORY_VOLUME];
 		int			_usedStorage;
 };
