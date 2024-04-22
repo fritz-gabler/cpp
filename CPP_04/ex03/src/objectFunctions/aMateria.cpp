@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:35:45 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/20 18:46:32 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/22 14:10:04 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,12 @@ AMateria::~AMateria( void )
 ////////////////////////////////MEMBER FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-const std::string	AM
+const std::string	&AMateria::getType( void ) const
+{
+	return (this->_type);
+}
+
+void				AMateria::use( ICharacter &target )
+{
+	std::cout << CANT_USE_USE_IN_AMATERIA;
+}

@@ -15,7 +15,7 @@ class	AMateria
 		const std::string	&getType( void ) const;
 		virtual AMateria	*clone( void ) const = 0;
 		virtual void		use( ICharacter &target );
-	private:
+	protected:
 		std::string	_type;
 };
 

@@ -11,7 +11,6 @@
 /////////////////////////////////////CLASSES///////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-#define STORAGE_VOLUME 4
 
 class	MateriaSource : public IMateriaSource
 {
@@ -26,7 +25,7 @@ class	MateriaSource : public IMateriaSource
 
 
 	private:
-		AMateria	*_storage[STORAGE_VOLUME];
+		AMateria	*_storage[INVENTORY_VOLUME];
 		int			_usedStorage;
 };
 
