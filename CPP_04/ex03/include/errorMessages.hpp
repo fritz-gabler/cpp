@@ -6,4 +6,7 @@
 # define INPUT_MATERIA_IS_NULL		"ERROR: Inputted materia is NULL\n";
 # define NO_MATERIA_AT_THAT_INDEX	"WARNING: No materia at that index\n"
 # define CANT_USE_USE_IN_AMATERIA	"ERROR: Abstract base Member function use can't be use\n"
+# define MATERIA_IS_NULL			"WARNING: Inputted materia is NULL\n";
+# define MATERIA_CANDT_BE_ADDED		"WARINGI: Inputted materia couldn't be added\n"
+
 #endif
