@@ -11,7 +11,7 @@ enum	Blevel
 # define	WARNING_MESSAGE		"I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month"
 # define	ERROR_MESSAGE		"This is unacceptable! I want to speak to the manager now."
 
-#define		WRONG_NB_OF_ARGS	"Wrong number of arguments"
+#define		WRONG_NB_OF_ARGS	"Wrong number of arguments. Input one out of four levels: DEBUG, INFO, WARNING or ERROR"
 #define		WRONG_LEVEL_NAME	"Wrong Level Name, input DEBUG, INFO, WARNING or ERROR"
 
 #endif
