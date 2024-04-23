@@ -7,6 +7,7 @@
 # define INPUT_MATERIA_IS_NULL			"ERROR: Inputted materia is NULL\n";
 # define NO_MATERIA_AT_THAT_INDEX		"WARNING: No materia at that index\n"
 # define MATERIA_IS_NULL				"WARNING: Inputted materia is NULL\n";
-# define MATERIA_CANDT_BE_ADDED			"WARINGI: Inputted materia couldn't be added\n"
+# define MATERIA_CANDT_BE_ADDED			"WARNING: Inputted materia couldn't be added\n"
+# define INPUTTED_MATERIA_NOT_FOUND		"WARNING: Inputtet materia couldn't be found\n"
 
 #endif

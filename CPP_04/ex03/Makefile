@@ -1,4 +1,4 @@
-NAME				=		changeName
+NAME				=		interfaces
 
 ###############################################################################
 ###############################################################################
@@ -11,13 +11,14 @@ HEADERS				=		-I./include -I./include/objects
 ###############################################################################
 ###############################################################################
 
-VPATH				:=		src src/objectFunctions
+VPATH				:=		src src/objectFunctions src/tests
 
 SRC_MAIN			=		main.cpp
 SRC_OBJ_FUNCTIONS	=		aMateria.cpp character.cpp cure.cpp				\
 							ice.cpp materiaSource.cpp
+SRC_TESTS			=		pdfTest.cpp materiaTest.cpp
 
-SRC					=		$(SRC_MAIN) $(SRC_OBJ_FUNCTIONS)
+SRC					=		$(SRC_MAIN) $(SRC_OBJ_FUNCTIONS) $(SRC_TESTS)
 
 ###############################################################################
 ###############################################################################
