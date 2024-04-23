@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:36:26 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/23 13:31:26 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:10:10 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	MateriaSource::learnMateria(AMateria *materia)
 {
 	if (MateriaSource::inputCheckLearn(materia) == false)
 		return ;
-	this->_usedStorage++;
 	this->_storage[this->_usedStorage] = materia;
+	this->_usedStorage++;
 	return ;
 }
 
@@ -78,7 +78,7 @@ bool	MateriaSource::inputCheckLearn( AMateria *materia )
 		std::cout << MATERIA_IS_NULL;
 		return (false);
 	}
-	else if (this->_usedStorage == (INVENTORY_VOLUME - 1) )
+	else if (this->_usedStorage == INVENTORY_VOLUME )
 	{
 		std::cout << NO_SPACE_IN_INVENTORY;
 		return (false);
@@ -93,5 +93,6 @@ AMateria	*MateriaSource::createMateria( const std::string &type )
 		if (this->_storage[i] != NULL && this->_storage[i]->getType() == type)
 			return (this->_storage[i]->clone());
 	}
+	std::cout << INPUTTED_MATERIA_NOT_FOUND;
 	return (NULL);
 }
