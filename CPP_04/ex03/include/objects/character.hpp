@@ -9,6 +9,7 @@ class Character : public ICharacter
 	public:
 		Character( void );
 		Character( const Character &other );
+		Character( const std::string name );
 		Character &operator = ( const Character &other );
 
 		virtual const std::string	&getName( void ) const;

@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:54:48 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/22 13:58:13 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 10:58:37 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ Character::Character( const Character &other )
 	}
 	*this = other;
 	//std::cout << "[ CHARACTER ] Constructor with arguments called" << std::endl;
+}
+
+Character::Character( const std::string name)
+{
+	this->_name = name;
+	for ( int i = 0 ; i < INVENTORY_VOLUME ; i++)
+	{
+		this->_inventory[i] = NULL;
+		this->_trashBack[i] = NULL;
+	}
 }
 
 Character &Character::operator = ( const Character &other )
