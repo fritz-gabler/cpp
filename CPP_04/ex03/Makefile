@@ -4,7 +4,7 @@ NAME				=		changeName
 ###############################################################################
 
 CC					=		c++
-CFLAGS				=		-Wall -Werror -Wextra
+CFLAGS				=		-Wall -Werror -Wextra -fsanitize=address -g
 CPPFLAG				=		-std=c++98
 HEADERS				=		-I./include -I./include/objects
 
@@ -15,8 +15,7 @@ VPATH				:=		src src/objectFunctions
 
 SRC_MAIN			=		main.cpp
 SRC_OBJ_FUNCTIONS	=		aMateria.cpp character.cpp cure.cpp				\
-							ice.cpp materiaSource.cpp						\
-							ice.cpp cure.cpp
+							ice.cpp materiaSource.cpp
 
 SRC					=		$(SRC_MAIN) $(SRC_OBJ_FUNCTIONS)
 
