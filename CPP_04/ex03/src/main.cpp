@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:46:56 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/23 11:00:17 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:31:44 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int main( void )
 {
 	IMateriaSource* src = new MateriaSource();
-
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 

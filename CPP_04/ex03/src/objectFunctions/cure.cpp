@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:36:59 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/23 11:35:06 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:32:07 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Cure	*Cure::clone( void ) const
 	return (new Cure(*this));
 }
 
-void	Ice::use( ICharacter &target )
+void	Cure::use( ICharacter &target )
 {
-	std::cout <<  "* heals " << target.getName() << "’s wounds *";
+	std::cout <<  "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
