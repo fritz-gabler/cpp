@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:36:59 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/23 13:32:07 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:26:17 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ Cure::Cure( void )
 	//std::cout << "[ CURE ] Default constructor called" << std::endl;
 }
 
-Cure::Cure( const Cure &other )
+Cure::Cure( const Cure &other ) : AMateria(other)
 {
-	this->_type = other._type;
 	//std::cout << "[ CURE ] Constructor with arguments called" << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:35:58 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/23 11:38:10 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:26:37 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ Ice::Ice( void )
 	//std::cout << "[ ICE ] Default constructor called" << std::endl;
 }
 
-Ice::Ice( const Ice &other )
+Ice::Ice( const Ice &other ) : AMateria(other)
 {
-	this->_type = other._type;
 	//std::cout << "[ ICE ] Constructor with arguments called" << std::endl;
 }
 
