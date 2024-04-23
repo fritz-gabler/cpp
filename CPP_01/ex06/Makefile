@@ -4,7 +4,7 @@ NAME			=		harlFiltr
 ###############################################################################
 
 CC				=		c++
-CFLAGS			=		-Wall -Werror -Wextra -g
+CFLAGS			=		-Wall -Werror -Wextra
 CPPFLAG			=		-std=c++98
 HEADERS			=		-I./include -I./include/objects -I./include/defines
 

@@ -4,7 +4,7 @@ NAME				=		interfaces
 ###############################################################################
 
 CC					=		c++
-CFLAGS				=		-Wall -Werror -Wextra -fsanitize=address -g
+CFLAGS				=		-Wall -Werror -Wextra
 CPPFLAG				=		-std=c++98
 HEADERS				=		-I./include -I./include/objects
 
