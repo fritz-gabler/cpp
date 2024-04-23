@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:36:26 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/22 18:38:36 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 11:39:18 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ////////////////////////////CONSTRUCTOR AND DESTRUCTOR/////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-MateriaSource::MaterialSource( void )
+MateriaSource::MateriaSource( void )
 {
 	for ( int i = 0 ; i < INVENTORY_VOLUME ; i++ )
 		this->_storage[i] = NULL;
@@ -24,7 +24,7 @@ MateriaSource::MaterialSource( void )
 	//std::cout << "[ A MATERIA ] Default constructor called" << std::endl;
 }
 
-MateriaSource::MaterialSource( const MateriaSource &other )
+MateriaSource::MateriaSource( const MateriaSource &other )
 {
 	*this = other;
 }

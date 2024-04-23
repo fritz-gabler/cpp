@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:35:58 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/22 17:54:37 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 11:38:10 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ Ice::Ice( const Ice &other )
 	//std::cout << "[ ICE ] Constructor with arguments called" << std::endl;
 }
 
-Ice &Ice::operator = ( const Ice &other )
+Ice &Ice::operator = ( const Ice & )
 {
-	void (other);
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:54:48 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/23 10:58:37 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 11:32:17 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ Character::~Character( void )
 ////////////////////////////////MEMBER FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-std::string	&Character::getName( void ) const
+const std::string	&Character::getName( void ) const
 {
 	return (this->_name);
 }

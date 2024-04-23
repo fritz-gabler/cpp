@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:46:56 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/23 10:48:13 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 11:00:17 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main( void )
 
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
+
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 

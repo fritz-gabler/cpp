@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:36:59 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/22 17:54:53 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 11:35:06 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ Cure::Cure( const Cure &other )
 	//std::cout << "[ CURE ] Constructor with arguments called" << std::endl;
 }
 
-Cure	&Cure::operator = ( const Cure &other )
+Cure	&Cure::operator = ( const Cure & )
 {
-	void (other);
 	//std::cout << "[ A MATERIA ] Copy assignment constructor called" << std::endl; return (*this);
 	return (*this);
 }
