@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:36:26 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/23 11:39:18 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:31:26 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ AMateria	*MateriaSource::createMateria( const std::string &type )
 {
 	for ( int i = 0 ; i < INVENTORY_VOLUME ; i++ )
 	{
-		if (this->_storage[i]->getType() == type)
+		if (this->_storage[i] != NULL && this->_storage[i]->getType() == type)
 			return (this->_storage[i]->clone());
 	}
 	return (NULL);
