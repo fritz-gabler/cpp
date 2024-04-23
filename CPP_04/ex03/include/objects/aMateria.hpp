@@ -3,6 +3,8 @@
 
 #include "header.hpp"
 
+class	ICharacter;
+
 class	AMateria
 {
 	public:

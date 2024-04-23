@@ -11,6 +11,7 @@ class Character : public ICharacter
 		Character( const Character &other );
 		Character( const std::string name );
 		Character &operator = ( const Character &other );
+		~Character( void );
 
 		virtual const std::string	&getName( void ) const;
 		virtual void				equip( AMateria *materia );
@@ -22,6 +23,8 @@ class Character : public ICharacter
 		AMateria		*_inventory[INVENTORY_VOLUME];
 		AMateria		*_trashBack[INVENTORY_VOLUME];
 		int				indexTrashBack;
+		std::string		_name;
+
 };
 
 #endif
