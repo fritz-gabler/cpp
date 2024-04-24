@@ -6,11 +6,10 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:55:34 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/04 17:27:58 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/24 08:39:16 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Fixed.hpp"
 
 int main( void )

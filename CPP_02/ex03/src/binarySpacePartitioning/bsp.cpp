@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:32:56 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/09 17:17:16 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/24 09:03:07 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	TriangleCalc(a, c, point, partOfTriangle[B]);
 	TriangleCalc(b, c, point, partOfTriangle[C]);
 	compareArea = partOfTriangle[A] + partOfTriangle[B] + partOfTriangle[C];
-	std::cout << areaOrginal << std::endl;
-	std::cout << compareArea << std::endl;
 	if (compareArea == areaOrginal)
 		return (true);
 	return (false);
