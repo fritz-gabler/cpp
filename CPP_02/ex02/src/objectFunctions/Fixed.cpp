@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:22:05 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/08 10:13:22 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/25 17:35:55 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ std::ostream &operator << (std::ostream &outStream, const Fixed &fixed)
 ///////////////////////////////////FUNCTIONS///////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-int Fixed::getRawBits( void )
+int Fixed::getRawBits( void ) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_fixedPointNumber);
