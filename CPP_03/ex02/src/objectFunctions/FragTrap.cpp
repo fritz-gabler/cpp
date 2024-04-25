@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 12:26:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/16 14:46:40 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/25 20:12:53 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ FragTrap::FragTrap( const std::string name )
 	std::cout << "[ Frag Trap ] Constructor with parameters called" << std::endl;
 }
 
-FragTrap::FragTrap( const FragTrap &other )
+FragTrap::FragTrap( const FragTrap &other ) :
+	ClapTrap(other)
 {
-	this->_name = other._name;
 	this->_hitPoints = other._hitPoints;
 	this->_energyPoints = other._energyPoints;
 	this->_attackDamage = other._attackDamage;

@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 10:22:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/16 14:46:55 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/25 20:08:30 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ ScavTrap::ScavTrap( const std::string name )
 		std::cout << "[ Scav Trap ] Constructor with parameters called" << std::endl;
 }
 
-ScavTrap::ScavTrap( const ScavTrap &other )
+ScavTrap::ScavTrap( const ScavTrap &other ) :
+	ClapTrap( other ),
+	_isProtecting(false)
 {
-	this->_name = other._name;
 	this->_hitPoints = other._hitPoints;
 	this->_energyPoints = other._energyPoints;
 	this->_attackDamage = other._attackDamage;
