@@ -21,9 +21,6 @@
 #include "animal.hpp"
 #include "dog.hpp"
 #include "cat.hpp"
-#include "wrongAnimal.hpp"
-#include "wrongCat.hpp"
-#include "wrongDog.hpp"
 
 
 

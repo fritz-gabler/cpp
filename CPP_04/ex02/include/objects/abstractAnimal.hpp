@@ -8,6 +8,7 @@ class	AbstractAnimal
 	public:
 		AbstractAnimal( void );
 		AbstractAnimal( const AbstractAnimal &other );
+		AbstractAnimal( const std::string type );
 		AbstractAnimal	&operator = ( const AbstractAnimal &other );
 		virtual ~AbstractAnimal( void );
 

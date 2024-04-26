@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:49:02 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/18 15:49:56 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/26 12:59:17 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ Cat::Cat( void )
 	std::cout << "[ CAT ] Default constructor called" << std::endl;
 }
 
-Cat::Cat( const Cat &other )
+Cat::Cat( const Cat &other ) :
+	Animal(other._type)
 {
-	this->_type = other._type;
 	this->_brain = new Brain(*(other._brain));
 	std::cout << "[ CAT ] Copy constructor called" << std::endl;
 }

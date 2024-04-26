@@ -6,21 +6,21 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:49:02 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/18 10:51:46 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/26 12:32:02 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
 
-Cat::Cat( void )
+Cat::Cat( void ) :
+	Animal("Cat")
 {
-	this->_type = "Cat";
 	std::cout << "[ CAT ] Default constructor called" << std::endl;
 }
 
-Cat::Cat( const Cat &other )
+Cat::Cat( const Cat &other ) :
+	Animal(other._type)
 {
-	this->_type = other._type;
 	std::cout << "[ CAT ] Copy constructor called" << std::endl;
 }
 

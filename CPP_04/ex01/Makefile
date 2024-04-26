@@ -14,8 +14,7 @@ HEADERS			=		-I./include -I./include/objects
 VPATH			:=		src src/objectFunctions src/checks src/tests
 
 SRC_MAIN		=		main.cpp
-SRC_ANIMALS		=		animal.cpp cat.cpp dog.cpp wrongAnimal.cpp			\
-						wrongDog.cpp wrongCat.cpp
+SRC_ANIMALS		=		animal.cpp cat.cpp dog.cpp
 SRC_BRAIN		=		brain.cpp
 SRC_CHECKS		=		inBrainCapacityRange.cpp
 SRC_TESTS		=		boundaryTests.cpp copyTest.cpp pdfTest.cpp

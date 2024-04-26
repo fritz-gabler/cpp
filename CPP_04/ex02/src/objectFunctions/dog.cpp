@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:57:26 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/22 12:48:52 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/26 13:13:30 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ Dog::Dog( void )
 	std::cout << "[ DOG ] Default constructor called" << std::endl;
 }
 
-Dog::Dog( const Dog &other )
+Dog::Dog( const Dog &other ) :
+	AbstractAnimal( other._type )
 {
-	this->_type = other._type;
 	this->_brain = new Brain(*(other._brain));
 	std::cout << "[ DOG ] Copy constructor called" << std::endl;
 }

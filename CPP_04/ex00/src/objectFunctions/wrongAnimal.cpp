@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:51:10 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/18 10:54:08 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/04/26 12:38:00 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@
 ////////////////////////////CONSTRUCTOR AND DESTRUCTOR/////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-WrongAnimal::WrongAnimal( void )
+WrongAnimal::WrongAnimal( void ) :
+	_type("An unidentifiable creature")
 {
-	this->_type = "An unidentifiable creature";
 	std::cout << "[ WRONG ANIMAL ] Default constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal ( const WrongAnimal &other )
+WrongAnimal::WrongAnimal ( const WrongAnimal &other ) :
+	_type(other._type)
 {
-	this->_type = other._type;
 	std::cout << "[ WRONG ANIMAL ] Copy constructor called" << std::endl;
+}
+
+WrongAnimal::WrongAnimal( const std::string type )
+	: _type(type)
+{
+	std::cout << "[ WRONG ANIMAL ] Constructor with arguments called" << std::endl;
 }
 
 WrongAnimal &WrongAnimal::operator = ( const WrongAnimal &other )
