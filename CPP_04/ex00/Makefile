@@ -1,11 +1,10 @@
-NAME			=		animalCatAndDog
+NAME			:=		animalCatAndDog
 
 ###############################################################################
 ###############################################################################
 
-CC				=		c++
-CFLAGS			=		-Wall -Werror -Wextra -g
-CPPFLAG			=		-std=c++98
+CXX				=		c++
+CXXFLAGS		=		-Wall -Werror -Wextra -std=c++98
 HEADERS			=		-I./include -I./include/objects
 
 ###############################################################################
@@ -33,7 +32,7 @@ all:		$(NAME)
 $(NAME):	$(LIBS_NAME) $(OBJ)
 	@echo	$(YELLOW)Compiling [$(NAME)]...$(RESET)
 	@printf $(UP)$(CUT)
-	@$(CC)	$(CFLAGS) $(CPPFLAG) $(OBJ) -o $(NAME)
+	@$(CXX)	$(OBJ) -o $(NAME)
 	@echo	$(GREEN)Success [$(NAME)] is compiled$(RESET)
 
 $(OBJ_DIR)/%.o: %.cpp
@@ -42,7 +41,7 @@ $(OBJ_DIR)/%.o: %.cpp
 	@if	[ ! -d "{OBJ_DIR}" ]; then						\
 		mkdir -p _obj;									\
 	fi
-	@$(CC) $(CFLAGS) -c $< $(HEADERS) -o $@
+	@$(CXX) $(CXXFLAGS) -c $< $(HEADERS) -o $@
 
 ###############################################################################
 ###############################################################################
