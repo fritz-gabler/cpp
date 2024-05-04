@@ -6,10 +6,18 @@
 class	Bureaucrat
 {
 	public:
+		//Constructor and Destructor
 		Bureaucrat( void );
 		Bureaucrat( const Bureaucrat &other );
+		Bureaucrat( const std::string &name, unsigned int grade );
 		Bureaucrat &operator = ( const Bureaucrat &other );
 		~Bureaucrat( void );
+
+		//Memberfunctions
+		const std::string	&get_name() const;
+		unsigned int	get_grade() const;
+		void			promote_bureaucrat();
+		void			demotion_bureaucrat();
 
 	private:
 		const std::string	name_;
@@ -28,5 +36,5 @@ class	Bureaucrat
 	};
 };
 
-std::ostream &operator << (std::ostream &ostream, const Bureaucrat &bureaucrat)
+std::ostream &operator << (std::ostream &ostream, const Bureaucrat &bureaucrat);
 #endif
