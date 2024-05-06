@@ -13,8 +13,9 @@ HEADERS			=		-I./include -I./include/objects
 VPATH			:=		src src/objectFunctions
 
 SRC_MAIN		=		main.cpp
+SRC_OBJ			=		Bureaucrat.cpp
 
-SRC				=		$(SRC_MAIN)
+SRC				=		$(SRC_MAIN) $(SRC_OBJ)
 
 ###############################################################################
 ###############################################################################

@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:10:07 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/04 21:34:48 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/06 13:29:34 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ Bureaucrat &Bureaucrat::operator = ( const Bureaucrat &other )
 	if ( this == &other )
 		return (*this);
 	grade_= other.grade_;
+	return (*this);
 }
 
 Bureaucrat::~Bureaucrat( void ) {}
@@ -89,7 +90,7 @@ const	char *Bureaucrat::GradeTooLowException::what() const throw()
 ///////////////////////////////////OSTREAM OVERWRITE///////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-std::ostream &operator << (std::ostrem &ostream, const Bureaucrat &bureaucrat)
+std::ostream &operator << (std::ostream &ostream, const Bureaucrat &bureaucrat)
 {
 	return ostream << "Bueraucrat named: "
 		<< bureaucrat.get_name()

@@ -19,10 +19,6 @@ class	Bureaucrat
 		void			promote_bureaucrat();
 		void			demotion_bureaucrat();
 
-	private:
-		const std::string	name_;
-		unsigned int		grade_;
-
 	class	GradeTooHighException : public std::exception
 	{
 		public:
@@ -34,6 +30,11 @@ class	Bureaucrat
 		public:
 			virtual const char *what() const throw();
 	};
+
+	private:
+		const std::string	name_;
+		unsigned int		grade_;
+
 };
 
 std::ostream &operator << (std::ostream &ostream, const Bureaucrat &bureaucrat);
