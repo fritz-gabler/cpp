@@ -3,32 +3,36 @@
 
 #include "header.hpp"
 
-class	Form
-{
-	public:
-		Form();
-		Form( const Form &other );
-		Form &operator = ( const Form &form );
-		~Form();
+class Form {
+public:
+  // CONSTRUCTOR & DESTRUCTOR
+  Form();
+  Form(const Form &other);
+  Form(const std::string name, const unsigned int required_grade);
+  Form &operator=(const Form &form);
+  ~Form();
 
-		class	GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
+  // MEMBER FUNCTIONS
+  void be_signed(const Bureaucrat &bueraucrat);
+  const unsigned int get_required_grade() const;
+  const std::string get_name() const;
 
-		class	GradeTooLowException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
+  // CLASSES
+  class GradeTooHighException : public std::exception {
+  public:
+    virtual const char *what() const throw();
+  };
 
-	private:
-		const std::string	name_;
-		bool				is_signed_;
-		const int			grade_required_to_signed_;
+  class GradeTooLowException : public std::exception {
+  public:
+    virtual const char *what() const throw();
+  };
 
+private:
+  const std::string name_;
+  bool is_signed_;
+  const unsigned int required_grade_;
 };
 
-std::ostream &operator << (std::ostream &ostream, const Form &form);
+std::ostream &operator<<(std::ostream &ostream, const Form &form);
 #endif
