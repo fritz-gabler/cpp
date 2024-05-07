@@ -5,8 +5,8 @@ NAME			:=		bureaucrat
 
 CXX				=		c++
 CXXFLAGS		=		-Wall -Werror -Wextra -std=c++98
-HEADERS			=		-I./include -I./include/objects			\
-						-I./include/log_level_define
+HEADERS			=  -I./include -I./include/objects                          \
+                -I./include/log_level_define
 
 ###############################################################################
 ###############################################################################
@@ -14,10 +14,10 @@ HEADERS			=		-I./include -I./include/objects			\
 VPATH			:=		src src/objectFunctions src/print_functions
 
 SRC_MAIN		=		main.cpp
-SRC_OBJ			=		Bureaucrat.cpp
+SRC_OBJ			=		Bureaucrat.cpp Form.cpp
 SRC_PRINT		=		print_message_with_level.cpp
 
-SRC				=		$(SRC_MAIN) $(SRC_OBJ)
+SRC				=		$(SRC_MAIN) $(SRC_OBJ) $(SRC_PRINT)
 
 ###############################################################################
 ###############################################################################

@@ -1,7 +1,8 @@
 #ifndef BUREAUCRAT
 #define BUREAUCRAT
 
-#include <header.hpp>
+#include "header.hpp"
+class Form;
 
 class Bureaucrat {
 public:

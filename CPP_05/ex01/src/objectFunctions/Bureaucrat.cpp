@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:10:07 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/07 12:36:59 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/07 14:06:44 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void Bureaucrat::sign_form(Form &form) {
 
   if (grade_ >= form.get_required_grade()) {
     message =
-        name_ + "couldn’t sign " + form.get_name() " because grade is to low";
+        name_ + "couldn’t sign " + form.get_name() + " because grade is to low";
     print_message_with_level(message, NOTE);
   }
   else {

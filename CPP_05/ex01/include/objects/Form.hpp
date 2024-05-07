@@ -1,7 +1,8 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
-#include "header.hpp"
+#include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form {
 public:
@@ -14,7 +15,7 @@ public:
 
   // MEMBER FUNCTIONS
   void be_signed(const Bureaucrat &bueraucrat);
-  const unsigned int get_required_grade() const;
+  unsigned int get_required_grade() const;
   const std::string get_name() const;
 
   // CLASSES

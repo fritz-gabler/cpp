@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:11:46 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/07 12:40:52 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/07 14:31:44 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ Form::Form(const Form &other)
     : name_(other.name_), is_signed_(other.is_signed_),
       required_grade_(other.required_grade_) {}
 
-Form::Form(const std::string name, const unsigned int required_grade) {
+Form::Form(const std::string name, const unsigned int required_grade)
+    : name_(name), required_grade_(required_grade) {
   if (required_grade_ < 1)
     throw GradeTooHighException();
   if (required_grade_ > 150)
     throw GradeTooLowException();
-  name_ = name;
 }
 
 Form &Form::operator=(const Form &other) {
   if (this == &other)
     return (*this);
-  name_ = other.name_;
   is_signed_ = other.is_signed_;
+  return (*this);
 }
 
 Form::~Form() {}
@@ -47,13 +47,9 @@ void Form::be_signed(const Bureaucrat &bueraucrat) {
   is_signed_ = true;
 }
 
-const unsigned int Form::get_required_grade() const {
-  return (required_grade_);
-}
+unsigned int Form::get_required_grade() const { return (required_grade_); }
 
-const std::string Form::get_name() const {
-  return (name_);
-}
+const std::string Form::get_name() const { return (name_); }
 
 ///////////////////////////////// EXEPTIONS ///////////////////////////////////
 
@@ -64,5 +60,3 @@ const char *Form::GradeTooHighException::what() const throw() {
 const char *Form::GradeTooLowException::what() const throw() {
   return ("Grade to LOW");
 }
-
-
