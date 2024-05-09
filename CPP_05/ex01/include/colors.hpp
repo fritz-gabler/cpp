@@ -9,6 +9,6 @@
 #define BLUE "\x01\033[1;34m\x02"
 #define WHITE "\x01\033[0m\x02"
 #define ORANGE "\x01\033[38;2;255;165;0m\x02"
-#define RESET "tput sgr0"
+#define RESET "\033[0m"
 
 #endif
