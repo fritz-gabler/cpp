@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:11:46 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/07 14:31:44 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/09 16:58:55 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,23 @@
 
 /////////////////////////// CONSTRUCTOR AND DESTRUCTOR ////////////////////////
 
-Form::Form() : name_("DEFAULT NAME"), is_signed_(false), required_grade_(75) {}
+Form::Form()
+    : name_("DEFAULT NAME"), is_signed_(false), required_grade_to_sign_(75),
+      grade_required_to_execute_(60) {}
 
 Form::Form(const Form &other)
     : name_(other.name_), is_signed_(other.is_signed_),
-      required_grade_(other.required_grade_) {}
+      required_grade_to_sign_(other.required_grade_to_sign_),
+      grade_required_to_execute_(other.grade_required_to_execute_) {}
 
-Form::Form(const std::string name, const unsigned int required_grade)
-    : name_(name), required_grade_(required_grade) {
-  if (required_grade_ < 1)
+Form::Form(const std::string name, const unsigned int required_grade_to_sign,
+           const unsigned int grade_required_to_execute)
+    : name_(name), is_signed_(false),
+      required_grade_to_sign_(required_grade_to_sign),
+      grade_required_to_execute_(grade_required_to_execute) {
+  if (required_grade_to_sign_ < 1 || grade_required_to_execute_ < 1)
     throw GradeTooHighException();
-  if (required_grade_ > 150)
+  if (required_grade_to_sign_ > 150 || grade_required_to_execute_ > 150)
     throw GradeTooLowException();
 }
 
@@ -40,18 +46,26 @@ Form::~Form() {}
 /////////////////////////////// MEMBER FUNCTIONS //////////////////////////////
 
 void Form::be_signed(const Bureaucrat &bueraucrat) {
-  if (bueraucrat.get_grade() < 1)
-    throw GradeTooHighException();
-  if (bueraucrat.get_grade() > 150)
+  if (is_signed_ == true)
+    return ;
+  if (required_grade_to_sign_ <= bueraucrat.get_grade())
     throw GradeTooLowException();
   is_signed_ = true;
 }
 
-unsigned int Form::get_required_grade() const { return (required_grade_); }
+unsigned int Form::get_required_grade_to_sign() const {
+  return (required_grade_to_sign_);
+}
 
-const std::string Form::get_name() const { return (name_); }
+unsigned int Form::get_required_grade_to_execute() const {
+  return (grade_required_to_execute_);
+}
 
-///////////////////////////////// EXEPTIONS ///////////////////////////////////
+const std::string &Form::get_name() const { return (name_); }
+
+bool Form::is_form_signed() const { return (is_signed_); }
+
+///////////////////////////////// EXEPTIONS////////////////////////////////////
 
 const char *Form::GradeTooHighException::what() const throw() {
   return ("Grade to HIGH");
@@ -59,4 +73,22 @@ const char *Form::GradeTooHighException::what() const throw() {
 
 const char *Form::GradeTooLowException::what() const throw() {
   return ("Grade to LOW");
+}
+
+///////////////////////////////// EXEPTIONS////////////////////////////////////
+
+std::ostream &operator<<(std::ostream &ostream, const Form &form) {
+  std::string is_signed_status;
+
+  if (form.is_form_signed() == true)
+    is_signed_status = "true\n";
+  else
+    is_signed_status = "false\n";
+
+  return ostream << "FORM NAME:           " << form.get_name()
+                 << "\nSign grade:          "
+                 << form.get_required_grade_to_sign()
+                 << "\nGrade to execute:    "
+                 << form.get_required_grade_to_execute()
+                 << "\nIs form form signed: " << is_signed_status;
 }

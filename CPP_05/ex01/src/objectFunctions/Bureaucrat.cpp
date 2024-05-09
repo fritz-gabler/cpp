@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:10:07 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/07 14:06:44 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/09 13:45:25 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,15 @@ void Bureaucrat::demotion_bureaucrat() {
 void Bureaucrat::sign_form(Form &form) {
   std::string message;
 
-  if (grade_ >= form.get_required_grade()) {
-    message =
-        name_ + "couldn’t sign " + form.get_name() + " because grade is to low";
+  try {
+    form.be_signed(*this);
+    message = name_ + " signed " + form.get_name();
     print_message_with_level(message, NOTE);
   }
-  else {
-    message = name_ + " signed " + form.get_name();
+  catch (std::exception &exception) {
+    message = name_ + " couldn’t sign " + form.get_name() +
+              " because: " + exception.what();
+    print_message_with_level(message, NOTE);
   }
 }
 
