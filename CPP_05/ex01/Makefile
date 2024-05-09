@@ -11,13 +11,15 @@ HEADERS			=  -I./include -I./include/objects                          \
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		src src/objectFunctions src/print_functions
+VPATH			:=		src src/objectFunctions src/print_functions src/tests
 
 SRC_MAIN		=		main.cpp
 SRC_OBJ			=		Bureaucrat.cpp Form.cpp
 SRC_PRINT		=		print_message_with_level.cpp
+SRC_TESTS   =   form_can_not_be_signed.cpp can_be_signed.cpp            \
+								bureaucrat_signs_form.cpp
 
-SRC				=		$(SRC_MAIN) $(SRC_OBJ) $(SRC_PRINT)
+SRC	  			=		$(SRC_MAIN) $(SRC_OBJ) $(SRC_PRINT) $(SRC_TESTS)
 
 ###############################################################################
 ###############################################################################
