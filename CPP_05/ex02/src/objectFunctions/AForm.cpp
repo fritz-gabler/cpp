@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:11:46 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/09 17:23:57 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/09 18:05:19 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,20 @@
 
 AForm::AForm()
     : name_("DEFAULT NAME"), is_signed_(false), required_grade_to_sign_(75),
-      grade_required_to_execute_(60) {}
+      grade_required_to_execute_(60), target_("DEFAULT TYPE") {}
 
 AForm::AForm(const AForm &other)
     : name_(other.name_), is_signed_(other.is_signed_),
       required_grade_to_sign_(other.required_grade_to_sign_),
-      grade_required_to_execute_(other.grade_required_to_execute_) {}
+      grade_required_to_execute_(other.grade_required_to_execute_),
+      target_(other.target_) {}
 
 AForm::AForm(const std::string name, const unsigned int required_grade_to_sign,
-           const unsigned int grade_required_to_execute)
+           const unsigned int grade_required_to_execute, std::string target)
     : name_(name), is_signed_(false),
       required_grade_to_sign_(required_grade_to_sign),
-      grade_required_to_execute_(grade_required_to_execute) {
+      grade_required_to_execute_(grade_required_to_execute),
+      target_(target) {
   if (required_grade_to_sign_ < 1 || grade_required_to_execute_ < 1)
     throw GradeTooHighException();
   if (required_grade_to_sign_ > 150 || grade_required_to_execute_ > 150)

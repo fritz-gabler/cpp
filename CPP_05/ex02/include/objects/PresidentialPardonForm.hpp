@@ -6,10 +6,11 @@
 class PresidentialPardonForm : public AForm
 {
   public:
-    PresidentialPardonForm( void);
+    PresidentialPardonForm();
     PresidentialPardonForm( const PresidentialPardonForm &other );
     PresidentialPardonForm &operator = ( const PresidentialPardonForm &other );
-    
+    ~PresidentialPardonForm();
+
   private:
 };
 

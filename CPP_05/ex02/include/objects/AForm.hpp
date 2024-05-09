@@ -10,7 +10,7 @@ public:
   AForm();
   AForm(const AForm &other);
   AForm(const std::string name, const unsigned int required_grade_to_sign,
-       const unsigned int grade_required_to_execute_);
+       const unsigned int grade_required_to_execute_, std::string target);
   AForm &operator=(const AForm &form);
   virtual ~AForm();
 
@@ -38,6 +38,7 @@ private:
   bool is_signed_;
   const unsigned int required_grade_to_sign_;
   const unsigned int grade_required_to_execute_;
+  std::string target_;
 };
 
 std::ostream &operator<<(std::ostream &ostream, const AForm &form);
