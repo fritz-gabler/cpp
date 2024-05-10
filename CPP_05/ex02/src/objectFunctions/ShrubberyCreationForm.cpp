@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 17:31:29 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 10:09:36 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:30:23 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //////////////////////////CONSTRUCTORS AND DESTRUCTORS/////////////////////////
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-    : AForm("DEFAULT NAME", 145, 137, "DEFAULT TARGET"), trees_(NULL) {
+    : AForm("DEFAULT NAME", 145, 137, "DEFAULT TARGET") {
   create_trees();
 }
 
@@ -29,11 +29,17 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 
 ShrubberyCreationForm &
 ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
-  ShrubberyCreationForm::operator=(other);
+  AForm::operator=(other);
   return (*this);
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
+
+////////////////////////////////////EXEPTIONS//////////////////////////////////
+
+const char *ShrubberyCreationForm::File_failed_to_open::what() const throw() {
+  return ("File failed to open");
+}
 
 ////////////////////////////////MEMBER FUNCTIONS///////////////////////////////
 
@@ -71,13 +77,16 @@ void ShrubberyCreationForm::create_trees() {
 }
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
-  form_executions_check(executor);
-  std::ofstream outfile;
-  outfile = open(std::string(target_ + "_shrubbery").c_str);
-  if (ostream.fail == true)
-    return (print_message_with_level("File failed to open", ERROR), NULL);
+  form_execution_check(executor);
+
+  std::string message;
+  std::ofstream outfile(std::string(target_ + "_shrubbery").c_str());
+
+  if (outfile.fail() == true)
+    throw File_failed_to_open();
   outfile << trees_[0] << std::endl;
   outfile << trees_[1] << std::endl;
-  print_message_with_level("Trees are now in file: " + target_ + "_shrubbery",
-                           INFO) outfile.close();
+  message = "Trees are now in file: " + target_ + "_shrubbery";
+  print_message_with_level(message, NOTE);
+  outfile.close();
 }

@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:11:46 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 09:45:33 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:01:05 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ const std::string &AForm::get_name() const { return (name_); }
 
 bool AForm::is_form_signed() const { return (is_signed_); }
 
-void AForm::form_execution_check(Bureaucrat &bureaucrat) const {
+void AForm::form_execution_check(const Bureaucrat &bureaucrat) const {
   if (is_signed_ == false)
     throw Form_is_not_signed_exeption();
   if (bureaucrat.get_grade() > grade_required_to_execute_)
@@ -83,7 +83,7 @@ const char *AForm::GradeTooLowException::what() const throw() {
   return ("Grade to LOW");
 }
 
-const char *AForm::Form_is_not_signed_exeption::what() const throw {
+const char *AForm::Form_is_not_signed_exeption::what() const throw() {
   return ("Form is not signed");
 }
 

@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:10:07 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/09 13:45:25 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:53:37 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void Bureaucrat::demotion_bureaucrat() {
   grade_++;
 }
 
-void Bureaucrat::sign_form(Form &form) {
+void Bureaucrat::sign_form(AForm &form) {
   std::string message;
 
   try {

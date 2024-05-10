@@ -9,8 +9,7 @@ public:
   // CONSTRUCTOR & DESTRUCTOR
   AForm();
   AForm(const AForm &other);
-  AForm(const std::string name, const unsigned int required_grade_to_sign,
-       const unsigned int grade_required_to_execute_, std::string target);
+  AForm(const std::string name, const unsigned int required_grade_to_sign, const unsigned int grade_required_to_execute_, std::string target);
   AForm &operator=(const AForm &form);
   virtual ~AForm();
 
@@ -20,7 +19,7 @@ public:
   unsigned int get_required_grade_to_execute() const;
   const std::string &get_name() const;
   bool is_form_signed() const;
-  void form_execution_check(Bureaucrat &bureaucrat) const;
+  void form_execution_check(const Bureaucrat &bureaucrat) const;
   virtual void execute(const Bureaucrat &executor) const = 0;
 
   // CLASSES
@@ -38,7 +37,6 @@ public:
   public:
     virtual const char *what() const throw();
   };
-
 
 protected:
   const std::string name_;

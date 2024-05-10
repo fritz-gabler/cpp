@@ -2,7 +2,7 @@
 #define BUREAUCRAT
 
 #include "header.hpp"
-class Form;
+class AForm;
 
 class Bureaucrat {
 public:
@@ -18,7 +18,7 @@ public:
   unsigned int get_grade() const;
   void promote_bureaucrat();
   void demotion_bureaucrat();
-  void sign_form(Form &form);
+  void sign_form(AForm &form);
 
   class GradeTooHighException : public std::exception {
   public:

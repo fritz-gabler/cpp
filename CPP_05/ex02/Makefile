@@ -14,7 +14,9 @@ HEADERS			=  -I./include -I./include/objects                          \
 VPATH			:=		src src/objectFunctions src/print_functions src/tests
 
 SRC_MAIN		=		main.cpp
-SRC_OBJ			=		Bureaucrat.cpp AForm.cpp
+SRC_OBJ			=		Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp    \
+								RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+
 SRC_PRINT		=		print_message_with_level.cpp
 SRC_TESTS   =   
 

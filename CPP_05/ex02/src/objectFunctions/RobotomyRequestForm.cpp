@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 17:31:01 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 10:24:20 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:12:46 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //////////////////////////CONSTRUCTORS AND DESTRUCTORS/////////////////////////
 
 RobotomyRequestForm::RobotomyRequestForm()
-    : AForm("Roboto my Request Form", 72, 45 "The German government") {}
+    : AForm("Roboto my Request Form", 72, 45, "The German government") {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
     : AForm(other) {}
@@ -25,7 +25,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 
 RobotomyRequestForm
 RobotomyRequestForm::operator=(const RobotomyRequestForm &other) {
-  RobotomyRequestForm::operator=(other);
+  AForm::operator=(other);
   return (*this);
 }
 
@@ -34,7 +34,7 @@ RobotomyRequestForm::operator=(const RobotomyRequestForm &other) {
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
   int random_number;
-  std::string message
+  std::string message;
 
   form_execution_check(executor);
   message = "Beep boop... Beep boop... Beep boop...";
