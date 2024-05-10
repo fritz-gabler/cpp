@@ -9,8 +9,6 @@
 void print_message_with_level(std::string message, int level);
 
 //TEST
-void form_can_not_be_signed();
-void can_be_signed_test();
-void bureaucrat_signs_form();
+void shrubbery_test();
 
 #endif

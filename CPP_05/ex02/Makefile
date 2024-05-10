@@ -18,7 +18,7 @@ SRC_OBJ			=		Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp    \
 								RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 SRC_PRINT		=		print_message_with_level.cpp
-SRC_TESTS   =   
+SRC_TESTS   =   shrubbery_test.cpp
 
 SRC	  			=		$(SRC_MAIN) $(SRC_OBJ) $(SRC_PRINT) $(SRC_TESTS)
 

@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:10:07 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 10:53:37 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:49:51 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,23 @@ void Bureaucrat::sign_form(AForm &form) {
               " because: " + exception.what();
     print_message_with_level(message, NOTE);
   }
+}
+
+void Bureaucrat::executeForm(const AForm &form)
+{
+  std::string message;
+  try
+  {
+    form.execute(*this);
+    message = name_ + " executed " + form.get_name();
+    print_message_with_level(message, NOTE);
+  }
+  catch (std::exception &exception) {
+    message = name_ + " couldn’t executed " + form.get_name() +
+              " because: " + exception.what();
+    print_message_with_level(message, NOTE);
+  }
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////

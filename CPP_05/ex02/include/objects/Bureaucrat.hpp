@@ -19,6 +19,7 @@ public:
   void promote_bureaucrat();
   void demotion_bureaucrat();
   void sign_form(AForm &form);
+  void executeForm(AForm const & form);
 
   class GradeTooHighException : public std::exception {
   public:
