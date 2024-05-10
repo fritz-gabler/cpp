@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:11:46 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/09 18:05:19 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/10 09:45:33 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ AForm::AForm(const AForm &other)
       target_(other.target_) {}
 
 AForm::AForm(const std::string name, const unsigned int required_grade_to_sign,
-           const unsigned int grade_required_to_execute, std::string target)
+             const unsigned int grade_required_to_execute, std::string target)
     : name_(name), is_signed_(false),
       required_grade_to_sign_(required_grade_to_sign),
-      grade_required_to_execute_(grade_required_to_execute),
-      target_(target) {
+      grade_required_to_execute_(grade_required_to_execute), target_(target) {
   if (required_grade_to_sign_ < 1 || grade_required_to_execute_ < 1)
     throw GradeTooHighException();
   if (required_grade_to_sign_ > 150 || grade_required_to_execute_ > 150)
@@ -49,7 +48,7 @@ AForm::~AForm() {}
 
 void AForm::be_signed(const Bureaucrat &bueraucrat) {
   if (is_signed_ == true)
-    return ;
+    return;
   if (required_grade_to_sign_ <= bueraucrat.get_grade())
     throw GradeTooLowException();
   is_signed_ = true;
@@ -67,6 +66,13 @@ const std::string &AForm::get_name() const { return (name_); }
 
 bool AForm::is_form_signed() const { return (is_signed_); }
 
+void AForm::form_execution_check(Bureaucrat &bureaucrat) const {
+  if (is_signed_ == false)
+    throw Form_is_not_signed_exeption();
+  if (bureaucrat.get_grade() > grade_required_to_execute_)
+    throw GradeTooHighException();
+}
+
 ///////////////////////////////// EXEPTIONS////////////////////////////////////
 
 const char *AForm::GradeTooHighException::what() const throw() {
@@ -75,6 +81,10 @@ const char *AForm::GradeTooHighException::what() const throw() {
 
 const char *AForm::GradeTooLowException::what() const throw() {
   return ("Grade to LOW");
+}
+
+const char *AForm::Form_is_not_signed_exeption::what() const throw {
+  return ("Form is not signed");
 }
 
 ///////////////////////////////// EXEPTIONS////////////////////////////////////

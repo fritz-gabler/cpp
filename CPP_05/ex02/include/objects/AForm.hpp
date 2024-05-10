@@ -20,6 +20,7 @@ public:
   unsigned int get_required_grade_to_execute() const;
   const std::string &get_name() const;
   bool is_form_signed() const;
+  void form_execution_check(Bureaucrat &bureaucrat) const;
   virtual void execute(const Bureaucrat &executor) const = 0;
 
   // CLASSES
@@ -33,7 +34,13 @@ public:
     virtual const char *what() const throw();
   };
 
-private:
+  class Form_is_not_signed_exeption : public std::exception {
+  public:
+    virtual const char *what() const throw();
+  };
+
+
+protected:
   const std::string name_;
   bool is_signed_;
   const unsigned int required_grade_to_sign_;

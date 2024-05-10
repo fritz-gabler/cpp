@@ -6,15 +6,18 @@
 class  ShrubberyCreationForm : public AForm
 {
   public:
-    ShrubberyCreationForm();
+    //Constructors
     ShrubberyCreationForm(const ShrubberyCreationForm &other);
     ShrubberyCreationForm(const std::string target);
     ShrubberyCreationForm &operator = (const ShrubberyCreationForm &other);
 
+    //Member functions
     void create_trees();
+    void execute(Bureaucrat const & executor) const;
 
   private:
-    std::string trees_[5];
+    ShrubberyCreationForm();
+    std::string trees_[2];
 
 };
 #endif 
