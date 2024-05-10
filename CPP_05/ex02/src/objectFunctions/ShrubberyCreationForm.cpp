@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 17:31:29 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 11:30:23 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/10 16:54:33 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //////////////////////////CONSTRUCTORS AND DESTRUCTORS/////////////////////////
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-    : AForm("DEFAULT NAME", 145, 137, "DEFAULT TARGET") {
+    : AForm("Shrubbery Creation", 145, 137, "DEFAULT TARGET") {
   create_trees();
 }
 
@@ -23,7 +23,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
     : AForm(other) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
-    : AForm("DEFAULT NAME", 145, 137, target) {
+    : AForm("Shrubbery Creation", 145, 137, target) {
   create_trees();
 }
 
@@ -44,7 +44,7 @@ const char *ShrubberyCreationForm::File_failed_to_open::what() const throw() {
 ////////////////////////////////MEMBER FUNCTIONS///////////////////////////////
 
 void ShrubberyCreationForm::create_trees() {
-  trees_[0] = "          $$\n\
+  trees_[0] = "            $$\n\
             $$\n\
            $$$$\n\
           $$$$$$$\n\
@@ -61,7 +61,7 @@ void ShrubberyCreationForm::create_trees() {
            $$$$$\n\
     ";
 
-  trees_[1] = "       @@@\n\
+  trees_[1] = "         @@@\n\
          @@@\n\
         @@@@@\n\
         @@@@@\n\
