@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 11:37:51 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 16:56:46 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/11 09:49:29 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void shrubbery_test() {
   std::string message;
 
   std::cout << "\n";
-  print_message_with_level("------SHRUBBERY CREATE A TREE------\n", NOTE);
+  print_message_with_level("------SHRUBBERY CREATE A TREE------\n", TEST);
 
   creat_a_tree_for_me.be_signed(thomas);
   thomas.executeForm(creat_a_tree_for_me);

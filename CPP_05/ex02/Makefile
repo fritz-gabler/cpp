@@ -13,12 +13,13 @@ HEADERS			=  -I./include -I./include/objects                          \
 
 VPATH			:=		src src/objectFunctions src/print_functions src/tests
 
-SRC_MAIN		=		main.cpp
-SRC_OBJ			=		Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp    \
-								RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+SRC_MAIN		=   main.cpp
+SRC_OBJ			=   Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp    \
+                RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
-SRC_PRINT		=		print_message_with_level.cpp
-SRC_TESTS   =   shrubbery_test.cpp robotomy_request_test.cpp
+SRC_PRINT   =   print_message_with_level.cpp
+SRC_TESTS   =   shrubbery_test.cpp robotomy_request_test.cpp            \
+                presidential_paradon_test.cpp
 
 SRC	  			=		$(SRC_MAIN) $(SRC_OBJ) $(SRC_PRINT) $(SRC_TESTS)
 

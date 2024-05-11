@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:11:46 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 11:01:05 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/11 09:39:06 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void AForm::form_execution_check(const Bureaucrat &bureaucrat) const {
   if (is_signed_ == false)
     throw Form_is_not_signed_exeption();
   if (bureaucrat.get_grade() > grade_required_to_execute_)
-    throw GradeTooHighException();
+    throw GradeTooLowException();
 }
 
 ///////////////////////////////// EXEPTIONS////////////////////////////////////

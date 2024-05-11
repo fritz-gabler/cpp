@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:35:10 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 17:06:22 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/11 13:25:55 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 int main() {
   shrubbery_test();
   robotomy_request_test();
+  presidential_paradon_test();
   return (false);
 }
