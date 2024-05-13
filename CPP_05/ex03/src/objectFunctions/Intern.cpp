@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 16:29:05 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/12 18:49:26 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/13 14:22:19 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,29 @@
 ////////////////////////////CONSTRUCTOR AND DESTRUCTOR/////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-Intern::Intern() {
-  form_types_ = {
-    "PRESIDENTIAL PARADON",
-    "ROBOTOMY REQUEST",
-    "SHRUBBERY CREATION"
-  };
-}
+Intern::Intern() {}
 
-Intern::Intern(const Intern &intern) {
-  form_types_ = {
-    "PRESIDENTIAL PARADON",
-    "ROBOTOMY REQUEST",
-    "SHRUBBERY CREATION"
-  }
-}
+Intern::Intern(const Intern &intern) {}
 
 Intern &Intern::operator=(const Intern &intern) { return (*this); }
 
 Intern::~Intern() {}
+
+///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////SET STATIC TYPES///////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+static const Intern::form_types_[NUMBER_OF_FORMS] {
+    "PRESIDENTIAL PARADON",
+    "ROBOTOMY REQUEST",
+    "SHRUBBERY CREATION"
+};
+
+static const AForm::return_form_[NUMBER_OF_FORMS] {
+  &AForm::presidential_pardon_form_create,
+  &AForm::robotomy_request_form_create,
+  &AForm::shrubbery_creation_form_create
+};
 
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////MEMBER FUNCTIONS///////////////////////////////
@@ -47,19 +51,7 @@ AForm &Intern::makeForm(std::string &form_name,
 
   capitalize_string(form_name);
   get_string_type(form_name, type);
-  switch(type)
-  {
-    case PRESIDENTIAL_FORM:
-      form = PresidentialPardonForm(tardet_form);
-      break;
-    case ROBOTO_FORM:
-      form = RobotomyRequestForm(tardet_form);
-      break;
-    case SHRUBBERY_FORM:
-      form = ShrubberyCreationForm(tardet_form);
-      break;
-  }
-  return (*form);
+  return (return_form_[type](tardet_form));
 }
 
 void Intern::get_string_type(std::string &string, int &type) {
@@ -68,14 +60,29 @@ void Intern::get_string_type(std::string &string, int &type) {
       type = i;
       return ;
     }
-  }
-  throw Input_form_could_be_found();
   type = -1;
+  throw Input_form_could_be_found();
+}
+
+AForm *AForm::presidential_pardon_form_create(const std::string &target)
+}
+  return (new PresidentialPardonForm(target));
+{
+
+AForm *AForm::RobotomyRequestForm(const std::string &target)
+{
+  return (new RobotomyRequestForm);
+}
+
+AForm *AForm::RobotomyRequestForm(const std::string &target)
+{
+  return (new ShrubberyCreationForm(target));
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////EXEPTIONS///////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-
-
+const char *Intern::Input_could_not_be_found() const throw() {
+  return ("Input coudln't be found");
+}
