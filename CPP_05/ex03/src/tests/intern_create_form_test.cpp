@@ -6,22 +6,62 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:47:54 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/14 04:48:28 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/14 09:15:37 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
 
-void intern_create_form_test()
+
+void intern_create_form_works()
+{
+  AForm *test_form;
+  Intern fred;
+  Bureaucrat thomas("Thomas", 5);
+  std::string message;
+
+  std::cout << std::endl;
+  message = "---------Intern Tyies to create Form: Success---------\n";
+  print_message_with_level(message, TEST);
+  try
+  {
+    test_form = fred.makeForm("presidential paradon", "Mr. Jakson");
+    message = "YES intern good job, you created a form";
+    print_message_with_level(message, NOTE);
+  }
+  catch (std::exception &exception)
+  {
+    message = "Oh no! That does not work!: " + std::string(exception.what());
+    print_message_with_level(message, NOTE);
+    return ;
+  }
+  test_form->be_signed(thomas);
+  thomas.sign_form(*test_form);
+  thomas.executeForm(*test_form);
+  delete test_form;
+}
+
+void intern_create_form_fails()
 {
 
- // AForm *test_form;
- // Intern fred;
- // Bureaucrat thomas("Thomas", 1);
+  AForm *test_form;
+  Intern fred;
+  Bureaucrat thomas("Thomas", 5);
+  std::string message;
 
-//  test_form = fred.makeForm("presidential_form", "Mr. hundu");
-
- // test_form->be_signed(thomas);
- // thomas.sign_form(*test_form);
-  //thomas.executeForm(*test_form);
+  std::cout << std::endl;
+  message = "---------Intern Tyies to create Form: Fail---------\n";
+  print_message_with_level(message, TEST);
+  try
+  {
+    test_form = fred.makeForm("Wrong Form", "Mr. Jakson");
+    message = "YES intern good job, you created a form";
+    print_message_with_level(message, NOTE);
+  }
+  catch (std::exception &exception)
+  {
+    message = "Oh no! That does not work!: " + std::string(exception.what());
+    print_message_with_level(message, NOTE);
+  }
+  (void) test_form;
 }

@@ -9,7 +9,8 @@
 void print_message_with_level(std::string message, int level);
 
 //TEST
-void intern_create_form_test();
+void intern_create_form_fails();
+void intern_create_form_works();
 
 //String manipulation
 void  capitalize_string(const std::string &str, std::string &destination);

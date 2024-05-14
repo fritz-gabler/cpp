@@ -16,7 +16,7 @@ class Intern
     AForm *makeForm(const std::string &, const std::string &) const;
 
     //EXEPTIONS
-    class Input_form_could_be_found : public std::exception {
+    class Input_form_could_not_be_found : public std::exception {
       public:
         virtual const char *what() const throw();
     };

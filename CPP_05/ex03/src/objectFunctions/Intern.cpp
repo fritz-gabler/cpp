@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 16:29:05 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/14 06:41:41 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/14 08:38:47 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void Intern::get_string_type(const std::string &string, int &type) const {
     }
   }
   type = -1;
-  throw Input_form_could_be_found();
+  throw Input_form_could_not_be_found();
 }
 
 AForm *Intern::presidential_pardon_form_create(const std::string &target) {
@@ -84,6 +84,6 @@ AForm *Intern::shrubbery_creation_form_create(const std::string &target) {
 ///////////////////////////////////EXEPTIONS///////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-const char *Intern::Input_form_could_be_found::what() const throw() {
-  return ("Input coudln't be found");
+const char *Intern::Input_form_could_not_be_found::what() const throw() {
+  return ("Input couldn't be found");
 }

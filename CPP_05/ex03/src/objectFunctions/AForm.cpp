@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:11:46 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/11 09:39:06 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/14 07:19:33 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ AForm::~AForm() {}
 void AForm::be_signed(const Bureaucrat &bueraucrat) {
   if (is_signed_ == true)
     return;
-  if (required_grade_to_sign_ <= bueraucrat.get_grade())
+  if (bueraucrat.get_grade() > required_grade_to_sign_)
     throw GradeTooLowException();
   is_signed_ = true;
 }

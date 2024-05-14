@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 17:30:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 11:06:14 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/14 08:33:22 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
   form_execution_check(executor);
   std::string message;
   message =
-      "Message From the President: " + target_ + "get's pardoned by " + name_;
+      "Message From the President: " + target_ + " get's pardoned by " + name_;
   print_message_with_level(message, NOTE);
 }

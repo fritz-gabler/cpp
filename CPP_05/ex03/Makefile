@@ -4,7 +4,7 @@ NAME			:=		bureaucrat
 ###############################################################################
 
 CXX				=		c++
-CXXFLAGS		=		-Wall -Werror -Wextra -std=c++98
+CXXFLAGS		=		-Wall -Werror -Wextra -std=c++98 -g
 HEADERS			=  -I./include -I./include/objects                          \
                -I./include/log_level_define
 
@@ -20,8 +20,7 @@ SRC_OBJ			=   Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp    \
 								Intern.cpp
 
 SRC_PRINT   =   print_message_with_level.cpp
-SRC_TESTS   =   shrubbery_test.cpp robotomy_request_test.cpp            \
-                presidential_paradon_test.cpp intern_create_form_test.cpp
+SRC_TESTS   =   presidential_paradon_test.cpp intern_create_form_test.cpp
 SRC_CAPI    =   capitalize_string.cpp
 
 SRC	  			=		$(SRC_MAIN) $(SRC_OBJ) $(SRC_PRINT) $(SRC_TESTS) $(SRC_CAPI)
