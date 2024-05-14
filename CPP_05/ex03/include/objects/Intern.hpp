@@ -8,13 +8,12 @@ class Intern
   public:
     //Constructors and Destructors
     Intern();
-    Intern(const Intern &intern);
-    Intern operator = (const Intern &intern);
+    Intern(const Intern &);
+    Intern &operator = (const Intern &);
     ~Intern();
 
     //Memberfunctions
-    AForm &makeForm(std::string &form_name, const std::string &target_form);
-    void get_string_type(std::string &string, int &type);
+    AForm *makeForm(const std::string &, const std::string &) const;
 
     //EXEPTIONS
     class Input_form_could_be_found : public std::exception {
@@ -22,12 +21,18 @@ class Intern
         virtual const char *what() const throw();
     };
   private:
-    AForm *presidential_pardon_form_create(const std::string &target);
-    AForm *robotomy_request_form_create(const std::string &target);
-    AForm *shrubbery_creation_form_create(const std::string &target);
 
-    static const char form_types_[NUMBER_OF_FORMS];
-    static const AForm return_form_[NUMBER_OF_FORMS];
+    //Privte memberfunctinos
+    void   get_string_type(const std::string &string, int &type) const;
+
+    typedef AForm* (*pfn_return_form)(const std::string &);
+    static AForm *presidential_pardon_form_create(const std::string &target);
+    static AForm *robotomy_request_form_create(const std::string &target);
+    static AForm *shrubbery_creation_form_create(const std::string &target);
+
+    //Pointer to memberfunction
+    static const char *form_types_[NUMBER_OF_FORMS];
+    static const pfn_return_form return_form_[NUMBER_OF_FORMS];
 };
 
 #endif

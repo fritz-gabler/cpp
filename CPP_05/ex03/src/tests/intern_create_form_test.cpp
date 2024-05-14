@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_manipulation.cpp                            :+:      :+:    :+:   */
+/*   intern_create_form_test.cpp                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/11 17:10:57 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/11 18:49:27 by fgabler          ###   ########.fr       */
+/*   Created: 2024/05/13 19:47:54 by fgabler           #+#    #+#             */
+/*   Updated: 2024/05/14 04:48:28 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
 
-void  capitalize_string(std::string &str)
+void intern_create_form_test()
 {
-  for(int i = 0; str[i] != '\0'; i++)
-  {
-    str[i] = std::toupper(str[i]);
-  }
+
+ // AForm *test_form;
+ // Intern fred;
+ // Bureaucrat thomas("Thomas", 1);
+
+//  test_form = fred.makeForm("presidential_form", "Mr. hundu");
+
+ // test_form->be_signed(thomas);
+ // thomas.sign_form(*test_form);
+  //thomas.executeForm(*test_form);
 }
