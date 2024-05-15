@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:47:54 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/14 09:15:37 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/15 07:36:01 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void intern_create_form_works()
 {
   AForm *test_form;
   Intern fred;
-  Bureaucrat thomas("Thomas", 5);
+  Bureaucrat thomas("Thomas", 26);
   std::string message;
 
   std::cout << std::endl;
@@ -35,7 +35,6 @@ void intern_create_form_works()
     print_message_with_level(message, NOTE);
     return ;
   }
-  test_form->be_signed(thomas);
   thomas.sign_form(*test_form);
   thomas.executeForm(*test_form);
   delete test_form;
