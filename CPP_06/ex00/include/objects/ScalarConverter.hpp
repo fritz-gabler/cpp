@@ -25,6 +25,8 @@ class ScalarConverter
     static bool is_special_double_value(const std::string &);
     static bool is_special_float_value(const std::string &);
     static bool is_negative_infinity(const std::string &);
+  private:
+    static std::string message_;
 };
 
 #endif
