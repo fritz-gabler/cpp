@@ -4,7 +4,7 @@
 #include "define.hpp"
 
 //Input parsing
-bool input_parsing(int ac);
+bool input_parsing(int ac, char **av);
 
 
 //Log
