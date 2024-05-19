@@ -4,7 +4,7 @@ NAME			:=		scalar_converter
 ###############################################################################
 
 CXX				=		c++
-CXXFLAGS		=		-Wall -Werror -Wextra -std=c++98
+CXXFLAGS		=		-Wall -Werror -Wextra -std=c++98 -g
 HEADERS			=		-I./include -I./include/objects
 
 ###############################################################################

@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:50:52 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/17 16:44:47 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/17 17:46:55 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool input_parsing(int ac, char **av) {
   }
   else if (is_str_number(av[1]) == true && is_str_alpha(av[1]) == true)
   {
-    log("Mixed input: mixing numbers and alphabetical char is invalide", ERROR);
+    log("Mixed input: mixing numbers and alphabeticals is invalide", ERROR);
     return (false);
   }
   return (true);

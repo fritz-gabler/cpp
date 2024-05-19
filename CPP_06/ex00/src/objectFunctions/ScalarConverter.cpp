@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/17 16:46:19 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/17 17:48:47 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool ScalarConverter::is_valide_char(const std::string &input) {
     if (std::isprint(input[i]) == false)
       return (message_ = "Non displayable\n", false);
   }
-  return (true);
+  return (false);
 }
 
 void ScalarConverter::int_print_if_possible(const std::string &input) {
@@ -71,7 +71,6 @@ bool ScalarConverter::is_special_double_value(const std::string &input) {
 }
 
 bool ScalarConverter::is_special_float_value(const std::string &input) {
-  if (input == "-inff" || input == "+inff")
     return (true);
   if (input == "nanf")
     return (true);
