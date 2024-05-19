@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/19 12:59:57 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/19 19:09:14 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <cstring>
 #include <limits.h>
 #include <stdlib.h>
+#include <iomanip>
 
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////CONSTRUCTOR AND DESTRUCTOR/////////////////////////
@@ -38,6 +39,9 @@ ScalarConverter::~ScalarConverter() {}
 
 void ScalarConverter::convert(const std::string &input) {
   char_print_if_possible(input);
+  int_print_if_possible(input);
+  float_print_if_possible(input);
+  double_print_if_possible(input);
 }
 
 void ScalarConverter::char_print_if_possible(const std::string &input) {
@@ -53,10 +57,12 @@ bool ScalarConverter::is_valid_char(const std::string &input) {
   if (is_special_double_value(input) == true ||
       is_special_float_value(input) == true)
     return (message_ = "impossible\n", false);
-  long int check_number;
 
-  check_number = std::stol(input);
-  for (int i = 0; input[i] != '\0'; i++) {
+  if (std::isalpha(input[0]) != 0)
+  {
+    int check_number;
+
+    check_number = atoi(input.c_str());
     if (check_number < MIN_PRINTABLE || check_number > MAX_PRINTABLE)
       return (message_ = "Non displayable\n", false);
   }
@@ -64,11 +70,39 @@ bool ScalarConverter::is_valid_char(const std::string &input) {
 }
 
 void ScalarConverter::int_print_if_possible(const std::string &input) {
-  static_cast<void>(input);
-//  if (is_str_convertible_to_int(input) == false)
-//    std::cout << message_;
-//    return ;
-  //std::cout << "int: " << static_cast<int>()
+  if (is_str_convertible_to_int(input) == false) {
+    std::cout << "int: " << message_;
+    return ;
+  }
+  std::cout << "int: " << static_cast<int>(std::atoi(input.c_str())) << "\n";
+}
+
+void ScalarConverter::float_print_if_possible(const std::string &input)
+{
+  try
+  {
+    float str_as_float = static_cast<float>(std::stof(input));
+    if (fmod(str_as_float, 1.0) == 0)
+      std::cout << std::fixed << std::setprecision(1);
+    std::cout << "float: " << str_as_float << "f" << std::endl;
+  }
+  catch (std::exception &exception)
+  {
+    std::cout << "float: " << message_ << std::endl;
+  }
+}
+
+void ScalarConverter::double_print_if_possible(const std::string &input)
+{
+  try
+  {
+    double str_as_double = static_cast<double>(std::stof(input));
+    std::cout << "double: " << str_as_double << std::endl;
+  }
+  catch (std::exception &exception)
+  {
+    std::cout << "double: " << message_ << std::endl;
+  }
 }
 
 bool ScalarConverter::is_special_double_value(const std::string &input) {
