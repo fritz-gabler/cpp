@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:50:52 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/19 10:41:16 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/19 11:22:21 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ static bool is_alpha_in_str(char *str)
     if (std::isalpha(str[i]) != false)
       return (true);
   }
-  std::cout << "str numb: true\n";
   return (false);
 }

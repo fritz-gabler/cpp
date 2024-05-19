@@ -23,7 +23,7 @@ typedef enum e_log_level
   EXCEPTION = 4
 } t_log_level;
 
-#define MIN_ASCII_PRINTABLE 32
-#define MAX_ASCII_PRINTABLE 126
+#define MIN_PRINTABLE 32
+#define MAX_PRINTABLE 126
 
 #endif

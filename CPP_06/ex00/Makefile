@@ -10,14 +10,16 @@ HEADERS			=		-I./include -I./include/objects
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		src src/objectFunctions src/input_parsing src/log_function
+VPATH			:=		src src/objectFunctions src/input_parsing             \
+								src/log_function src/string_check
 
 SRC_MAIN		=		main.cpp
 SRC_LOG		  =		log.cpp
 SRC_PARS		=		input_parsing.cpp
 SRC_OBJS		=		ScalarConverter.cpp
+SRC_CHECK   =   is_str_convertible_to_int.cpp
 
-SRC				=		$(SRC_MAIN) $(SRC_PARS) $(SRC_LOG) $(SRC_OBJS)
+SRC				=		$(SRC_MAIN) $(SRC_PARS) $(SRC_LOG) $(SRC_OBJS) $(SRC_CHECK)
 
 ###############################################################################
 ###############################################################################
