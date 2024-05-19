@@ -10,5 +10,7 @@ bool input_parsing(int ac, char **av);
 //Log
 void log(std::string message, t_log_level level);
 
+//String check
+bool is_str_convertible_to_int(std::string &str);
 #endif
 
