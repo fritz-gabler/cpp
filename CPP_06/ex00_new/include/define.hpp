@@ -1,6 +1,8 @@
 #ifndef DEFINE_HPP
 #define DEFINE_HPP
 
+//ENUMS
+
 typedef enum e_colors
 {
   red = 0,
@@ -23,7 +25,14 @@ typedef enum e_log_level
   EXCEPTION = 4
 } t_log_level;
 
+//NUMBER DEFINES
+
 #define MIN_PRINTABLE 32
 #define MAX_PRINTABLE 126
+
+//MESSAGES
+
+#define WRONG_ARGS  "Wrong number of arguments. Input one argument: ./scalaConverter arg"
+#define MIXED_INPUT "Mixed Input: input number or chars, not both mixed together"
 
 #endif
