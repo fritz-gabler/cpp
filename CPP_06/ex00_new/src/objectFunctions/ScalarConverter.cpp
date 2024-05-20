@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/20 12:04:02 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/20 12:45:36 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 ScalarConverter::ScalarConverter() : 
   input_(NULL),
+  type_(NOT_DEFINED),
   char_converted_(0),
   int_converted_(0),
   float_converted_(0),
@@ -33,6 +34,7 @@ ScalarConverter::ScalarConverter() :
 
 ScalarConverter::ScalarConverter(const std::string &input) :
   input_(input),
+  type_(NOT_DEFINED),
   char_converted_(0),
   int_converted_(0),
   float_converted_(0),
@@ -40,6 +42,7 @@ ScalarConverter::ScalarConverter(const std::string &input) :
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other) :
   input_(other.input_),
+  type_(other.type_),
   char_converted_(other.int_converted_),
   int_converted_(other.char_converted_),
   float_converted_(other.float_converted_),
@@ -62,6 +65,7 @@ ScalarConverter::~ScalarConverter() {}
 void ScalarConverter::convert(const std::string &input) {
   ScalarConverter converter(input);
 
+  converter.set_type_due_to_first_char(input);
   if (converter.class_input_check(input))
     return ;
 }
@@ -103,4 +107,12 @@ bool ScalarConverter::is_number_in_str(const std::string &input) const
       return (true);
   }
   return (false);
+}
+
+void ScalarConverter::set_type_due_to_first_char(const std::string &input)
+{
+  if (std::isdigit(input[0]) != 0 || (input[0] == '-' || input[0] == '+'))
+    type_ = INT;
+  else if (std::isalpha(input[0]) != false)
+    type_ = CHAR;
 }

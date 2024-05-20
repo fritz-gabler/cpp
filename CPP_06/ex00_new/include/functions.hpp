@@ -2,6 +2,7 @@
 #define FUNCTIONS_HPP
 
 #include "define.hpp"
+#include <iostream>
 
 //Input parsing
 bool input_check(int ac);

@@ -32,7 +32,7 @@ typedef enum e_log_level
 
 //MESSAGES
 
-#define WRONG_ARGS  "Wrong number of arguments. Input one argument: ./scalaConverter arg"
+#define WRONG_ARGS  "Wrong number of arguments. Input one argument: ./scalaConverter 1Arg"
 #define MIXED_INPUT "Mixed Input: input number or chars, not both mixed together"
 
 #endif

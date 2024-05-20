@@ -23,8 +23,19 @@ class ScalarConverter
     bool is_char_in_str(const std::string &) const;
     bool is_number_in_str(const std::string &) const;
     bool wrong_signs(const std::string &) const ;
+    void set_type_due_to_first_char(const std::string &);
+
+    typedef enum e_type
+    {
+      NOT_DEFINED = 0,
+      INT = 1,
+      CHAR = 2,
+      FLOAT = 3,
+      DOUBLE = 4
+    } s_type;
 
     std::string  input_;
+    s_type       type_;
     char         char_converted_;
     int          int_converted_;
     float        float_converted_;
