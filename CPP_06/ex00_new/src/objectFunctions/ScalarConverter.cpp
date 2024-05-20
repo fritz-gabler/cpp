@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/19 19:09:14 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/20 12:04:02 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,33 @@
 ////////////////////////////CONSTRUCTOR AND DESTRUCTOR/////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-ScalarConverter::ScalarConverter() {}
+ScalarConverter::ScalarConverter() : 
+  input_(NULL),
+  char_converted_(0),
+  int_converted_(0),
+  float_converted_(0),
+  double_converted_(0) {}
 
-ScalarConverter::ScalarConverter(const ScalarConverter &) {}
 
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &) {
+ScalarConverter::ScalarConverter(const std::string &input) :
+  input_(input),
+  char_converted_(0),
+  int_converted_(0),
+  float_converted_(0),
+  double_converted_(0) {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &other) :
+  input_(other.input_),
+  char_converted_(other.int_converted_),
+  int_converted_(other.char_converted_),
+  float_converted_(other.float_converted_),
+  double_converted_(other.double_converted_) {}
+
+
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
+  if(this != &other)
+    *this = other;
   return (*this);
 }
 
@@ -38,85 +60,47 @@ ScalarConverter::~ScalarConverter() {}
 ///////////////////////////////////////////////////////////////////////////////
 
 void ScalarConverter::convert(const std::string &input) {
-  char_print_if_possible(input);
-  int_print_if_possible(input);
-  float_print_if_possible(input);
-  double_print_if_possible(input);
+  ScalarConverter converter(input);
+
+  if (converter.class_input_check(input))
+    return ;
 }
 
-void ScalarConverter::char_print_if_possible(const std::string &input) {
-  if (is_valid_char(input) == false) {
-    std::cout << "char: " + message_;
-    message_ = "impossible\n";
-  }
-  else
-    std::cout << "char: '" << static_cast<char>(atoi(input.c_str())) << "'\n";
-}
+bool ScalarConverter::class_input_check(const std::string &input) const
+{
 
-bool ScalarConverter::is_valid_char(const std::string &input) {
-  if (is_special_double_value(input) == true ||
-      is_special_float_value(input) == true)
-    return (message_ = "impossible\n", false);
-
-  if (std::isalpha(input[0]) != 0)
+  if (mixed_input(input) == true)
   {
-    int check_number;
-
-    check_number = atoi(input.c_str());
-    if (check_number < MIN_PRINTABLE || check_number > MAX_PRINTABLE)
-      return (message_ = "Non displayable\n", false);
+    log(MIXED_INPUT, ERROR);
+    return false;
   }
+    
   return (true);
 }
 
-void ScalarConverter::int_print_if_possible(const std::string &input) {
-  if (is_str_convertible_to_int(input) == false) {
-    std::cout << "int: " << message_;
-    return ;
-  }
-  std::cout << "int: " << static_cast<int>(std::atoi(input.c_str())) << "\n";
-}
-
-void ScalarConverter::float_print_if_possible(const std::string &input)
+bool ScalarConverter::mixed_input(const std::string &input) const
 {
-  try
-  {
-    float str_as_float = static_cast<float>(std::stof(input));
-    if (fmod(str_as_float, 1.0) == 0)
-      std::cout << std::fixed << std::setprecision(1);
-    std::cout << "float: " << str_as_float << "f" << std::endl;
-  }
-  catch (std::exception &exception)
-  {
-    std::cout << "float: " << message_ << std::endl;
-  }
-}
-
-void ScalarConverter::double_print_if_possible(const std::string &input)
-{
-  try
-  {
-    double str_as_double = static_cast<double>(std::stof(input));
-    std::cout << "double: " << str_as_double << std::endl;
-  }
-  catch (std::exception &exception)
-  {
-    std::cout << "double: " << message_ << std::endl;
-  }
-}
-
-bool ScalarConverter::is_special_double_value(const std::string &input) {
-  if (input == "-inf" || input == "+inf")
-    return (true);
-  if (input == "nan")
+  if (is_char_in_str(input) == true && is_number_in_str(input) == true)
     return (true);
   return (false);
 }
 
-bool ScalarConverter::is_special_float_value(const std::string &input) {
-  if (input == "nanf")
-    return (true);
+bool ScalarConverter::is_char_in_str(const std::string &input) const
+{
+  for(int i = 0; input[i] != '\0'; i++)
+  {
+    if (std::isalpha(input[i]) != false)
+      return (true);
+  }
   return (false);
 }
 
-std::string ScalarConverter::message_ = "impossible\n";
+bool ScalarConverter::is_number_in_str(const std::string &input) const
+{
+  for(int i = 0; input[i] != '\0'; i++)
+  {
+    if (std::isdigit(input[i]) != false)
+      return (true);
+  }
+  return (false);
+}
