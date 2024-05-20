@@ -8,25 +8,27 @@ class ScalarConverter
   public:
     //Constructor and Destructors
     ScalarConverter(void);
+    ScalarConverter(const std::string &input);
     ScalarConverter(const ScalarConverter &other);
     ScalarConverter &operator = (const ScalarConverter &other);
     ~ScalarConverter(void);
 
     //Methods
-
     static void convert(const std::string &);
-    static void char_print_if_possible(const std::string &);
-    static void int_print_if_possible(const std::string &);
-    static void float_print_if_possible(const std::string &);
-    static void double_print_if_possible(const std::string &);
 
-    //Input check
-    static bool is_valid_char(const std::string &);
-    static bool is_special_double_value(const std::string &);
-    static bool is_special_float_value(const std::string &);
-    static bool is_negative_infinity(const std::string &);
   private:
-    static std::string message_;
+    //Input check
+    bool class_input_check(const std::string &) const;
+    bool mixed_input(const std::string &) const ;
+    bool is_char_in_str(const std::string &) const;
+    bool is_number_in_str(const std::string &) const;
+    bool wrong_signs(const std::string &) const ;
+
+    std::string  input_;
+    char         char_converted_;
+    int          int_converted_;
+    float        float_converted_;
+    double       double_converted_;
 };
 
 #endif
