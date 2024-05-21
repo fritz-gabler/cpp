@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/21 08:49:10 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/21 18:34:58 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,14 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 ScalarConverter::ScalarConverter() : 
-  input_(NULL),
   type_(NOT_DEFINED),
   char_converted_(0),
   int_converted_(0),
   float_converted_(0),
   double_converted_(0) {}
 
-
-ScalarConverter::ScalarConverter(const std::string &input) :
-  input_(input),
-  type_(NOT_DEFINED),
-  char_converted_(0),
-  int_converted_(0),
-  float_converted_(0),
-  double_converted_(0) {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other) :
-  input_(other.input_),
   type_(other.type_),
   char_converted_(other.int_converted_),
   int_converted_(other.char_converted_),
@@ -63,10 +53,10 @@ ScalarConverter::~ScalarConverter() {}
 ///////////////////////////////////////////////////////////////////////////////
 
 void ScalarConverter::convert(const std::string &input) {
-  ScalarConverter converter(input);
+  ScalarConverter converter;
 
   converter.set_type_due_to_first_char(input);
-  if (converter.class_input_check(input))
+  if (converter.class_input_check(input) == false)
     return ;
 }
 

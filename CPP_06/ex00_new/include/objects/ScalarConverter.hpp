@@ -8,7 +8,6 @@ class ScalarConverter
   public:
     //Constructor and Destructors
     ScalarConverter(void);
-    ScalarConverter(const std::string &input);
     ScalarConverter(const ScalarConverter &other);
     ScalarConverter &operator = (const ScalarConverter &other);
     ~ScalarConverter(void);
@@ -26,6 +25,8 @@ class ScalarConverter
     bool wrong_signs(const std::string &) const ;
     bool just_valid_numbers(const std::string &) const;
     bool just_valid_chars(const std::string &) const;
+    //void convert_number(const std::string &) const;
+    //void convert_char(const std::string &) const;
 
     typedef enum e_type
     {
@@ -36,7 +37,7 @@ class ScalarConverter
       DOUBLE = 4
     } s_type;
 
-    std::string  input_;
+    //std::string  input_;
     s_type       type_;
     char         char_converted_;
     int          int_converted_;
