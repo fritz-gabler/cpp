@@ -35,6 +35,6 @@ typedef enum e_log_level {
 #define MIXED_INPUT                                                            \
   "Mixed Input: input number or chars, not both mixed together"
 #define WRONG_SIGNS                                                            \
-  "Wrong signs found: just character or numbers with -/+ at the beginning "
+  "Wrong signs found: just one character or numbers with -/+ at the beginning "
 
 #endif
