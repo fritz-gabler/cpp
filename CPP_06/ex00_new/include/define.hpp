@@ -1,10 +1,9 @@
 #ifndef DEFINE_HPP
 #define DEFINE_HPP
 
-//ENUMS
+// ENUMS
 
-typedef enum e_colors
-{
+typedef enum e_colors {
   red = 0,
   dark_green = 1,
   gress_green = 2,
@@ -16,8 +15,7 @@ typedef enum e_colors
   reset = 8
 } t_colors;
 
-typedef enum e_log_level
-{
+typedef enum e_log_level {
   TEST = 0,
   WARNING = 1,
   ERROR = 2,
@@ -25,14 +23,18 @@ typedef enum e_log_level
   EXCEPTION = 4
 } t_log_level;
 
-//NUMBER DEFINES
+// NUMBER DEFINES
 
 #define MIN_PRINTABLE 32
 #define MAX_PRINTABLE 126
 
-//MESSAGES
+// MESSAGES
 
-#define WRONG_ARGS  "Wrong number of arguments. Input one argument: ./scalaConverter 1Arg"
-#define MIXED_INPUT "Mixed Input: input number or chars, not both mixed together"
+#define WRONG_ARGS                                                             \
+  "Wrong number of arguments. Input one argument: ./scalaConverter 1Arg"
+#define MIXED_INPUT                                                            \
+  "Mixed Input: input number or chars, not both mixed together"
+#define WRONG_SIGNS                                                            \
+  "Wrong signs found: just character or numbers with -/+ at the beginning "
 
 #endif

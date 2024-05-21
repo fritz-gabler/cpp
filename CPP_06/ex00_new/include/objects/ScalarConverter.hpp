@@ -18,12 +18,14 @@ class ScalarConverter
 
   private:
     //Input check
+    void set_type_due_to_first_char(const std::string &);
     bool class_input_check(const std::string &) const;
     bool mixed_input(const std::string &) const ;
     bool is_char_in_str(const std::string &) const;
     bool is_number_in_str(const std::string &) const;
     bool wrong_signs(const std::string &) const ;
-    void set_type_due_to_first_char(const std::string &);
+    bool just_valid_numbers(const std::string &) const;
+    bool just_valid_chars(const std::string &) const;
 
     typedef enum e_type
     {
