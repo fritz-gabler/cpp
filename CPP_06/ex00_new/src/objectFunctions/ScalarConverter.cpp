@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/21 18:34:58 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/21 19:23:07 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,12 @@ void ScalarConverter::set_type_due_to_first_char(const std::string &input)
 bool ScalarConverter::class_input_check(const std::string &input) const
 {
 
-  if (mixed_input(input) == true)
+  if (is_special_number_sigh(input) == true)
+    return (true);
+  else if (mixed_input(input) == true)
   {
     log(MIXED_INPUT, ERROR);
-    return false;
+    return (false);
   }
   else if (wrong_signs(input) == true)
   {
@@ -83,6 +85,13 @@ bool ScalarConverter::class_input_check(const std::string &input) const
   }
 
   return (true);
+}
+
+bool ScalarConverter::is_special_number_sigh(const std::string &input) const
+{
+  if (input == "-inf" || input == "+inf" || input == "nan")
+    return (true);
+  return (false);
 }
 
 bool ScalarConverter::mixed_input(const std::string &input) const
@@ -148,10 +157,29 @@ bool ScalarConverter::just_valid_numbers(const std::string &input) const
 
 bool ScalarConverter::just_valid_chars(const std::string &input) const
 {
-  for(int i = 0; input[i] != '\0'; i++)
-  {
-    if (std::isalpha(input[i]) == false)
-      return (false);
-  }
-  return (true);
+  if (std::isalpha(input[0]) != false && input.length() == 1)
+      return (true);
+  return (false);
+}
+
+/*
+void ScalarConverter::convert_all_types(const std::string &input) const
+{
+  
+}
+*/
+
+void ScalarConverter::char_convert(const std::string &input)
+{
+  if (type_ == CHAR)
+    char_converted_ = input[0];
+  else if (type_ == INT && )
+    char_converted_ = static_cast<char>(std::atoi(input.c_str()));
+}
+
+bool ScalarConverter::is_in_int_range(const std::string &input) const
+{
+  if (input.length() > 11)
+    return (false);
+  else if ()
 }
