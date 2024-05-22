@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/22 13:27:50 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/22 16:49:57 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void ScalarConverter::set_type_due_to_first_char(const std::string &input)
     type_ = INT;
   else if (std::isalpha(input[0]) != false)
     type_ = CHAR;
+  else
+    type_ = NOT_DEFINED;
 }
 
 bool ScalarConverter::class_input_check(const std::string &input) const
@@ -86,12 +88,11 @@ bool ScalarConverter::class_input_check(const std::string &input) const
     log(MIXED_INPUT, ERROR);
     return (false);
   }
-  else if (wrong_signs(input) == true)
+  else if (wrong_signs(input) == true || type_ == NOT_DEFINED)
   {
     log(WRONG_SIGNS, ERROR);
     return (false);
   }
-
   return (true);
 }
 
@@ -141,12 +142,14 @@ bool ScalarConverter::wrong_signs(const std::string &input) const
 bool ScalarConverter::just_valid_numbers(const std::string &input) const
 {
   int i;
+  int start_index;
   int found_decimal;
 
   i = 0;
   found_decimal = 0;
   if (input[0] == '-' || input[0] == '+')
     i = 1;
+  start_index = i;
   while (input[i] != '\0')
   {
     if (input[i] == '.' && found_decimal == 0)
@@ -160,6 +163,8 @@ bool ScalarConverter::just_valid_numbers(const std::string &input) const
       return (false);
     i++;
   }
+  if (i == start_index)
+    return (false);
   return (true);
 }
 
