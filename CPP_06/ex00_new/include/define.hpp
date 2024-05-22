@@ -29,7 +29,6 @@ typedef enum e_log_level {
 #define MAX_PRINTABLE 126
 
 // MESSAGES
-
 #define WRONG_ARGS                                                             \
   "Wrong number of arguments. Input one argument: ./scalaConverter 1Arg"
 #define MIXED_INPUT                                                            \

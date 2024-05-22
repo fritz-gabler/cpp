@@ -15,6 +15,20 @@ class ScalarConverter
     //Methods
     static void convert(const std::string &);
 
+
+  private:
+    typedef enum e_type
+    {
+      CHAR = 0,
+      INT = 1,
+      FLOAT = 2,
+      DOUBLE = 3,
+      NOT_A_NUMBER = 4,
+      NEG_INF = 5,
+      POS_INF = 6,
+      NOT_DEFINED = 7
+    } s_type;
+
     void set_type_due_to_first_char(const std::string &);
     bool class_input_check(const std::string &) const;
     bool is_special_number_sigh(const std::string &) const;
@@ -32,28 +46,14 @@ class ScalarConverter
     void int_convert(const std::string &);
     void float_convert(const std::string &);
     void double_convert(const std::string &);
+    void print_converted_types() const;
 
-  private:
-
-    typedef enum e_type
-    {
-      CHAR = 0,
-      INT = 1,
-      FLOAT = 2,
-      DOUBLE = 3,
-      NOT_A_NUMBER = 4,
-      NEG_INF = 5,
-      POS_INF = 6,
-      NOT_DEFINED = 7
-    } s_type;
-
-    //std::string  input_;
     s_type       type_;
     char         char_converted_;
     int          int_converted_;
     float        float_converted_;
     double       double_converted_;
-    std::string  error_message[4];
+    std::string  error_message_[4];
 };
 
 #endif
