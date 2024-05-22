@@ -24,10 +24,11 @@ class ScalarConverter
     bool wrong_signs(const std::string &) const ;
     bool just_valid_numbers(const std::string &) const;
     bool just_valid_chars(const std::string &) const;
-    void convert_all_types(const std::string &) const;
+    void convert_all_types(const std::string &);
     void char_convert(const std::string &);
     bool is_in_int_range(const std::string &) const;
-    bool in_printable(const std::string &) const;
+    bool is_printable(const std::string &) const;
+    bool is_ascii(const std::string &) const;
     void int_convert(const std::string &);
     void float_convert(const std::string &);
     void double_convert(const std::string &);
