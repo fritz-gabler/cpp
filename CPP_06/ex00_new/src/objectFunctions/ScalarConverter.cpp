@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/21 19:23:07 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/22 09:22:38 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,13 +173,31 @@ void ScalarConverter::char_convert(const std::string &input)
 {
   if (type_ == CHAR)
     char_converted_ = input[0];
-  else if (type_ == INT && )
+  else if (type_ == INT && in_ascii_range(input) == true)
     char_converted_ = static_cast<char>(std::atoi(input.c_str()));
+  else if (is_pr(input) == false)
+    error_message[CHAR] = "input message";
+  j
+}
+
+bool ScalarConverter::in_printable(const std::string &input) const
+{
+  if (is_in_int_range(input) == false)
+    return (false);
+  int number;
+
+  number = static_cast<int>(std::atoi(input.c_str()));
+  if (number < MIN_PRINTABLE || number > MAX_PRINTABLE)
+    return (false);
 }
 
 bool ScalarConverter::is_in_int_range(const std::string &input) const
 {
   if (input.length() > 11)
     return (false);
-  else if ()
+  long int number;
+  number = static_cast<long int>(std::atol(input_c_str());
+  if (number < INT_MIN || number > INT_MAX )
+    return (false);
 }
+
