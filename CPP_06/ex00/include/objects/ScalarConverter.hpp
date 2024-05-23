@@ -7,10 +7,10 @@ class ScalarConverter
 {
   public:
     //Constructor and Destructors
-    ScalarConverter(void);
+    ScalarConverter();
     ScalarConverter(const ScalarConverter &other);
     ScalarConverter &operator = (const ScalarConverter &other);
-    ~ScalarConverter(void);
+    ~ScalarConverter();
 
     //Methods
     static void convert(const std::string &);
