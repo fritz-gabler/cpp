@@ -6,7 +6,7 @@ class Data
   public:
     Data();
     Data(const Data &other);
-    Data &operator = (const Data &);
+//    Data &operator = (const Data &);
     ~Data();
 
     //Member function
