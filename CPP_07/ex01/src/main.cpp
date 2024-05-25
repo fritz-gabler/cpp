@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:35:09 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/25 09:09:13 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/05/25 11:15:30 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int main()
   int str_size_of_array = 3;
   int number_size_of_array = 6;
   log("Input string array and a function to print str array, in iter function", NOTE);
-  iter<std::string>(str_array, str_size_of_array, print_str);
+  iter<std::string>(str_array, str_size_of_array, print_type<std::string>);
   log("Input number array and a function to print numbers array, in iter function", NOTE);
-  iter<int>(number_array, number_size_of_array, print_int);
+  iter<int>(number_array, number_size_of_array, print_type<int>);
   return (0);
 }

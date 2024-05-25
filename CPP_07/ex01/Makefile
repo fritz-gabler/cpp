@@ -13,10 +13,9 @@ HEADERS			=		-I./include -I./include/templates
 VPATH			:=		src src/test_function src/log_function
 
 SRC_MAIN		=		main.cpp
-SRC_TEST    =   print_function.cpp
 SRC_LOG     =   log.cpp
 
-SRC				=		$(SRC_MAIN) $(SRC_TEST) $(SRC_LOG)
+SRC				=		$(SRC_MAIN) $(SRC_LOG)
 
 ###############################################################################
 ###############################################################################
