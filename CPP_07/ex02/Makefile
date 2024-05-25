@@ -10,12 +10,13 @@ HEADERS			=		-I./include -I./include/templates
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		src src/test_function src/log_function
+VPATH			:=		src src/test_function src/log_function src/tests
 
 SRC_MAIN		=		main.cpp
 SRC_LOG     =   log.cpp
+SRC_TEST    =   selfe_created_test.cpp subject_test.cpp
 
-SRC				=		$(SRC_MAIN) $(SRC_LOG)
+SRC				=		$(SRC_MAIN) $(SRC_LOG) $(SRC_TEST)
 
 ###############################################################################
 ###############################################################################
