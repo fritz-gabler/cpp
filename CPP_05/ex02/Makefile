@@ -65,6 +65,10 @@ fclean:		clean
 		rm -f $(NAME);									\
 		echo $(GREEN)Cleaned!$(RESET);					\
 	fi
+	@if [ -f tree_shrubbery ]; then            \
+		rm -f tree_shrubbery;	                   \
+	fi
+
 
 re: fclean all
 
