@@ -6,11 +6,12 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 17:31:01 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 11:12:46 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/03 18:48:50 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
+#include <cstdlib>
 
 //////////////////////////CONSTRUCTORS AND DESTRUCTORS/////////////////////////
 
@@ -39,7 +40,7 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
   form_execution_check(executor);
   message = "Beep boop... Beep boop... Beep boop...";
   print_message_with_level(message, NOTE);
-  random_number = std::rand();
+  random_number = rand();
   if (random_number % 2 == 1){
     message = target_ + " has been robotomized successfull";
     print_message_with_level(message, NOTE);
