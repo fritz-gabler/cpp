@@ -20,7 +20,7 @@ SRC_OBJ			=   Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp    \
 								Intern.cpp
 
 SRC_PRINT   =   print_message_with_level.cpp
-SRC_TESTS   =   presidential_paradon_test.cpp intern_create_form_test.cpp
+SRC_TESTS   =   intern_create_form_test.cpp
 SRC_CAPI    =   capitalize_string.cpp
 
 SRC	  			=		$(SRC_MAIN) $(SRC_OBJ) $(SRC_PRINT) $(SRC_TESTS) $(SRC_CAPI)
