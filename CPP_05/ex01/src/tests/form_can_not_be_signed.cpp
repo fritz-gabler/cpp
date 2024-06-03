@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 16:25:31 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/09 16:54:04 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/03 18:45:19 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void form_can_not_be_signed()
   catch (Form::GradeTooLowException &) {
     message = "Caught exception GRADE TO LOW to sign from: " +
       low_level_guy.get_name() + "\n";
-    print_message_with_level(message, WARNING);
+    print_message_with_level(message, EXCEPTION);
   }
   catch (Form::GradeTooHighException &exception)
   {
     message = "Caught  exception GRADE TO HIGH to sign from: " +
       b_twenty_one.get_name() + " " + exception.what();
-    print_message_with_level(message, WARNING);
+    print_message_with_level(message, EXCEPTION);
   }
   print_message_with_level("Form status after trying to sign it:", NOTE);
   std::cout << "\n";

@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:08 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/09 14:26:35 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/03 18:45:46 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ static void print_color(int level) {
     break;
   case ERROR:
     std::cout << RED << "[ERROR] " << RESET;
+    break;
   case NOTE:
     std::cout << DARK_GREEN << "[NOTE] " << RESET;
+    break;
+  case EXCEPTION:
+    std::cout << MAGENTA << "[EXCEPTION] " << RESET;
     break;
   }
 }
