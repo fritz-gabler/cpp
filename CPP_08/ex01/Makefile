@@ -4,18 +4,20 @@ NAME			:=		changeName
 ###############################################################################
 
 CXX				=		c++
-CXXFLAGS		=		-Wall -Werror -Wextra -std=c++98
+CXXFLAGS		=		-Wall -Werror -Wextra -std=c++98 -g
 HEADERS			=		-I./include -I./include/objects
 
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		src src/objectFunctions src/log_function
+VPATH			:=		src src/object_functions src/log_function src/tests
 
 SRC_MAIN		=		main.cpp
+SRC_OBJ     =   Span.cpp
 SRC_LOG     =   log.cpp
+SRC_TEST    =   test_smalest_and_longest_span.cpp
 
-SRC				=		$(SRC_MAIN) $(SRC_LOG)
+SRC				=		$(SRC_MAIN) $(SRC_LOG) $(SRC_OBJ) $(SRC_TEST)
 
 ###############################################################################
 ###############################################################################
