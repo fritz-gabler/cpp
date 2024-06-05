@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   add_more_numbers_than_available_space.cpp          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 11:58:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/05 12:39:39 by fgabler          ###   ########.fr       */
+/*   Created: 2024/06/05 12:31:22 by fgabler           #+#    #+#             */
+/*   Updated: 2024/06/05 12:40:25 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include "header.hpp"
 
-int main()
+void add_more_numbers_than_available_space()
 {
-  test_smalest_and_longest_span();
-  add_more_numbers_than_available_space();
-  return (0);
+  std::string message;
+
+  message = "--------TEST ADDING MORE NUMBERS THAT SPACE AVAILABLE---------";
+  log(message, TEST);
+
+  Span add_to_much(2);
+
+  try
+  {
+    for (int i = 0; i < 3; i++)
+      add_to_much.add_number(i);
+    message = "adding numbers worked";
+    log(message, TEST);
+  }
+  catch(std::exception e)
+  {
+    message = static_cast<std::string>(e.what());
+    log(message, EXCEPTION);
+  }
+
 }

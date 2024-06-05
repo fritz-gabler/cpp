@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:59:52 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/05 12:25:48 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/05 12:33:58 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void test_smalest_and_longest_span()
 
   std::cout << "\n";
   message = "-------TEST SMALEST AND LONTEST SPAN-------\n";
-  log(message, NOTE);
+  log(message, TEST);
 
   Span numbers(4);
   numbers.add_number(3);
@@ -28,8 +28,8 @@ void test_smalest_and_longest_span()
   numbers.add_number(6);
   numbers.add_number(15);
 
-  log("Print SMALEST SPAN", TEST);
+  log("Print SMALEST SPAN", NOTE);
   std::cout << "SMALEST SPAN: " << numbers.shortest_span() << std::endl;
-  log("Print LONGEST SPAN", TEST);
+  log("Print LONGEST SPAN", NOTE);
   std::cout << "LONTEST SPAN: " << numbers.longest_span() << std::endl;
 }
