@@ -37,9 +37,9 @@ class ScalarConverter
     void convert_all_types(const std::string &);
     void char_convert(const std::string &);
     void convert_number(const std::string &);
+    void not_a_number_convert();
+    void infinity_convert();
     bool is_in_int_range(const std::string &) const;
-    void float_convert(const std::string &);
-    void double_convert(const std::string &);
     void print_converted_types() const;
 
     t_type       type_;

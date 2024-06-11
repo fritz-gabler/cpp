@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/11 20:11:39 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/11 21:48:57 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,16 @@ void ScalarConverter::convert(const std::string &input) {
   ScalarConverter converter;
 
   converter.set_type(input);
-  if (converter.get_type() == NOT_DEFINED)
-    return (log("Input is not definable", ERROR));
-  converter.convert_all_types(input);
-  converter.print_converted_types();
+  try
+  {
+    converter.convert_all_types(input);
+    converter.print_converted_types();
+  }
+  catch (std::exception &exception)
+  {
+    log("INVALID INPUT", EXCEPTION);
+  }
+  std::cout << "CHECK\n";
 }
 
 void ScalarConverter::set_type(const std::string &input)
@@ -154,9 +160,16 @@ void ScalarConverter::convert_all_types(const std::string &input)
       convert_number(input);
       break;
     case NOT_A_NUMBER:
+      not_a_number_convert();
+      break;
     case NEG_INF:
+      infinity_convert();
+      break;
     case POS_INF:
+      infinity_convert();
+      break;
     case NOT_DEFINED:
+      throw std::invalid_argument("Input is not definable");
       break;
   }
 }
@@ -174,12 +187,12 @@ void ScalarConverter::char_convert(const std::string &input)
 
 void ScalarConverter::convert_number(const std::string &input)
 {
-  std::string number_to_convert;
+  std::string number_to_convert = input;
 
   if (type_ == FLOAT)
-    std::memcpy(&number_to_convert, &input, input.size());
+    number_to_convert[input.size()] = '\0';
   else
-    std::memcpy(&number_to_convert, &input, input.size() + 1);
+    number_to_convert = input;
 
   std::istringstream convert(input);
 
@@ -199,11 +212,42 @@ void ScalarConverter::convert_number(const std::string &input)
   else if (std::isprint(int_converted_) == false)
     error_message_[CHAR] = "Non displayable";
 
-  convert >> float_converted_;
+  convert >> double_converted_;
+  if (convert.fail())
+    error_message_[FLOAT] =  "impossible";
   convert.clear();
   convert.str(number_to_convert);
 
-  convert >> double_converted_;
+  convert >> float_converted_;
+  if (convert.fail())
+    error_message_[DOUBLE] = "impossible";
+
+}
+
+void ScalarConverter::not_a_number_convert()
+{
+  error_message_[INT] = "impossible";
+  error_message_[CHAR] = "impossible";
+  float_converted_ = 0 / 0.0f;
+  double_converted_ = 0 / 0.0;
+}
+
+void ScalarConverter::infinity_convert()
+{
+  error_message_[INT] = "impossible";
+  error_message_[CHAR] = "impossible";
+  if (type_ == NEG_INF)
+  {
+    float_converted_ = -1 / 0.0f;
+    double_converted_ = -1 / 0.0;
+  }
+  else
+  {
+    float_converted_ = 1 / 0.0f;
+    double_converted_ = 1 / 0.0;
+  }
+
+
 }
 
 bool ScalarConverter::is_in_int_range(const std::string &input) const
@@ -236,14 +280,18 @@ void ScalarConverter::print_converted_types() const
   if ((fmod(float_converted_, 1.0) == 0) && error_message_[FLOAT] == "")
     std::cout << std::fixed << std::setprecision(1);
 
-  if (error_message_[FLOAT] == "")
+  if (error_message_[FLOAT] == "" && type_ == POS_INF)
+    std::cout << "float: +" << float_converted_ << "f" <<  std::endl;
+  else if (error_message_[FLOAT] == "")
     std::cout << "float: " << float_converted_ << "f" <<  std::endl;
   else
     std::cout << "float: " << error_message_[FLOAT] << std::endl;
 
-  if (error_message_[DOUBLE] == "")
+  if (error_message_[DOUBLE] == "" && type_ == POS_INF)
+    std::cout << "double: +" << float_converted_ <<  std::endl;
+  else if (error_message_[DOUBLE] == "")
     std::cout << "double: " << float_converted_ <<  std::endl;
   else
-    std::cout << "double: " << error_message_[INT] << std::endl;
+    std::cout << "double: " << error_message_[DOUBLE] << std::endl;
 
 }
