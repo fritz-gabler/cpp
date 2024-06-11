@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/22 16:49:57 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/11 13:34:41 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ ScalarConverter::~ScalarConverter() {}
 void ScalarConverter::convert(const std::string &input) {
   ScalarConverter converter;
 
-  converter.set_type_due_to_first_char(input);
+  converter.set_type(input);
   if (converter.class_input_check(input) == false)
     return ;
   converter.convert_all_types(input);
   converter.print_converted_types();
 }
 
-void ScalarConverter::set_type_due_to_first_char(const std::string &input)
+void ScalarConverter::set_type(const std::string &input)
 {
   if (input == "nan" || input == "nanf")
     type_ = NOT_A_NUMBER;
@@ -70,130 +70,96 @@ void ScalarConverter::set_type_due_to_first_char(const std::string &input)
     type_ = POS_INF;
   else if (input == "-inf" || input == "-inff")
     type_ = NEG_INF;
-  else if (std::isdigit(input[0]) != 0 || (input[0] == '-' || input[0] == '+'))
+  else if (is_integer(input) == true)
     type_ = INT;
-  else if (std::isalpha(input[0]) != false)
+  else if (std::isalpha(input[0]) != false && input.size() == 1)
     type_ = CHAR;
+  else if (is_float(input) == true)
+    type_ = FLOAT;
+  else if (is_double(input) == true)
+    type_ = DOUBLE;
   else
     type_ = NOT_DEFINED;
 }
 
-bool ScalarConverter::class_input_check(const std::string &input) const
+bool ScalarConverter::is_integer(const std::string &input) const
 {
-
-  if (is_special_number_sigh(input) == true)
-    return (true);
-  else if (mixed_input(input) == true)
-  {
-    log(MIXED_INPUT, ERROR);
+  if (std::isdigit(input[0]) == false && (input[0] != '-' && input[0] != '+'))
     return (false);
-  }
-  else if (wrong_signs(input) == true || type_ == NOT_DEFINED)
+  for (int i = 0; input[i] != '\0'; i++)
   {
-    log(WRONG_SIGNS, ERROR);
-    return (false);
-  }
-  return (true);
-}
-
-bool ScalarConverter::is_special_number_sigh(const std::string &input) const
-{
-  if (input == "-inf" || input == "+inf" || input == "nan" || input == "nanf")
-    return (true);
-  return (false);
-}
-
-bool ScalarConverter::mixed_input(const std::string &input) const
-{
-  if (is_char_in_str(input) == true && is_number_in_str(input) == true)
-    return (true);
-  return (false);
-}
-
-bool ScalarConverter::is_char_in_str(const std::string &input) const
-{
-  for(int i = 0; input[i] != '\0'; i++)
-  {
-    if (std::isalpha(input[i]) != false)
-      return (true);
-  }
-  return (false);
-}
-
-bool ScalarConverter::is_number_in_str(const std::string &input) const
-{
-  for(int i = 0; input[i] != '\0'; i++)
-  {
-    if (std::isdigit(input[i]) != false)
-      return (true);
-  }
-  return (false);
-}
-
-bool ScalarConverter::wrong_signs(const std::string &input) const
-{
-  if (type_ == CHAR && just_valid_chars(input) == false)
-    return (true);
-  if (type_ == INT && just_valid_numbers(input) == false)
-    return (true);
-  return (false);
-}
-
-bool ScalarConverter::just_valid_numbers(const std::string &input) const
-{
-  int i;
-  int start_index;
-  int found_decimal;
-
-  i = 0;
-  found_decimal = 0;
-  if (input[0] == '-' || input[0] == '+')
-    i = 1;
-  start_index = i;
-  while (input[i] != '\0')
-  {
-    if (input[i] == '.' && found_decimal == 0)
-    {
-      found_decimal++;
+    if (i == 0 && (input[i] == '-' && input[i] == '+'))
       i++;
-    }
-    if (found_decimal > 1)
-      return (false);
     if (std::isdigit(input[i]) == false)
       return (false);
-    i++;
   }
-  if (i == start_index)
-    return (false);
   return (true);
 }
 
-bool ScalarConverter::just_valid_chars(const std::string &input) const
+bool ScalarConverter::is_float(const std::string &input) const
 {
-  if (std::isalpha(input[0]) != false && input.length() == 1)
-      return (true);
-  return (false);
+  if (input[input.size() - 1] != 'f')
+    return (false);
+  bool decimal_point_found = false;
+  for (int i = 0; i < (input.size()); i++)
+  {
+    if (input[i] == '.' && decimal_point_found == false)
+    {
+      decimal_point_found = true;
+      i++;
+    }
+    if (std::isdigit(input[i]) == false)
+      return (false);
+  }
+  return (true);
+}
+
+bool ScalarConverter::is_double(const std::string &input) const
+{
+  bool decimal_point_found = false;
+  for (int i = 0; input[i] != '\0'; i++)
+  {
+    if (input[i] == '.' && decimal_point_found == false)
+    {
+      decimal_point_found = true;
+      i++;
+    }
+    if (std::isdigit(input[i]) == false)
+      return (false);
+  }
+  return (true);
+}
+
+s_type get_type() const
+{
+  return (type_);
 }
 
 void ScalarConverter::convert_all_types(const std::string &input)
 {
-  char_convert(input);
-  int_convert(input);
-  float_convert(input);
-  double_convert(input);
+  switch (type_)
+  {
+    case CHAR:
+      char_convert(input);
+      break;
+    case INT:
+      int_convert(input);
+      break;
+    case FLOAT:
+      float_convert(input);
+      break;
+    case DOUBLE:
+      double_convert(input);
+  }
 }
 
 void ScalarConverter::char_convert(const std::string &input)
 {
-  if (type_ == CHAR)
-    char_converted_ = input[0];
-  else if (type_ == INT && is_printable(input) == true)
-    char_converted_ = static_cast<char>(std::atoi(input.c_str()));
-  else if (type_ == NOT_A_NUMBER || type_ == POS_INF || type_ == NEG_INF)
+    std::istringstream convert(input);
+    char_converted_ = static_cast<char>(input[0]);
+    int_converted_ = static_cast<int>(input[0]);
     error_message_[CHAR] = "impossible";
-  else if (is_printable(input) == false && is_ascii(input) == true)
     error_message_[CHAR] = "Non displayable";
-  else
     error_message_[CHAR] = "impossible";
 }
 
@@ -265,7 +231,7 @@ void ScalarConverter::double_convert(const std::string &input)
   if (type_ == CHAR)
     double_converted_ = static_cast<double>(*input.c_str());
   else if (type_ == INT)
-    float_converted_ = static_cast<double>(std::stod(input));
+    float_converted_ = static_cast<double>(strtod(input.c_str(), NULL));
   else if (type_ == NOT_A_NUMBER)
     float_converted_ = 0.0 / 0.0;
   else if (type_ == POS_INF)

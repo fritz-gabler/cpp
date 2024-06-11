@@ -29,15 +29,11 @@ class ScalarConverter
       NOT_DEFINED = 7
     } s_type;
 
-    void set_type_due_to_first_char(const std::string &);
-    bool class_input_check(const std::string &) const;
-    bool is_special_number_sigh(const std::string &) const;
-    bool mixed_input(const std::string &) const ;
-    bool is_char_in_str(const std::string &) const;
-    bool is_number_in_str(const std::string &) const;
-    bool wrong_signs(const std::string &) const ;
-    bool just_valid_numbers(const std::string &) const;
-    bool just_valid_chars(const std::string &) const;
+    void set_type(const std::string &);
+    bool is_integer(const std::string &) const;
+    bool is_float(const std::string &) const;
+    bool is_double(const std::string &) const;
+    s_type get_type() const;
     void convert_all_types(const std::string &);
     void char_convert(const std::string &);
     bool is_in_int_range(const std::string &) const;
