@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/11 19:12:12 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/11 20:11:39 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@
 
 ScalarConverter::ScalarConverter() : 
   type_(NOT_DEFINED),
-  char_converted_(0),
   int_converted_(0),
+  char_converted_(0),
   float_converted_(0),
   double_converted_(0) {}
 
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other) :
   type_(other.type_),
-  char_converted_(other.int_converted_),
   int_converted_(other.char_converted_),
+  char_converted_(other.int_converted_),
   float_converted_(other.float_converted_),
   double_converted_(other.double_converted_) {}
 
@@ -103,7 +103,7 @@ bool ScalarConverter::is_float(const std::string &input) const
   if (input[input.size() - 1] != 'f')
     return (false);
   bool decimal_point_found = false;
-  for (unsigned long i = 0; i < input.size(); i++)
+  for (unsigned long i = 0; i < (input.size() - 1); i++)
   {
     if (input[i] == '.' && decimal_point_found == false)
     {
@@ -145,13 +145,13 @@ void ScalarConverter::convert_all_types(const std::string &input)
       char_convert(input);
       break;
     case INT:
-      int_convert(input);
+      convert_number(input);
       break;
     case FLOAT:
-      float_convert(input);
+      convert_number(input);
       break;
     case DOUBLE:
-      double_convert(input);
+      convert_number(input);
       break;
     case NOT_A_NUMBER:
     case NEG_INF:
@@ -172,8 +172,15 @@ void ScalarConverter::char_convert(const std::string &input)
     double_converted_ = static_cast<double>(input[0]);
 }
 
-void ScalarConverter::int_convert(const std::string &input)
+void ScalarConverter::convert_number(const std::string &input)
 {
+  std::string number_to_convert;
+
+  if (type_ == FLOAT)
+    std::memcpy(&number_to_convert, &input, input.size());
+  else
+    std::memcpy(&number_to_convert, &input, input.size() + 1);
+
   std::istringstream convert(input);
 
   if (is_in_int_range(input) == false)
@@ -182,35 +189,21 @@ void ScalarConverter::int_convert(const std::string &input)
   {
     convert >> int_converted_;
     convert.clear();
-    convert.str(input);
+    convert.str(number_to_convert);
   }
 
-  if (is_printable(input) == true)
+  if (std::isprint(int_converted_) != false)
     char_converted_ = static_cast<char>(int_converted_);
-  else if (is_ascii(input) == false)
+  else if (int_converted_ < 0 || int_converted_ > 127)
     error_message_[CHAR] = "impossible";
-  else if (is_printable(input) == false)
+  else if (std::isprint(int_converted_) == false)
     error_message_[CHAR] = "Non displayable";
 
-    convert >> float_converted_;
-    convert.clear();
-    convert.str(input);
+  convert >> float_converted_;
+  convert.clear();
+  convert.str(number_to_convert);
 
-    convert >> double_converted_;
-}
-
-bool ScalarConverter::is_printable(const std::string &input) const
-{
-  std::istringstream convert_check(input);
-  if (is_in_int_range(input) == false)
-    return (false);
-  long int number;
-
-  convert_check >> number;
-  if (number < std::numeric_limits<int>::min()
-      || number > std::numeric_limits<int>::max())
-    return (false);
-  return (true);
+  convert >> double_converted_;
 }
 
 bool ScalarConverter::is_in_int_range(const std::string &input) const
@@ -220,7 +213,6 @@ bool ScalarConverter::is_in_int_range(const std::string &input) const
     return (false);
   long int number;
 
-
   convert_check >> number;
   if (number < std::numeric_limits<int>::min()
       || number > std::numeric_limits<int>::max())
@@ -228,52 +220,6 @@ bool ScalarConverter::is_in_int_range(const std::string &input) const
   return (true);
 }
 
-bool ScalarConverter::is_ascii(const std::string &input) const
-{
-  if (is_in_int_range(input) == false)
-    return (false);
-  std::istringstream convert_check(input);
-  int number;
-
-
-  convert_check >> number;
-  if (number < 0 || number > 127)
-    return (false);
-  return (true);
-}
-
-
-void ScalarConverter::float_convert(const std::string &input)
-{
-  if (type_ == CHAR)
-    float_converted_ = static_cast<float>(*input.c_str());
-  else if (type_ == INT)
-    float_converted_ = static_cast<float>(std::atof(input.c_str()));
-  else if (type_ == NOT_A_NUMBER)
-    float_converted_ = 0.0f / 0.0f;
-  else if (type_ == POS_INF)
-    float_converted_ = 1.0f / 0.0f;
-  else if (type_ == NEG_INF)
-    float_converted_ = -1.0f / 0.0f;
-  else
-    error_message_[FLOAT] = "impossible";
-}
-
-void ScalarConverter::double_convert(const std::string &input)
-{
-  if (type_ == CHAR)
-    double_converted_ = static_cast<double>(*input.c_str());
-  else if (type_ == INT)
-    float_converted_ = static_cast<double>(strtod(input.c_str(), NULL));
-  else if (type_ == NOT_A_NUMBER)
-    float_converted_ = 0.0 / 0.0;
-  else if (type_ == POS_INF)
-    float_converted_ = 1.0 / 0.0;
-  else if (type_ == NEG_INF)
-    float_converted_ = -1.0 / 0.0;
-  else
-    error_message_[DOUBLE] = "impossible";
-}
 
 void ScalarConverter::print_converted_types() const
 {
