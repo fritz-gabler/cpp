@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:04:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/23 13:34:25 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/12 16:41:12 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ Serializer::~Serializer() {}
 ////////////////////////////////MEMBER FUNCTIONS///////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-uintptr_t Serializer::serialize(Data *ptr)
+my_uintptr_t Serializer::serialize(Data *ptr)
 {
-  return (reinterpret_cast<uintptr_t>(ptr));
+  return (reinterpret_cast<my_uintptr_t>(ptr));
 }
 
-Data *Serializer::deserialize(uintptr_t raw)
+Data *Serializer::deserialize(my_uintptr_t raw)
 {
   return (reinterpret_cast<Data*>(raw));
 }
