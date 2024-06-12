@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/11 21:48:57 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/12 08:10:47 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void ScalarConverter::convert(const std::string &input) {
   {
     log("INVALID INPUT", EXCEPTION);
   }
-  std::cout << "CHECK\n";
 }
 
 void ScalarConverter::set_type(const std::string &input)
@@ -190,7 +189,7 @@ void ScalarConverter::convert_number(const std::string &input)
   std::string number_to_convert = input;
 
   if (type_ == FLOAT)
-    number_to_convert[input.size()] = '\0';
+    number_to_convert[input.size() - 1] = '\0';
   else
     number_to_convert = input;
 
