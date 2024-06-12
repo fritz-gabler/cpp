@@ -4,6 +4,8 @@
 #include <cstdio>
 #include "Data.hpp"
 
+typedef unsigned long long uintptr_t;
+
 class Serializer
 {
   public:

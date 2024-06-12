@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:20:45 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/23 13:42:45 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/12 13:50:44 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main()
 {
   Data test_data;
   uintptr_t save_serialized_value;
-  Data *new_data_but_old_data;
 
   log("-------PDF TEST--------", TEST);
   log("Print number and ptr before casting", NOTE);
@@ -28,8 +27,8 @@ int main()
   test_data.print_this_ptr();
   test_data.print_a_fun_number();
   save_serialized_value = Serializer::serialize(&test_data);
-  new_data_but_old_data = Serializer::deserialize(save_serialized_value);
-  log("\nPrint number and ptr after casting", NOTE);
+  Serializer::deserialize(save_serialized_value);
+  log("Print number and ptr after casting", NOTE);
   test_data.print_this_ptr();
   test_data.print_a_fun_number();
 }

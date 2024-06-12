@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:31:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/23 20:12:20 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/12 13:49:10 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #include "B.hpp"
 #include "C.hpp"
 #include <iostream>
+#include <stdlib.h>
 
 Base *generate(void)
 {
-  int number = std::rand();
+  int number = rand();
 
   if ((number % 3) == 0)
     return (new A);
