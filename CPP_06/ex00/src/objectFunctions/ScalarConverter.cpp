@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/12 08:10:47 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/12 13:24:26 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 #include "functions.hpp"
 #include <cstdlib>
 #include <cstring>
-#include <limits.h>
 #include <stdlib.h>
 #include <iomanip>
 #include <sstream>
 #include "header.hpp"
+#include <math.h>
+#include <limits>
 
 ///////////////////////////////////////////////////////////////////////////////
 ////////////////////////////CONSTRUCTOR AND DESTRUCTOR/////////////////////////
@@ -257,7 +258,9 @@ bool ScalarConverter::is_in_int_range(const std::string &input) const
   long int number;
 
   convert_check >> number;
-  if (number < std::numeric_limits<int>::min()
+  if (convert_check.fail())
+    return (false);
+  else if (number < std::numeric_limits<int>::min()
       || number > std::numeric_limits<int>::max())
     return (false);
   return (true);
