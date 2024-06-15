@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 20:12:42 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/23 20:25:15 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/15 11:56:42 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@
 
 int main()
 {
-  for (int i = 0; i < 10; i++)
+  std::cout << "\n---------------------------\n\n";
+  for (int i = 0; i < 3; i++)
   {
-    std::cout << "\n";
     Base *test = generate();
     log("Identify pointer: ", TEST);
     identify(test);
+    std::cout << "\n";
     log("Identify reference: ", TEST);
-    identify(&(*test));
+    identify(*test);
     delete test;
+    std::cout << "\n---------------------------\n\n";
   }
   return (0);
 }
