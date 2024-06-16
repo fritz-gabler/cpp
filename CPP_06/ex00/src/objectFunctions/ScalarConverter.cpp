@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 12:01:19 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/12 13:24:26 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/16 17:48:29 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ bool ScalarConverter::is_integer(const std::string &input) const
     return (false);
   for (int i = 0; input[i] != '\0'; i++)
   {
-    if (i == 0 && (input[i] == '-' && input[i] == '+'))
+    if (i == 0 && (input[i] == '-' || input[i] == '+'))
       i++;
     if (std::isdigit(input[i]) == false)
       return (false);

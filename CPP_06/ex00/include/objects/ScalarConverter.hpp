@@ -6,17 +6,17 @@
 class ScalarConverter
 {
   public:
-    //Constructor and Destructors
-    ScalarConverter();
-    ScalarConverter(const ScalarConverter &other);
-    ScalarConverter &operator = (const ScalarConverter &other);
-    ~ScalarConverter();
 
     //Methods
     static void convert(const std::string &);
 
 
   private:
+    //Constructor and Destructors
+    ScalarConverter();
+    ScalarConverter(const ScalarConverter &other);
+    ScalarConverter &operator = (const ScalarConverter &other);
+    ~ScalarConverter();
     typedef enum e_type
     {
       CHAR = 0,
