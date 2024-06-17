@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:35:09 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/25 11:15:30 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/17 13:07:38 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main()
 {
   std::string str_array[] = {"fist", "second", "third"};
-  int number_array[] = {7, 4, 6, 9, 4, 2};
+  int number_array[] = {0, 1, 2, 3, 4, 5};
   int str_size_of_array = 3;
   int number_size_of_array = 6;
   log("Input string array and a function to print str array, in iter function", NOTE);
