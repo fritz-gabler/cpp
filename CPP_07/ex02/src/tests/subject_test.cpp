@@ -6,12 +6,13 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 15:30:00 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/25 15:38:41 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/17 11:55:24 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 #include "header.hpp"
+#include <stdlib.h>
 
 #define MAX_VAL 750
 
