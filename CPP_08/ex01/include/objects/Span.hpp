@@ -2,6 +2,7 @@
 #define SPAN_HPP
 
 #include <vector>
+#include <cstddef>
 
 class Span
 {

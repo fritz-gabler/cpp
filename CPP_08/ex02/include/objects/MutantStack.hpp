@@ -71,5 +71,8 @@ std::ostream &operator << (std::ostream &ostream, const MutantStack<T, Container
 
   for (rit = mutant_stack.rbegin(); rit != mutant_stack.rend(); rit++)
     ostream << *rit << std::endl;
+
+  return (ostream);
 }
+
 #endif

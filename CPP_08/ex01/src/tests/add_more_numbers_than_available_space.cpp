@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:31:22 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/05 12:40:25 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/21 17:46:50 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void add_more_numbers_than_available_space()
     message = "adding numbers worked";
     log(message, TEST);
   }
-  catch(std::exception e)
+  catch(const std::exception &e)
   {
     message = static_cast<std::string>(e.what());
     log(message, EXCEPTION);
