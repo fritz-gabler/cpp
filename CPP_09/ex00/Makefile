@@ -10,7 +10,7 @@ HEADERS       =    -I./include -I./include/objects
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		src src/objectFunctions
+VPATH			:=		src src/object_functions
 
 SRC_MAIN		=		main.cpp
 
