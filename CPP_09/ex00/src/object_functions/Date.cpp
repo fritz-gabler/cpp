@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:04:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/28 14:09:51 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/28 14:31:26 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void Date::set_date(const std::string &date)
 
 bool Date::valid_date_format_check(const std::string &input) const
 {
-  if (input.size != 9) //2011-01-0
+  if (input.size() != 10) //2011-01-00
     return (false);
 
   if (input[4] != '-' || input[7] != '-')

@@ -12,6 +12,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "functions.hpp"
+#include "Date.hpp"
+#include "BitcoinExchange.hpp"
+#include "colors.hpp"
 
 #endif
 

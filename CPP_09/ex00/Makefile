@@ -5,7 +5,7 @@ NAME          :=    changeName
 
 CXX           =    c++
 CXXFLAGS      =    -Wall -Werror -Wextra -std=c++98
-HEADERS       =    -I./include -I./include/objects
+HEADERS       =    -I./include -I./include/objects -g
 
 ###############################################################################
 ###############################################################################
