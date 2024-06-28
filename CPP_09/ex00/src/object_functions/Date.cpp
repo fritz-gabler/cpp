@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:04:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/28 17:44:38 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/28 17:55:02 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,11 @@ void Date::convert_date_string_to_date_int(const std::string &date)
 
 bool Date::validate_date_check() const
 {
-  if (date_[YEAR] < 2008)
+  if (date_[YEAR] < 2008 || date_[YEAR] > 2022)
+    return (false);
+  else if (date_[MONTH] < 0 || date_[MONTH] > 12)
+    return (false);
+  else if (date_[DAY] < 0 || date[DAY] > 31)
     return (false);
   
   return (true);
