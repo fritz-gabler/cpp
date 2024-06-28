@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:04:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/28 16:51:44 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/28 17:44:38 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <cctype>
 #include <iostream>
 #include <sstream>
+#include "colors.hpp"
+#include "define.hpp"
 
 /////////////////////////////CONSTRUCTOR AND DESTRUCTOR////////////////////////
 
@@ -48,6 +50,9 @@ void Date::set_date(const std::string &date)
     std::cout << "Date is in invalid format\n";
 
   convert_date_string_to_date_int(date);
+
+  if (validate_date_check() == false)
+    std::cout << RED_ERROR << YEAR_ERROR << date_[YEAR] << "\n";
 }
 
 bool Date::valid_date_format_check(const std::string &input) const
@@ -78,8 +83,10 @@ void Date::convert_date_string_to_date_int(const std::string &date)
   convert >> date_[YEAR] >> date_[MONTH] >> date_[DAY];
 }
 
-bool validate_date_check() const
+bool Date::validate_date_check() const
 {
-  if (date_[YEAR])
+  if (date_[YEAR] < 2008)
+    return (false);
+  
   return (true);
 }
