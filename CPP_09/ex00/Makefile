@@ -13,8 +13,9 @@ HEADERS       =    -I./include -I./include/objects
 VPATH			:=		src src/object_functions
 
 SRC_MAIN		=		main.cpp
+SRC_OBJECTS =   BitcoinExchange.cpp Date.cpp
 
-SRC				=		$(SRC_MAIN)
+SRC				=		$(SRC_MAIN) $(SRC_OBJECTS)
 
 ###############################################################################
 ###############################################################################
