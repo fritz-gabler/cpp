@@ -6,13 +6,14 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:04:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/28 14:31:26 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/28 16:51:44 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Date.hpp"
 #include <cctype>
 #include <iostream>
+#include <sstream>
 
 /////////////////////////////CONSTRUCTOR AND DESTRUCTOR////////////////////////
 
@@ -45,6 +46,8 @@ void Date::set_date(const std::string &date)
 {
   if (valid_date_format_check(date) == false)
     std::cout << "Date is in invalid format\n";
+
+  convert_date_string_to_date_int(date);
 }
 
 bool Date::valid_date_format_check(const std::string &input) const
@@ -61,5 +64,22 @@ bool Date::valid_date_format_check(const std::string &input) const
       || isalpha(input[8]) != FOUND || isalpha(input[9]) != FOUND)
     return (false);
 
+  return (true);
+}
+
+void Date::convert_date_string_to_date_int(const std::string &date)
+{
+  std::string cpy_of_input = date;
+  cpy_of_input[4] = ' ';
+  cpy_of_input[7] = ' ';
+
+  std::stringstream convert(cpy_of_input);
+  
+  convert >> date_[YEAR] >> date_[MONTH] >> date_[DAY];
+}
+
+bool validate_date_check() const
+{
+  if (date_[YEAR])
   return (true);
 }

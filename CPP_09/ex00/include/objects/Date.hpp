@@ -15,8 +15,8 @@ class Date
     void set_date(const std::string &date);
   private:
     bool valid_date_format_check(const std::string &) const;
-    void convert_date_string_to_date_int();
-    bool validate_date();
+    void convert_date_string_to_date_int(const std::string &);
+    bool validate_date_check() const;
     std::string &get_date() const;
 
     enum
