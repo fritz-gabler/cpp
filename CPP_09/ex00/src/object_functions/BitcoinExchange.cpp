@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/29 15:22:13 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/29 18:55:14 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void BitcoinExchange::print_btc_value_for_date(const std::string &input)
     std::cout << RED_ERROR << "File data.csv could't be opend\n";
     return ;
   }
-  
+  btc_value_get();
 }
 
 bool BitcoinExchange::can_open_file(const std::string &input)
@@ -76,25 +76,40 @@ void BitcoinExchange::btc_value_get()
 
   while (line.empty() == false)
   {
-    
+    if (correct_line(line) == true)
+    {
+      split_data_vale(line, seperated_str);
+      //std::cout << "DATE: " << seperated_str[0] << " " << "VALUE: " << seperated_str[1] << std::endl;
+    }
+    else
+      std::cout << RED_ERROR << "Bad input => " << line << std::endl;
+    std::getline(file, line);
   }
+  file.close();
 }
 
-bool correct_line(const std::string &line) const
+bool BitcoinExchange::correct_line(const std::string &line) const
 {
-  if (line.size() < 14)
-    return (false);
   if (line.size() < 12)
     return (false);
-  if (line[10] != ' ' || line[11] != '|')
+  if (line.size() < 14 && line[10] != ',')
+    return (false);
+  if (isdigit(line[line.size() - 1]) == false)
     return (false);
   return (true);
 }
 
 void BitcoinExchange::split_data_vale(const std::string &line,
-                                             std::string seperated_str[2]);
+                                             std::string seperated_str[2])
 {
-  
-}
+  size_t sub_len = 10;
 
+  seperated_str[0] = line.substr(0, sub_len);
+
+  if (line[10] == ',')
+    sub_len = 11;
+  else if (line.size() > 13)
+    sub_len = 13;
+  seperated_str[1] = line.substr(sub_len, (line.size() - 1));
+}
 
