@@ -40,6 +40,17 @@ Date &Date::operator = (const Date &other)
   return (*this);
 }
 
+bool Date::operator < (const Date &other) const
+{
+  if (date_[YEAR] != other.date_[YEAR])
+    return date_[YEAR] < other.date_[YEAR];
+  else if (date_[MONTH] != other.date_[MONTH])
+    return date_[MONTH] < other.date_[MONTH];
+  else
+    return date_[DAY] < other.date_[DAY];
+}
+
+
 Date::~Date() {}
 
 /////////////////////////////MEMBER FUNCTIONS//////////////////////////////////
