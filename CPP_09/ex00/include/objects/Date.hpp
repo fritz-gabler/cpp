@@ -2,7 +2,6 @@
 #define DATE
 
 #include <string>
-#define FOUND 0
 
 class Date
 {

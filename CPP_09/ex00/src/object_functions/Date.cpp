@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:04:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/29 12:28:48 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/29 17:33:24 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ bool Date::valid_date_format_check(const std::string &input) const
   if (input[4] != '-' || input[7] != '-')
     return (false);
 
-  if (isalpha(input[0]) != FOUND || isalpha(input[1]) != FOUND
-      || isalpha(input[2]) != FOUND || isalpha(input[3]) != FOUND
-      || isalpha(input[5]) != FOUND || isalpha(input[6]) != FOUND
-      || isalpha(input[8]) != FOUND || isalpha(input[9]) != FOUND)
+  if (isdigit(input[0]) != false || isdigit(input[1]) != false
+      || isdigit(input[2]) != false || isdigit(input[3]) != false
+      || isdigit(input[5]) != false || isdigit(input[6]) != false
+      || isdigit(input[8]) != false || isdigit(input[9]) != false)
     return (false);
 
   return (true);
