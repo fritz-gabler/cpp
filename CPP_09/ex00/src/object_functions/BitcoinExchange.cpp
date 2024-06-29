@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/29 18:55:14 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/29 19:08:25 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void BitcoinExchange::btc_value_get()
     return ;
   }
 
+  std::getline(file, line);
   while (line.empty() == false)
   {
     if (correct_line(line) == true)
     {
       split_data_vale(line, seperated_str);
-      //std::cout << "DATE: " << seperated_str[0] << " " << "VALUE: " << seperated_str[1] << std::endl;
     }
     else
       std::cout << RED_ERROR << "Bad input => " << line << std::endl;
@@ -112,4 +112,3 @@ void BitcoinExchange::split_data_vale(const std::string &line,
     sub_len = 13;
   seperated_str[1] = line.substr(sub_len, (line.size() - 1));
 }
-
