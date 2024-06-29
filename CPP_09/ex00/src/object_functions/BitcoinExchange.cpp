@@ -6,13 +6,14 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/29 13:25:01 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/29 15:22:13 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <fstream>
 #include <iostream>
+#include "define.hpp"
 
 /////////////////////////////CONSTRUCTOR AND DESTRUCTOR////////////////////////
 
@@ -36,9 +37,10 @@ void BitcoinExchange::print_btc_value_for_date(const std::string &input)
 {
   if (can_open_file(input) == false)
   {
-    std::cout << 
+    std::cout << RED_ERROR << "File data.csv could't be opend\n";
+    return ;
   }
-
+  
 }
 
 bool BitcoinExchange::can_open_file(const std::string &input)
@@ -56,3 +58,43 @@ bool BitcoinExchange::can_open_file(const std::string &input)
   file.close();
   return (true);
 }
+
+void BitcoinExchange::btc_value_get()
+{
+  std::ifstream file;
+  std::string line;
+  std::string seperated_str[2];
+
+  file.open("data.csv");
+
+  std::getline(file, line);
+  if (line.empty() == true)
+  {
+    std::cout << RED_ERROR << "data.csv file is empty\n";
+    return ;
+  }
+
+  while (line.empty() == false)
+  {
+    
+  }
+}
+
+bool correct_line(const std::string &line) const
+{
+  if (line.size() < 14)
+    return (false);
+  if (line.size() < 12)
+    return (false);
+  if (line[10] != ' ' || line[11] != '|')
+    return (false);
+  return (true);
+}
+
+void BitcoinExchange::split_data_vale(const std::string &line,
+                                             std::string seperated_str[2]);
+{
+  
+}
+
+

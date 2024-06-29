@@ -18,6 +18,8 @@ class BitcoinExchange
   private:
     bool can_open_file(const std::string &input);
     void btc_value_get();
+    bool correct_line(const std::string &line) const;
+    void split_data_vale(const std::string &line, std::string seperated_str[2]);
     void save_next_line(std::string &input);
     void pair_check() const;
     void find_corresponding_amount_to_value();
