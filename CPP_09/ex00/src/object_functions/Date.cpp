@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:04:55 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/28 19:41:01 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/06/29 12:28:48 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void Date::convert_date_string_to_date_int(const std::string &date)
   cpy_of_input[4] = ' ';
   cpy_of_input[7] = ' ';
 
-  std::stringstream convert(cpy_of_input);
+  std::istringstream convert(cpy_of_input);
   
   convert >> date_[YEAR] >> date_[MONTH] >> date_[DAY];
 }
@@ -102,7 +102,7 @@ bool Date::validate_date_check() const
 
 void Date::print_date() const
 {
-  if (date_[YEAR].empty() || date_[MONTH].empty() || date_[DAY] == "")
+  if (date_[YEAR] == 0 || date_[MONTH] == 0 || date_[DAY] == 0)
     return ;
   std::cout << date_[YEAR] << "-" << date_[MONTH] << date_[DAY];
 }

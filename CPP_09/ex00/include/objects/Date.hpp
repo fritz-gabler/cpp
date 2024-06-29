@@ -10,6 +10,7 @@ class Date
     Date();
     Date(const Date &other);
     Date &operator = (const Date &other);
+    bool operator<(const Date &other) const;
     ~Date();
 
     void set_date(const std::string &date);
