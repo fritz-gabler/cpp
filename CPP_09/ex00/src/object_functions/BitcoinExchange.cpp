@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/01 09:24:38 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/01 13:46:55 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ bool BitcoinExchange::correct_line(const std::string &line) const
   std::string seperaded_line[2];
   
   split_date_and_value(line, seperaded_line);
+
   if (date_validation(seperaded_line[0]) == false)
     return (false);
   return (true);
@@ -133,7 +134,7 @@ bool BitcoinExchange::date_validation(std::string &date) const
 bool BitcoinExchange::format_check(const std::string &date) const
 {
   if (date.size() != 10) //2011-01-00
-    return (false);
+   return (false);
 
   if (date[4] != '-' || date[7] != '-')
     return (false);
@@ -143,7 +144,6 @@ bool BitcoinExchange::format_check(const std::string &date) const
       || isdigit(date[5]) == false || isdigit(date[6]) == false
       || isdigit(date[8]) == false || isdigit(date[9]) == false)
     return (false);
-
   return (true);
 }
 
@@ -151,11 +151,13 @@ void BitcoinExchange::date_convert(const std::string &date,
                                    int saved_date[3]) const
 {
   std::string cpy_of_input;
-  std::istringstream convert(cpy_of_input);
 
   cpy_of_input = date;
   cpy_of_input[4] = ' ';
   cpy_of_input[7] = ' ';
+
+  std::istringstream convert(cpy_of_input);
+
   convert >> saved_date[YEAR] >> saved_date[MONTH] >> saved_date[DAY];
 }
 
