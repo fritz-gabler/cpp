@@ -30,6 +30,12 @@ class BitcoinExchange
     void find_corresponding_amount_to_value();
     void print_corresponding_pair();
 
+    enum e_date
+    {
+      YEAR = 0,
+      MONTH = 1,
+      DAY = 2
+    };
 
     std::map<int, float> btc_value;
     std::pair<int, float> btc_amount;
