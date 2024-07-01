@@ -1,7 +1,6 @@
 #ifndef BITCOUN_EXCHANGE_HPP
 #define BITCOUN_EXCHANGE_HPP
 
-#include "Date.hpp"
 #include <string>
 #include <map>
 
@@ -21,9 +20,10 @@ class BitcoinExchange
     bool correct_line(const std::string &line) const;
     bool date_validation(std::string &date) const;
     bool format_check(const std::string &date) const;
-    void date_convert(const std::string &date, int saved_date[3]);
+    void date_convert(const std::string &date, int saved_date[3]) const;
     bool is_date_within_limits(int saved_date[3]) const;
-    void split_data_vale(const std::string &line, std::string seperated_str[2]);
+    void split_date_and_value(const std::string &line,
+                                std::string seperated_str[2]) const;
     void map_save_next_line(std::string seperated_str[2]);
     void pair_save_next_line(std::string seperated_str[2]);
     void pair_check() const;
@@ -31,8 +31,8 @@ class BitcoinExchange
     void print_corresponding_pair();
 
 
-    std::map<Date, float> btc_value;
-    std::pair<Date, float> btc_amount;
+    std::map<int, float> btc_value;
+    std::pair<int, float> btc_amount;
 };
 
 #endif

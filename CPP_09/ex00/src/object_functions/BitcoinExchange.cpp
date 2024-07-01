@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/01 08:27:49 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/01 09:24:38 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <iostream>
 #include "define.hpp"
 #include "sstream"
-#include "functions.hpp"
 
 /////////////////////////////CONSTRUCTOR AND DESTRUCTOR////////////////////////
 
@@ -80,14 +79,13 @@ void BitcoinExchange::btc_value_get()
   std::getline(file, line);
   while (line.empty() == false)
   {
-    if (correct_line(line) == false)
+    if (correct_line(line) == true)
     {
-      std::cout << RED_ERROR << "data.csv bad input => " << line << std::endl;
-    }
-    split_data_vale(line, seperated_str);
-    if (date_validation(seperated_str[0]) == true)
+      split_date_and_value(line, seperated_str);
       map_save_next_line(seperated_str);
+    }
     else
+      std::cout << RED_ERROR << "data.csv bad input => " << line << std::endl;
     std::getline(file, line);
   }
 /*
@@ -109,8 +107,12 @@ bool BitcoinExchange::correct_line(const std::string &line) const
     return (false);
   else if (isdigit(line[line.size() - 1]) == false)
     return (false);
-  
 
+  std::string seperaded_line[2];
+  
+  split_date_and_value(line, seperaded_line);
+  if (date_validation(seperaded_line[0]) == false)
+    return (false);
   return (true);
 }
 
@@ -121,14 +123,14 @@ bool BitcoinExchange::date_validation(std::string &date) const
   if (format_check(date) == false)
     return (false);
 
-  date_convert_string_to_int(date, saved_date);
+  date_convert(date, saved_date);
 
-  if (validate_date_check(saved_date) == false)
+  if (is_date_within_limits(saved_date) == false)
     return false;
   return (true);
 }
 
-bool BitcoinExchange::format_check(const std::string &date) const;
+bool BitcoinExchange::format_check(const std::string &date) const
 {
   if (date.size() != 10) //2011-01-00
     return (false);
@@ -145,7 +147,8 @@ bool BitcoinExchange::format_check(const std::string &date) const;
   return (true);
 }
 
-void BitcoinExchange::date_convert(const std::string &date, int saved_date[3])
+void BitcoinExchange::date_convert(const std::string &date,
+                                   int saved_date[3]) const
 {
   std::string cpy_of_input;
   std::istringstream convert(cpy_of_input);
@@ -174,8 +177,8 @@ bool BitcoinExchange::is_date_within_limits(int saved_date[3]) const
 }
 
 
-void BitcoinExchange::split_data_value(const std::string &line,
-                                             std::string seperated_str[2])
+void BitcoinExchange::split_date_and_value(const std::string &line,
+                                         std::string seperated_str[2]) const
 {
   size_t sub_len = 10;
 
@@ -188,22 +191,28 @@ void BitcoinExchange::split_data_value(const std::string &line,
   seperated_str[1] = line.substr(sub_len, (line.size() - 1));
 }
 
-/*
 void BitcoinExchange::map_save_next_line(std::string seperated_str[2])
 {
+  int date;
   float value_add;
-  std::istringstream convert(seperated_str[1]);
+  std::istringstream convert(seperated_str[0]);
 
+  convert >> date;
+  convert.clear();
+  convert.str(seperated_str[0]);
   convert >> value_add;
-  btc_value.insert(std::make_pair(date_add, value_add));
+  btc_value.insert(std::make_pair(date, value_add));
 }
 
 void BitcoinExchange::pair_save_next_line(std::string seperated_str[2])
 {
+  int date;
   float value_add;
-  std::istringstream convert(seperated_str[1]);
+  std::istringstream convert(seperated_str[0]);
 
+  convert >> date;
+  convert.clear();
+  convert.str(seperated_str[0]);
   convert >> value_add;
-  btc_amount = std::make_pair(date_add, value_add);
+  btc_amount = std::make_pair(date, value_add);
 }
-*/
