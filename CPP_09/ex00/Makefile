@@ -10,10 +10,10 @@ HEADERS       =    -I./include -I./include/objects -g
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		src src/object_functions
+VPATH			:=		src src/object_functions src/date_validation_check
 
 SRC_MAIN		=		main.cpp
-SRC_OBJECTS =   BitcoinExchange.cpp Date.cpp
+SRC_OBJECTS =   BitcoinExchange.cpp
 
 SRC				=		$(SRC_MAIN) $(SRC_OBJECTS)
 
