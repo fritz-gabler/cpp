@@ -19,8 +19,8 @@ class BitcoinExchange
     void btc_value_get();
     bool file_empty(std::ifstream &file, std::string &line) const;
     bool correct_line(const std::string &line) const;
-    bool date_validation(std::string &date) const;
-    bool format_check(const std::string &date) const;
+    bool date_line_validation(const std::string &line) const;
+    bool format_date_check(const std::string &date) const;
     void array_date_convert(const std::string &date, int saved_date[3]) const;
     bool is_date_within_limits(int saved_date[3]) const;
     void split_date_and_value(const std::string &line,
