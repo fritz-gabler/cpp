@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/01 13:46:55 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/02 08:51:01 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
-    : btc_value(other.btc_value), btc_amount(other.btc_amount) {}
+    : btc_value_(other.btc_value_), btc_amount_(other.btc_amount_) {}
 
 BitcoinExchange &BitcoinExchange::operator = (const BitcoinExchange &other)
 {
@@ -65,10 +65,10 @@ void BitcoinExchange::btc_value_get()
   std::ifstream file;
   std::string line;
   std::string seperated_str[2];
+  //int date_and_value[2];
 
 
   file.open("data.csv");
-
   std::getline(file, line);
   if (line.empty() == true)
   {
@@ -76,8 +76,7 @@ void BitcoinExchange::btc_value_get()
     return ;
   }
 
-  std::getline(file, line);
-  while (line.empty() == false)
+  while (std::getline(file, line))
   {
     if (correct_line(line) == true)
     {
@@ -86,16 +85,11 @@ void BitcoinExchange::btc_value_get()
     }
     else
       std::cout << RED_ERROR << "data.csv bad input => " << line << std::endl;
-    std::getline(file, line);
   }
-/*
-  for (std::map<Date, float>::iterator it = btc_value.begin(); it != btc_value.end(); ++it)
-  {
-    std::cout << "Key: ";
-    it->first.print_date();
-    std::cout << ", Value: " << it->second << std::endl;
-  }
-*/
+  std::cout << btc_value_.size() << std::endl;
+  std::map<int, float>::iterator it;
+  for (it = btc_value_.begin(); it != btc_value_.end(); ++it)
+    std::cout << "Key: " << it->first << ", Value: " << it->second << std::endl;
   file.close();
 }
 
@@ -124,7 +118,7 @@ bool BitcoinExchange::date_validation(std::string &date) const
   if (format_check(date) == false)
     return (false);
 
-  date_convert(date, saved_date);
+  array_date_convert(date, saved_date);
 
   if (is_date_within_limits(saved_date) == false)
     return false;
@@ -147,7 +141,7 @@ bool BitcoinExchange::format_check(const std::string &date) const
   return (true);
 }
 
-void BitcoinExchange::date_convert(const std::string &date,
+void BitcoinExchange::array_date_convert(const std::string &date,
                                    int saved_date[3]) const
 {
   std::string cpy_of_input;
@@ -193,6 +187,15 @@ void BitcoinExchange::split_date_and_value(const std::string &line,
   seperated_str[1] = line.substr(sub_len, (line.size() - 1));
 }
 
+void BitcoinExchange::int_convert_date(const std::string &date,
+                                                int &saved_date) const
+{
+  std::string cpy_date;
+
+  cpy_date = date;
+  
+}
+
 void BitcoinExchange::map_save_next_line(std::string seperated_str[2])
 {
   int date;
@@ -201,9 +204,10 @@ void BitcoinExchange::map_save_next_line(std::string seperated_str[2])
 
   convert >> date;
   convert.clear();
-  convert.str(seperated_str[0]);
+  convert.str(seperated_str[1]);
   convert >> value_add;
-  btc_value.insert(std::make_pair(date, value_add));
+
+  btc_value_.insert(std::make_pair(date, value_add));
 }
 
 void BitcoinExchange::pair_save_next_line(std::string seperated_str[2])
@@ -211,10 +215,11 @@ void BitcoinExchange::pair_save_next_line(std::string seperated_str[2])
   int date;
   float value_add;
   std::istringstream convert(seperated_str[0]);
+  std::cout << "I: " << std::endl;
 
   convert >> date;
   convert.clear();
   convert.str(seperated_str[0]);
   convert >> value_add;
-  btc_amount = std::make_pair(date, value_add);
+  btc_amount_ = std::make_pair(date, value_add);
 }
