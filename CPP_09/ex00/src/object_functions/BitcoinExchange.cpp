@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/02 11:12:53 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/02 14:02:57 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include "define.hpp"
 #include "sstream"
+#include "file_processing.hpp"
 
 /////////////////////////////CONSTRUCTOR AND DESTRUCTOR////////////////////////
 
@@ -36,12 +37,33 @@ BitcoinExchange::~BitcoinExchange() {}
 
 void BitcoinExchange::print_btc_value_for_date(const std::string &input)
 {
-  if (can_open_file(input) == false)
+  if (can_open_file(input) == false || can_open_file("data.csv") == false)
   {
-    std::cout << RED_ERROR << "File data.csv could't be opend\n";
+    std::cout << RED_ERROR << "File could't be opened\n";
     return ;
   }
+
+  t_file_processing process;
+
   btc_value_get();
+
+  process.file.open(input);
+  if (file_empty(process.file, process.line) == false);
+  {
+    std::cout << RED_ERROR << "File " << input <<  " is empty\n";
+    return ;
+  }
+  while(std::getline(process.file, process.line))
+  {
+    if (correct_line(process.line) == true)
+    {
+      split_date_and_value(process.line, process.separated_str);
+      int_convert_date(process.separated_str[DATE], process.date_saved);
+      float_convert_value(process.separated_str[DATE],  process.value_saved);
+      pair_save_next_line(process.date_saved, process.value_saved);
+      
+    }
+  }
 }
 
 bool BitcoinExchange::can_open_file(const std::string &input)
@@ -51,7 +73,7 @@ bool BitcoinExchange::can_open_file(const std::string &input)
   
   std::ifstream file;
 
-  file.open("data.csv");
+  file.open(input);
 
   if (file.is_open() == false)
     return (false);
