@@ -5,7 +5,7 @@ NAME          :=    bitcoin_exchange
 
 CXX           =    c++
 CXXFLAGS      =    -Wall -Werror -Wextra -std=c++98
-HEADERS       =    -I./include -I./include/objects -I./include/structs -g
+HEADERS       =    -I./include -I./include/objects -I./include/structs
 
 ###############################################################################
 ###############################################################################
