@@ -17,6 +17,7 @@ class BitcoinExchange
   private:
     bool can_open_file(const std::string &input);
     void btc_value_get();
+    bool file_empty(std::ifstream &file, std::string &line) const;
     bool correct_line(const std::string &line) const;
     bool date_validation(std::string &date) const;
     bool format_check(const std::string &date) const;

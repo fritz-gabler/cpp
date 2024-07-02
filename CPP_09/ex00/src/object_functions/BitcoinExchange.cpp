@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/02 11:01:45 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/02 11:12:53 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,12 @@ void BitcoinExchange::btc_value_get()
   int date_saved;
   float value_saved;
 
-
-
   file.open("data.csv");
-  std::getline(file, line);
-  if (line.empty() == true)
+  if (file_empty(file, line) == true)
   {
     std::cout << RED_ERROR << "data.csv file is empty\n";
     return ;
   }
-
   while (std::getline(file, line))
   {
     if (correct_line(line) == true)
@@ -90,12 +86,23 @@ void BitcoinExchange::btc_value_get()
     else
       std::cout << RED_ERROR << "data.csv bad input => " << line << std::endl;
   }
-  std::cout << btc_value_.size() << std::endl;
-  std::map<int, float>::iterator it;
-  for (it = btc_value_.begin(); it != btc_value_.end(); ++it)
-    std::cout << "Key: " << it->first << ", Value: " << it->second << std::endl;
   file.close();
 }
+/*
+   std::cout << btc_value_.size() << std::endl;
+   std::map<int, float>::iterator it;
+   for (it = btc_value_.begin(); it != btc_value_.end(); ++it)
+   std::cout << "Key: " << it->first << ", Value: " << it->second << std::endl;
+   */
+
+bool BitcoinExchange::file_empty(std::ifstream &file, std::string &line) const
+{
+  std::getline(file, line);
+  if (line.empty() == true)
+    return (true);
+  return (false);
+}
+
 
 bool BitcoinExchange::correct_line(const std::string &line) const
 {
