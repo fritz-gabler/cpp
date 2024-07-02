@@ -25,6 +25,9 @@ class BitcoinExchange
     bool is_date_within_limits(int saved_date[3]) const;
     void split_date_and_value(const std::string &line,
                                 std::string separated_str[2]) const;
+    bool value_line_check(const std::string &line) const;
+    bool format_value_check(const std::string &value) const;
+    bool value_within_limits(const std::string &value) const;
     void int_convert_date(const std::string &date, int &saved_date) const;
     void float_convert_value(const std::string &value, float &value_saved);
     void map_save_next_line(const int &date, const float &value);
