@@ -23,10 +23,12 @@ class BitcoinExchange
     void array_date_convert(const std::string &date, int saved_date[3]) const;
     bool is_date_within_limits(int saved_date[3]) const;
     void split_date_and_value(const std::string &line,
-                                std::string seperated_str[2]) const;
+                                std::string separated_str[2]) const;
     void int_convert_date(const std::string &date, int &saved_date) const;
-    void map_save_next_line(std::string seperated_str[2]);
-    void pair_save_next_line(std::string seperated_str[2]);
+    void float_convert_value(const std::string &value, float &value_saved);
+    void map_save_next_line(const int &date, const float &value);
+    void pair_save_next_line(const int &date, const float &value);
+
     void pair_check() const;
     void find_corresponding_amount_to_value();
     void print_corresponding_pair();
@@ -36,6 +38,12 @@ class BitcoinExchange
       YEAR = 0,
       MONTH = 1,
       DAY = 2
+    };
+
+    enum e_separate
+    {
+      DATE = 0,
+      VALUE = 1
     };
 
     std::map<int, float> btc_value_;
