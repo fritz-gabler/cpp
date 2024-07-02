@@ -9,4 +9,4 @@ c++
 -I./include
 -I./include/objects
 -I./include/templates
-
+-I./include/structs
