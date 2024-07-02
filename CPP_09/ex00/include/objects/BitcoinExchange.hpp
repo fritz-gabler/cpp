@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include "file_processing.hpp"
 
 class BitcoinExchange
 {
@@ -32,10 +33,9 @@ class BitcoinExchange
     void float_convert_value(const std::string &value, float &value_saved);
     void map_save_next_line(const int &date, const float &value);
     void pair_save_next_line(const int &date, const float &value);
-
-    void pair_check() const;
-    void find_corresponding_amount_to_value();
-    void print_corresponding_pair();
+    void find_corresponding_amount_to_value(t_file_processing &process);
+    void multiply_values(t_file_processing &process);
+    void print_corresponding_pair(const t_file_processing &process) const;
 
     enum e_date
     {
@@ -50,8 +50,8 @@ class BitcoinExchange
       VALUE = 1
     };
 
-    std::map<int, float> btc_value_;
-    std::pair<int, float> btc_amount_;
+    std::map<int, float> value_btc_;
+    std::pair<int, float> amount_btc_;
 };
 
 #endif
