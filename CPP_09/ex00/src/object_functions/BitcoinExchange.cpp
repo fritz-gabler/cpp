@@ -43,33 +43,8 @@ void BitcoinExchange::print_btc_value_for_date(const std::string &input)
     return ;
   }
 
-  t_file_processing process;
-
   btc_value_get();
-
-  process.file.open(input);
-  if (file_empty(process.file, process.line) == true)
-  {
-    std::cout << RED_ERROR << "File " << input <<  " is empty\n";
-    return ;
-  }
-  while(std::getline(process.file, process.line))
-  {
-    if (correct_line(process.line) == true)
-    {
-      split_date_and_value(process.line, process.separated_str);
-      int_convert_date(process.separated_str[DATE], process.date_saved);
-      float_convert_value(process.separated_str[VALUE],  process.value_saved);
-      pair_save_next_line(process.date_saved, process.value_saved);
-      find_corresponding_amount_to_value(process);
-      multiply_values(process);
-      print_corresponding_pair(process);
-    }
-    else if (value_line_check(process.line) == false)
-      std::cout << RED_ERROR << "incorrect value " << process.line << std::endl;
-    else
-      std::cout << RED_ERROR << "bad input => " << process.line << std::endl;
-  }
+  process_input_lines(input);
 }
 
 bool BitcoinExchange::can_open_file(const std::string &input)
@@ -122,6 +97,38 @@ void BitcoinExchange::btc_value_get()
    for (it = value_btc_.begin(); it != value_btc_.end(); ++it)
    std::cout << "Key: " << it->first << ", Value: " << it->second << std::endl;
    */
+
+void BitcoinExchange::process_input_lines(const std::string &input)
+{
+  t_file_processing process;
+
+  process.file.open(input);
+  if (file_empty(process.file, process.line) == true)
+  {
+    std::cout << RED_ERROR << "File " << input <<  " is empty\n";
+    return ;
+  }
+  while(std::getline(process.file, process.line))
+  {
+    if (correct_line(process.line) == true
+        && multiplied_number_limit_check(process.line) == true)
+    {
+      split_date_and_value(process.line, process.separated_str);
+      int_convert_date(process.separated_str[DATE], process.date_saved);
+      float_convert_value(process.separated_str[VALUE],  process.value_saved);
+      pair_save_next_line(process.date_saved, process.value_saved);
+      find_corresponding_amount_to_value(process.multiply_value);
+      multiply_values(process);
+      print_corresponding_pair(process);
+    }
+    else if (value_line_check(process.line) == false)
+      std::cout << RED_ERROR << "incorrect value " << process.line << std::endl;
+    else if (multiplied_number_limit_check(process.line) == false)
+      std::cout << RED_ERROR << "too large a number." << std::endl;
+    else
+      std::cout << RED_ERROR << "bad input => " << process.line << std::endl;
+  }
+}
 
 bool BitcoinExchange::file_empty(std::ifstream &file, std::string &line) const
 {
