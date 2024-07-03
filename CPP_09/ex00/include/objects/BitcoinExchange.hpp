@@ -31,10 +31,11 @@ class BitcoinExchange
     bool format_value_check(const std::string &value) const;
     bool value_within_limits(const std::string &value) const;
     bool multiplied_number_limit_check(const std::string &line);
+    void int_convert_date(const std::string &date, int &saved_date);
     void float_convert_value(const std::string &value, float &value_saved);
     void map_save_next_line(const int &date, const float &value);
     void pair_save_next_line(const int &date, const float &value);
-    void find_corresponding_amount_to_value(t_file_processing &process);
+    void find_corresponding_amount_to_value(float &multiply_value);
     void multiply_values(t_file_processing &process);
     void print_corresponding_pair(const t_file_processing &process) const;
 

@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/02 20:24:16 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/03 10:41:48 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,11 +333,12 @@ void BitcoinExchange::pair_save_next_line(const int &date, const float &value)
   amount_btc_ = std::make_pair(date, value);
 }
 
+void BitcoinExchange::find_corresponding_amount_to_value(float &multiply_value)
 {
   std::map<int, float>::const_iterator con_it;
 
   con_it = value_btc_.lower_bound(amount_btc_.first);
-  process.multiply_value = con_it->second;
+  multiply_value = con_it->second;
 }
 
 void BitcoinExchange::multiply_values(t_file_processing &process)
