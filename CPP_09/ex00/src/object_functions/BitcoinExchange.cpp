@@ -139,7 +139,7 @@ bool BitcoinExchange::file_empty(std::ifstream &file, std::string &line) const
 }
 
 
-bool BitcoinExchange::correct_line(const std::string &line) const
+bool BitcoinExchange::correct_line(const std::string &line)
 {
   if (line.size() < 12)
     return (false);
@@ -283,6 +283,7 @@ bool BitcoinExchange::value_within_limits(const std::string &value) const
 }
 
 bool BitcoinExchange::multiplied_number_limit_check(const std::string &line)
+{
   std::string separated_line[2];
   int date_converted;
   float value_converted;
@@ -300,7 +301,7 @@ bool BitcoinExchange::multiplied_number_limit_check(const std::string &line)
 }
 
 void BitcoinExchange::int_convert_date(const std::string &date,
-                                                int &saved_date) const
+                                                int &saved_date)
 {
   std::string cpy_date;
   std::istringstream convert;
@@ -313,7 +314,7 @@ void BitcoinExchange::int_convert_date(const std::string &date,
 }
 
 void BitcoinExchange::float_convert_value(const std::string &value,
-                                                      float &value_saved)
+                                                  float &value_saved)
 {
   std::stringstream convert;
 
@@ -332,8 +333,6 @@ void BitcoinExchange::pair_save_next_line(const int &date, const float &value)
   amount_btc_ = std::make_pair(date, value);
 }
 
-void BitcoinExchange::find_corresponding_amount_to_value(
-                                                  t_file_processing &process)
 {
   std::map<int, float>::const_iterator con_it;
 

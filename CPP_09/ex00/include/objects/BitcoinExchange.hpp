@@ -18,8 +18,9 @@ class BitcoinExchange
   private:
     bool can_open_file(const std::string &input);
     void btc_value_get();
+    void process_input_lines(const std::string &input);
     bool file_empty(std::ifstream &file, std::string &line) const;
-    bool correct_line(const std::string &line) const;
+    bool correct_line(const std::string &line);
     bool date_line_validation(const std::string &line) const;
     bool format_date_check(const std::string &date) const;
     void array_date_convert(const std::string &date, int saved_date[3]) const;
@@ -29,7 +30,6 @@ class BitcoinExchange
     bool value_line_check(const std::string &line) const;
     bool format_value_check(const std::string &value) const;
     bool value_within_limits(const std::string &value) const;
-    void int_convert_date(const std::string &date, int &saved_date) const;
     bool multiplied_number_limit_check(const std::string &line);
     void float_convert_value(const std::string &value, float &value_saved);
     void map_save_next_line(const int &date, const float &value);
