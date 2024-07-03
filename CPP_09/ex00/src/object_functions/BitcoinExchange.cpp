@@ -275,6 +275,22 @@ bool BitcoinExchange::value_within_limits(const std::string &value) const
   return (true);
 }
 
+bool BitcoinExchange::multiplied_number_limit_check(const std::string &line)
+  std::string separated_line[2];
+  int date_converted;
+  float value_converted;
+  float multiply_value;
+
+  split_date_and_value(line, separated_line);
+  int_convert_date(separated_line[DATE], date_converted);
+  float_convert_value(separated_line[VALUE], value_converted);
+  pair_save_next_line(date_converted, value_converted);
+  find_corresponding_amount_to_value(multiply_value);
+
+  if (value_converted * multiply_value > 1000)
+    return (false);
+  return (true);
+}
 
 void BitcoinExchange::int_convert_date(const std::string &date,
                                                 int &saved_date) const
