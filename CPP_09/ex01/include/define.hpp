@@ -30,10 +30,9 @@ typedef enum e_log_level {
 
 // MESSAGES
 #define WRONG_ARGS                                                             \
-  "Wrong number of arguments. Input one argument: ./scalaConverter 1Arg"
-#define MIXED_INPUT                                                            \
-  "Mixed Input: input number or chars, not both mixed together"
-#define WRONG_SIGNS                                                            \
-  "Wrong signs found: just one character or numbers with -/+ at the beginning "
+  "Wrong number of arguments. Define numbers and operants in the polish" \
+  "notation logic"
+#define WRONG_INPUT  \
+  "Input is wrong"
 
 #endif
