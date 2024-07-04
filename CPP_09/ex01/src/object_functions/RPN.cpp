@@ -66,7 +66,7 @@ bool RPN::input_check(const std::string &input) const
 {
   if (just_numbers_and_operands(input) == false)
     return (false);
-  else if (no_greater_numbers_than_ten(input) == false)
+  else if (no_greater_numbers_than_nine(input) == false)
     return (false);
   else if (is_operator(input[0]) == true)
     return (false);
@@ -87,7 +87,7 @@ bool RPN::just_numbers_and_operands(const std::string &input) const
   return (true);
 }
 
-bool RPN::no_greater_numbers_than_ten(const std::string &input) const
+bool RPN::no_greater_numbers_than_nine(const std::string &input) const
 {
   std::string cpy_input;
   std::istringstream convert;
