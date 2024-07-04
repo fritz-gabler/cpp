@@ -22,6 +22,7 @@ class RPN
     bool no_greater_numbers_than_ten(const std::string &input) const;
     void remove_operators(std::string &input) const;
     bool right_amount_of_operands(const std::string &input) const;
+    bool divisor_is_null();
     bool is_operator(char c) const;
     void multiply();
     void add();

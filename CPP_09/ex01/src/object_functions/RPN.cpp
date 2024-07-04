@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:38:33 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/03 23:07:32 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/04 09:17:31 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void RPN::calculate(const std::string &input)
       multiply();
     else if (input[i] == '+' && stack_.size() >= 2)
       add();
-    else if (input[i] == '-' && stack_.size() >= 2)
+    else if (input[i] == '-'&& stack_.size() >= 2
+              && divisor_is_null() == false)
       subtract();
     else if (input[i] == '/' && stack_.size() >= 2)
       divide();
@@ -134,6 +135,13 @@ bool RPN::right_amount_of_operands(const std::string &input) const
 bool RPN::is_operator(char c) const
 {
   if (c == '*' || c == '+' || c == '-' || c == '/')
+    return (true);
+  return (false);
+}
+
+bool RPN::divisor_is_null()
+{
+  if (stack_.top() == 0)
     return (true);
   return (false);
 }
