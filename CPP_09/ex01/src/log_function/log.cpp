@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:25:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/16 22:04:48 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/04 18:20:43 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void output_log_level(t_log_level level)
       break;
     case ERROR:
       set_color(red);
-      std::cout << "[ERROR] ";
+      std::cerr << "[ERROR] ";
       break;
     case NOTE:
       set_color(dark_green);
