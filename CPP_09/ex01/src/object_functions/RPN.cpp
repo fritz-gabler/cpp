@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:38:33 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/04 09:17:31 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/04 11:26:51 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ bool RPN::divisor_is_null()
 
 void RPN::multiply()
 {
-  int factor[2];
+  double factor[2];
 
   factor[0] = stack_.top();
   stack_.pop();
@@ -160,7 +160,7 @@ void RPN::multiply()
 
 void RPN::add()
 {
-  int addend[2];
+  double addend[2];
 
   addend[0] = stack_.top();
   stack_.pop();
@@ -172,8 +172,8 @@ void RPN::add()
 
 void RPN::subtract()
 {
-  int subtrahend;
-  int minuend;
+  double subtrahend;
+  double minuend;
 
   subtrahend = stack_.top();
   stack_.pop();
@@ -185,8 +185,8 @@ void RPN::subtract()
 
 void RPN::divide()
 {
-  int divisor;
-  int dividend;
+  double divisor;
+  double dividend;
 
   divisor = stack_.top();
   stack_.pop();

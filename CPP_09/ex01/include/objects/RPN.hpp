@@ -15,7 +15,7 @@ class RPN
     void calculate(const std::string &input);
 
   private:
-    std::stack<int> stack_;
+    std::stack<double> stack_;
 
     bool input_check(const std::string &input) const;
     bool just_numbers_and_operands(const std::string &input) const;
