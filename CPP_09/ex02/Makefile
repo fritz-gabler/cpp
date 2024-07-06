@@ -10,12 +10,15 @@ HEADERS       =    -I./include -I./include/objects
 ###############################################################################
 ###############################################################################
 
-VPATH			:=		src src/object_functions src/log_function
+VPATH			:=		src src/object_functions src/log_function                  \
+								src/input_validation
 
 SRC_MAIN		=		main.cpp
 SRC_LOG     =   log.cpp
+SRC_OBJ     =   PmergeMe.cpp
+SRC_CHECK   =   input_validation.cpp
 
-SRC				=		$(SRC_MAIN) $(SRC_LOG)
+SRC				=		$(SRC_MAIN) $(SRC_LOG) $(SRC_OBJ) $(SRC_CHECK)
 
 ###############################################################################
 ###############################################################################
