@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   define.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/06 12:58:11 by fgabler           #+#    #+#             */
+/*   Updated: 2024/07/06 15:39:41 by fgabler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DEFINE_HPP
 #define DEFINE_HPP
 
@@ -29,11 +41,10 @@ typedef enum e_log_level {
 #define MAX_PRINTABLE 126
 
 // MESSAGES
-#define WRONG_ARGS                                                             \
-  "Wrong number of arguments. Input one argument: ./scalaConverter 1Arg"
-#define MIXED_INPUT                                                            \
-  "Mixed Input: input number or chars, not both mixed together"
-#define WRONG_SIGNS                                                            \
-  "Wrong signs found: just one character or numbers with -/+ at the beginning "
+#define WRONG_ARGS "wrong number of arguments, please input int numbers\n"
+#define NOT_DIGIT_MESSAGE "input can just consitst of positive digits\n"
+#define OVERFLOW_MESSAGE "one inputted number is bigger than UINT_MAX\n"
+
+
 
 #endif
