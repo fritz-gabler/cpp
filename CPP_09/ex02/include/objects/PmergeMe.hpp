@@ -14,8 +14,8 @@ class PmergeMe
     PmergeMe &operator = (const PmergeMe &other);
     ~PmergeMe();
 
-    std::vector<int> &deque_merge_insertion_sort();
-    std::vector<int> &vector_merge_insertion_sort();
+    std::vector<unsigned int> &deque_merge_insertion_sort();
+    std::vector<unsigned int> &vector_merge_insertion_sort();
   private:
     PmergeMe();
 
