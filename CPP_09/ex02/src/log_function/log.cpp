@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:25:12 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/16 22:04:48 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/06 15:40:55 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static void output_log_level(t_log_level level);
 void log(std::string message, t_log_level level)
 {
   output_log_level(level);
-  std::cout << message << std::endl;
+  if (level == ERROR)
+    std::cerr << message << std::endl;
+  else
+    std::cout << message << std::endl;
 }
 
 static void output_log_level(t_log_level level)
