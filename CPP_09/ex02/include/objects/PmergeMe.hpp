@@ -32,11 +32,13 @@ class PmergeMe
 
       for (it = input_.begin(); it != end_node && it + 1 != end_node; it += 2)
       {
+        std::vector<unsigned int> pair_to_add;
         pair_to_add.push_back(*it);
         if (pair_to_add.front() > *(it + 1))
           pair_to_add.push_back(*(it + 1));
         else
-          pair_to_add.insert(tmp.begin(), *(it + 1));
+          pair_to_add.insert(pair_to_add.begin(), *(it + 1));
+        container.push_back(pair_to_add);
       }
     }
 
