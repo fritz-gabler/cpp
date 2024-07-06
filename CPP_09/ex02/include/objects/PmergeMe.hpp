@@ -9,7 +9,7 @@
 class PmergeMe
 {
   public:
-    PmergeMe(const std::vector<int> &input);
+    PmergeMe(const std::vector<unsigned int> &input);
     PmergeMe(const PmergeMe &other);
     PmergeMe &operator = (const PmergeMe &other);
     ~PmergeMe();

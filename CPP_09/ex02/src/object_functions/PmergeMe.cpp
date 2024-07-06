@@ -20,7 +20,7 @@
 
 /////////////////////////CONSTRUCTOR AND DESTRUCTOR////////////////////////////
 
-PmergeMe::PmergeMe(const std::vector<int> &input)
+PmergeMe::PmergeMe(const std::vector<unsigned int> &input)
 {
   input_ = input;
   size_input_ = input_.size();
