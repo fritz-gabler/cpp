@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 16:38:59 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/06 17:00:57 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/06 21:42:15 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int ac, char **av)
   else if (input_validation(av[1]) == false)
     return (false);
 
-  std::vector<int> test;
+  std::vector<unsigned int> test;
 
   test.push_back(3);
   test.push_back(4);

@@ -42,13 +42,13 @@ class PmergeMe
       }
     }
 
-    std::vector<int> input_;
+    std::vector<unsigned int> input_;
     size_t size_input_;
     std::list<int> jacobs_thal_number_;
 
     std::vector<std::vector<unsigned int> > vector_to_sort_;;
     std::deque<std::vector<unsigned int> > deque_to_sort_;
-    std::vector<int> sequence_;
+    std::vector<unsigned int> sequence_;
     unsigned int orphan_;
 
 
