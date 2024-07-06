@@ -27,12 +27,11 @@ class PmergeMe
     template<typename T>
     void create_pairs(T &container)
     {
-      std::vector<unsigned int>::const_iteraor it;
-      std::vector<unsigned int>::const_iteraor end = input_.end();
+      std::vector<unsigned int>::const_iterator it;
+      std::vector<unsigned int>::const_iterator end_node = input_.end();
 
-      for (it = input_.begin(); it != end && it + 1 != end; it += 2)
+      for (it = input_.begin(); it != end_node && it + 1 != end_node; it += 2)
       {
-        std::vector<int> pair_to_add;
         pair_to_add.push_back(*it);
         if (pair_to_add.front() > *(it + 1))
           pair_to_add.push_back(*(it + 1));

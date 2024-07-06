@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/06 19:23:18 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/06 21:41:47 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ size_t PmergeMe::compute_jacobsthal_number(unsigned int n)
   return (pow(2, n) - pow(-1, n)) / 3;
 }
 
-std::vector<int> &PmergeMe::deque_merge_insertion_sort()
+std::vector<unsigned int> &PmergeMe::deque_merge_insertion_sort()
 {
   return (sequence_);
 }
 
-std::vector<int> &PmergeMe::vector_merge_insertion_sort()
+std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
 {
   return (sequence_);
 }
