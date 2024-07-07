@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/06 21:41:47 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/07 15:00:52 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,19 @@ size_t PmergeMe::compute_jacobsthal_number(unsigned int n)
 
 std::vector<unsigned int> &PmergeMe::deque_merge_insertion_sort()
 {
+  create_internally_sorted_pairs(deque_to_sort_);
   return (sequence_);
 }
 
 std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
 {
+  create_internally_sorted_pairs(vector_to_sort_);
+  std::vector<std::vector<unsigned int> >::iterator it;
+
+  for (it = vector_to_sort_.begin(); it != vector_to_sort_.end(); it++)
+  {
+    std::cout << "pair: " << (*it).front() << " " << (*it).back() << std::endl;
+  }
   return (sequence_);
 }
 
