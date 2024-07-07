@@ -25,7 +25,7 @@ class PmergeMe
     void save_possible_orphan_number();
 
     template<typename T>
-    void create_pairs(T &container)
+    void create_internally_sorted_pairs(T &container)
     {
       std::vector<unsigned int>::const_iterator it;
       std::vector<unsigned int>::const_iterator end_node = input_.end();
