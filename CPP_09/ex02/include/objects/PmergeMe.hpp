@@ -42,6 +42,19 @@ class PmergeMe
       }
     }
 
+    template<typename T>
+    void sort_larger_and_first_smaller_nums_in_sequence(T &container)
+    {
+      typename T::const_iterator it;
+
+      sequence_.push_back(container[0][1]);
+      for (it = container.begin(); it != container.end(); it++)
+      {
+        sequence_.push_back((*it).front());
+      }
+    }
+
+
     std::vector<unsigned int> input_;
     size_t size_input_;
     std::list<int> jacobs_thal_number_;
@@ -50,8 +63,6 @@ class PmergeMe
     std::deque<std::vector<unsigned int> > deque_to_sort_;
     std::vector<unsigned int> sequence_;
     unsigned int orphan_;
-
-
 };
 
 #endif
