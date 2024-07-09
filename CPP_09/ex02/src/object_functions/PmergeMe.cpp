@@ -23,8 +23,6 @@
 PmergeMe::PmergeMe(const std::vector<unsigned int> &input)
 {
   input_ = input;
-  size_input_ = input_.size();
-  build_jacopsthal_number();
   save_possible_orphan_number();
   size_input_ = input.size();
   create_insertion_order();
