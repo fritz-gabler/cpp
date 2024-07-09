@@ -107,7 +107,8 @@ std::vector<unsigned int> &PmergeMe::deque_merge_insertion_sort()
 std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
 {
   create_internally_sorted_pairs(vector_to_sort_);
-  sort_larger_and_first_smmaler_nums_in_sequence(vector_to_sort_);
+  sort_larger_and_first_smaller_nums_in_sequence(vector_to_sort_);
+  sort_pairs(vector_to_sort_);
 
   std::vector<std::vector<unsigned int> >::iterator it;
   for (it = vector_to_sort_.begin(); it != vector_to_sort_.end(); it++)
@@ -124,13 +125,4 @@ std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
   }
   std::cout << std::endl;
   return (sequence_);
-}
-
-void PmergeMe::save_possible_orphan_number()
-{
-  if (size_input_ % 2 != 0)
-    return ;
-  orphan_ = input_.back();
-  input_.pop_back();
-  return ;
 }
