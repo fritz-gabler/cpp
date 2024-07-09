@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/07 19:53:20 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/09 19:01:23 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,17 @@
 PmergeMe::PmergeMe(const std::vector<unsigned int> &input)
 {
   input_ = input;
+  orphan_ = 0;
   save_possible_orphan_number();
   size_input_ = input.size();
-  create_insertion_order();
+  /*
+     std::vector<unsigned int>::iterator it =  insertion_order.begin();
+  for (; it != insertion_order.end(); it++)
+  {
+    std::cout << *it << " ";
+  }
+  std::cout << std::endl;
+  */
 }
 
 PmergeMe::PmergeMe() {}
@@ -56,13 +64,14 @@ void PmergeMe::save_possible_orphan_number()
   input_.pop_back();
   return ;
 }
+
 void PmergeMe::create_insertion_order()
 {
   std::vector<unsigned int> jacobsthal_number;
   build_jacopsthal_number(jacobsthal_number);
   std::vector<unsigned int>::const_iterator j_it
                                               = jacobsthal_number.begin() + 1;
-  for (size_t i = 0, idx = *j_it; i < (input_.size() / 2); i++)
+  for (size_t i = 0, idx = *j_it; i < ((input_.size() / 2) - 1); i++)
   {
     insertion_order.push_back(idx - 1);
     set_idx_position(j_it, idx);
@@ -106,9 +115,12 @@ std::vector<unsigned int> &PmergeMe::deque_merge_insertion_sort()
 
 std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
 {
+  create_insertion_order();
   create_internally_sorted_pairs(vector_to_sort_);
-  sort_larger_and_first_smaller_nums_in_sequence(vector_to_sort_);
   sort_pairs(vector_to_sort_);
+  first_element_insert_in_sequence(vector_to_sort_);
+  sort_larger_number_in_sequence(vector_to_sort_);
+  insert_in_sequence(vector_to_sort_);
 
   std::vector<std::vector<unsigned int> >::iterator it;
   for (it = vector_to_sort_.begin(); it != vector_to_sort_.end(); it++)
@@ -126,3 +138,14 @@ std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
   std::cout << std::endl;
   return (sequence_);
 }
+
+void PmergeMe::insert_possible_orphan()
+{
+  if (orphan_ == 0)
+    return ;
+  std::vector<unsigned int>::iterator insert_position =
+    std::upper_bound(sequence_.begin(), sequence_.end(), orphan_);
+
+  sequence_.insert(insert_position, orphan_);
+}
+

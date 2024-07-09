@@ -71,10 +71,12 @@ class PmergeMe
       std::merge(left.begin(), left.end(), right.begin(), right.end(),
                                                            container.begin());
     }
+
+    template<typename T>
+    void sort_larger_number_in_sequence(T &container)
     {
       typename T::const_iterator it;
 
-      sequence_.push_back(container[0][1]);
       for (it = container.begin(); it != container.end(); it++)
       {
         sequence_.push_back((*it).front());
@@ -82,7 +84,13 @@ class PmergeMe
     }
 
     template<typename T>
-    void sort_pairs(T &container)
+    void first_element_insert_in_sequence(T &container)
+    {
+      sequence_.push_back(container[0][1]);
+    }
+
+    template<typename T>
+    void insert_in_sequence(T &container)
     {
       std::vector<unsigned int>::iterator position_insertion;
       int amount_inserted_elements = 0;
@@ -101,6 +109,7 @@ class PmergeMe
         amount_inserted_elements++;
       }
     }
+    void insert_possible_orphan();
 
 
 };
