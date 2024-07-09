@@ -96,7 +96,7 @@ class PmergeMe
       int amount_inserted_elements = 1; // -1 | 0 1 2
       for(unsigned int idx = 0; idx != container.size() - 1; idx++)
       {
-        int window = (insertion_order[idx] - 1) + amount_inserted_elements;
+        int window = (insertion_order[idx]) + amount_inserted_elements;
 
         int insertion_idx = insertion_order[idx];
 
