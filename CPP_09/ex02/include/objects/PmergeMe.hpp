@@ -5,6 +5,9 @@
 #include <list>
 #include <deque>
 #include <vector>
+#include <algorithm>
+#include <iostream>
+
 
 class PmergeMe
 {
@@ -19,10 +22,21 @@ class PmergeMe
   private:
     PmergeMe();
 
+    std::vector<unsigned int> input_;
+    size_t size_input_;
+    std::vector<unsigned int> insertion_order;
 
-    void build_jacopsthal_number();
-    size_t compute_jacobsthal_number(unsigned int n);
+    std::vector<std::vector<unsigned int> > vector_to_sort_;;
+    std::deque<std::vector<unsigned int> > deque_to_sort_;
+    std::vector<unsigned int> sequence_;
+    unsigned int orphan_;
+
     void save_possible_orphan_number();
+    void create_insertion_order();
+    void build_jacopsthal_number(std::vector<unsigned int> &);
+    size_t compute_jacobsthal_number(unsigned int n);
+    void set_idx_position(std::vector<unsigned int>::const_iterator &,
+                                                                    size_t &);
 
     template<typename T>
     void create_internally_sorted_pairs(T &container)
@@ -54,15 +68,28 @@ class PmergeMe
       }
     }
 
+    template<typename T>
+    void sort_pairs(T &container)
+    {
+      std::vector<unsigned int>::iterator position_insertion;
+      int amount_inserted_elements = 0;
+      for(unsigned int idx = 0; idx != container.size() - 1; idx++)
+      {
+        int window = (insertion_order[idx] - 1) + amount_inserted_elements;
 
-    std::vector<unsigned int> input_;
-    size_t size_input_;
-    std::list<int> jacobs_thal_number_;
+        int insertion_idx = insertion_order[idx];
 
-    std::vector<std::vector<unsigned int> > vector_to_sort_;;
-    std::deque<std::vector<unsigned int> > deque_to_sort_;
-    std::vector<unsigned int> sequence_;
-    unsigned int orphan_;
+        int element_to_insert = container[insertion_idx][1];
+
+        position_insertion = std::upper_bound(sequence_.begin(),
+                                  sequence_.begin() + window, element_to_insert);
+
+        sequence_.insert(position_insertion, element_to_insert);
+        amount_inserted_elements++;
+      }
+    }
+
+
 };
 
 #endif
