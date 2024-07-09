@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/09 19:01:23 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/09 21:01:02 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ PmergeMe::PmergeMe(const std::vector<unsigned int> &input)
   orphan_ = 0;
   save_possible_orphan_number();
   size_input_ = input.size();
+  create_insertion_order();
   /*
      std::vector<unsigned int>::iterator it =  insertion_order.begin();
   for (; it != insertion_order.end(); it++)
@@ -71,6 +72,7 @@ void PmergeMe::create_insertion_order()
   build_jacopsthal_number(jacobsthal_number);
   std::vector<unsigned int>::const_iterator j_it
                                               = jacobsthal_number.begin() + 1;
+
   for (size_t i = 0, idx = *j_it; i < ((input_.size() / 2) - 1); i++)
   {
     insertion_order.push_back(idx - 1);
@@ -81,7 +83,7 @@ void PmergeMe::create_insertion_order()
 void PmergeMe::set_idx_position(std::vector<unsigned int>::const_iterator &it,
     size_t &idx)
 {
-  if (idx - 1 == *(it - 1))
+  if (idx - 1 == *(it - 1)) // idx == 2 - 1 = 1 | < jacob == 1 
   {
     idx = *(++it);
     if (idx > size_input_ / 2)
@@ -99,7 +101,9 @@ void PmergeMe::build_jacopsthal_number(std::vector<unsigned int> &j_thal)
   {
     tmp_jacobsthal = compute_jacobsthal_number(i);
     j_thal.push_back(tmp_jacobsthal);
+    std::cout << tmp_jacobsthal << " ";
   }
+  std::cout << std::endl;
 }
 
 size_t PmergeMe::compute_jacobsthal_number(unsigned int n)
@@ -109,19 +113,18 @@ size_t PmergeMe::compute_jacobsthal_number(unsigned int n)
 
 std::vector<unsigned int> &PmergeMe::deque_merge_insertion_sort()
 {
-  create_internally_sorted_pairs(deque_to_sort_);
   return (sequence_);
 }
 
 std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
 {
-  create_insertion_order();
   create_internally_sorted_pairs(vector_to_sort_);
   sort_pairs(vector_to_sort_);
   first_element_insert_in_sequence(vector_to_sort_);
   sort_larger_number_in_sequence(vector_to_sort_);
   insert_in_sequence(vector_to_sort_);
 
+  /*
   std::vector<std::vector<unsigned int> >::iterator it;
   for (it = vector_to_sort_.begin(); it != vector_to_sort_.end(); it++)
   {
@@ -136,6 +139,7 @@ std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
     std::cout << *it_s << " ";
   }
   std::cout << std::endl;
+  */
   return (sequence_);
 }
 

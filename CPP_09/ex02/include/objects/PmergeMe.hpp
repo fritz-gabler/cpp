@@ -93,7 +93,7 @@ class PmergeMe
     void insert_in_sequence(T &container)
     {
       std::vector<unsigned int>::iterator position_insertion;
-      int amount_inserted_elements = 0;
+      int amount_inserted_elements = 1; // -1 | 0 1 2
       for(unsigned int idx = 0; idx != container.size() - 1; idx++)
       {
         int window = (insertion_order[idx] - 1) + amount_inserted_elements;
