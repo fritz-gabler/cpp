@@ -57,7 +57,20 @@ class PmergeMe
     }
 
     template<typename T>
-    void sort_larger_and_first_smaller_nums_in_sequence(T &container)
+    void sort_pairs(T &container)
+    {
+      if (container.size() == 1)
+        return;
+
+      size_t mid = container.size() / 2;
+      T left(container.begin(), container.begin() + mid);
+      T right(container.begin() + mid, container.end());
+      sort_pairs(left);
+      sort_pairs(right);
+
+      std::merge(left.begin(), left.end(), right.begin(), right.end(),
+                                                           container.begin());
+    }
     {
       typename T::const_iterator it;
 
