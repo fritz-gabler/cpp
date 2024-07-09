@@ -47,7 +47,14 @@ PmergeMe::~PmergeMe() {};
 
 ///////////////////////////////MEMBER FUNCTIONS////////////////////////////////
 
-void PmergeMe::build_jacopsthal_number()
+void PmergeMe::save_possible_orphan_number()
+{
+  if ((input_.size() + 1) % 2 != 0)
+    return ;
+  orphan_ = input_.back();
+  input_.pop_back();
+  return ;
+}
 {
   size_t tmp_jacobsthal = 0;
   for (unsigned int i = 3; tmp_jacobsthal <= size_input_; ++i)
