@@ -25,6 +25,9 @@ PmergeMe::PmergeMe(const std::vector<unsigned int> &input)
   input_ = input;
   size_input_ = input_.size();
   build_jacopsthal_number();
+  save_possible_orphan_number();
+  size_input_ = input.size();
+  create_insertion_order();
 }
 
 PmergeMe::PmergeMe() {}
@@ -33,7 +36,7 @@ PmergeMe::PmergeMe(const PmergeMe &other)
 {
   input_ = other.input_;
   size_input_ = other.size_input_;
-  jacobs_thal_number_ = other.jacobs_thal_number_;
+  insertion_order = other.insertion_order;
 }
 
 PmergeMe &PmergeMe::operator = (const PmergeMe &other)
