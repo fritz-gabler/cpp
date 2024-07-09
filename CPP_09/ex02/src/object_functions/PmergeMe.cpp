@@ -56,12 +56,40 @@ void PmergeMe::save_possible_orphan_number()
   input_.pop_back();
   return ;
 }
+void PmergeMe::create_insertion_order()
+{
+  std::vector<unsigned int> jacobsthal_number;
+  build_jacopsthal_number(jacobsthal_number);
+  std::vector<unsigned int>::const_iterator j_it
+                                              = jacobsthal_number.begin() + 1;
+  for (size_t i = 0, idx = *j_it; i < (input_.size() / 2); i++)
+  {
+    insertion_order.push_back(idx - 1);
+    set_idx_position(j_it, idx);
+  }
+}
+
+void PmergeMe::set_idx_position(std::vector<unsigned int>::const_iterator &it,
+    size_t &idx)
+{
+  if (idx - 1 == *(it - 1))
+  {
+    idx = *(++it);
+    if (idx > size_input_ / 2)
+      idx = size_input_ / 2;
+  }
+  else
+    idx--;
+}
+
+
+void PmergeMe::build_jacopsthal_number(std::vector<unsigned int> &j_thal)
 {
   size_t tmp_jacobsthal = 0;
-  for (unsigned int i = 3; tmp_jacobsthal <= size_input_; ++i)
+  for (unsigned int i = 2; tmp_jacobsthal <= ((size_input_ / 2) - 1); ++i)
   {
     tmp_jacobsthal = compute_jacobsthal_number(i);
-    jacobs_thal_number_.push_back(tmp_jacobsthal);
+    j_thal.push_back(tmp_jacobsthal);
   }
 }
 
