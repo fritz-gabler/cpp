@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 16:38:59 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/09 22:21:52 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/10 17:05:40 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int main(int ac, char **av)
 
   std::vector<unsigned int> test;
 
-  for (int i = 0; i < 20; i++)
+  for (int i = 0; i < 21; i++)
   {
     if (i < 3)
-      test.push_back(i + 23);
+      test.push_back(i + 24);
     else
       test.push_back(i + 3);
   }
@@ -41,6 +41,7 @@ int main(int ac, char **av)
   std::cout << std::endl;
 
   PmergeMe test_class(test);
+  test_class.deque_merge_insertion_sort();
   test_class.vector_merge_insertion_sort();
   return (true);
 }
