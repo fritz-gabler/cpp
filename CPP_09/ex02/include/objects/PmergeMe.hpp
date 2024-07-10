@@ -39,7 +39,7 @@ class PmergeMe
     template<typename T, typename S>
     void first_element_insert_in_sequence(T &container, S &sequence);
     template<typename T, typename S>
-    void insert_in_sequence(T &container, S sequence);
+    void insert_in_sequence(T &container, S &sequence);
     template<typename S>
     void insert_possible_orphan(S &sequence);
 

@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/10 18:30:57 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/10 21:24:04 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,7 @@ void PmergeMe::first_element_insert_in_sequence(T &container, S &sequence)
 }
 
 template<typename T, typename S>
-void PmergeMe::insert_in_sequence(T &container, S sequence)
+void PmergeMe::insert_in_sequence(T &container, S &sequence)
 {
   typename S::iterator position_insertion;
   int amount_inserted_elements = 1; // -1 | 0 1 2
