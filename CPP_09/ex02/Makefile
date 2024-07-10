@@ -11,15 +11,17 @@ HEADERS       =    -I./include -I./include/objects
 ###############################################################################
 
 VPATH			:=		src src/object_functions src/log_function                  \
-								src/input_validation src/convert_input
+								src/input_validation src/convert_input src/time_mesurement
 
 SRC_MAIN		=		main.cpp
 SRC_LOG     =   log.cpp
 SRC_OBJ     =   PmergeMe.cpp
 SRC_CHECK   =   input_validation.cpp
 SRC_CONVERT =   convert_input.cpp
+SRC_TIME    =   get_stopped_time.cpp  start_time.cpp
 
-SRC				=		$(SRC_MAIN) $(SRC_LOG) $(SRC_OBJ) $(SRC_CHECK) $(SRC_CONVERT)
+SRC				=		$(SRC_MAIN) $(SRC_LOG) $(SRC_OBJ) $(SRC_CHECK) $(SRC_CONVERT)  \
+							$(SRC_TIME)
 
 ###############################################################################
 ###############################################################################
