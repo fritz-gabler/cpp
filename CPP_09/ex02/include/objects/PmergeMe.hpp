@@ -17,19 +17,11 @@ class PmergeMe
     PmergeMe &operator = (const PmergeMe &other);
     ~PmergeMe();
 
-    std::vector<unsigned int> &deque_merge_insertion_sort();
+    std::deque<unsigned int> deque_merge_insertion_sort();
     std::vector<unsigned int> &vector_merge_insertion_sort();
   private:
     PmergeMe();
 
-    std::vector<unsigned int> input_;
-    size_t size_input_;
-    std::vector<unsigned int> insertion_order;
-
-    std::vector<std::vector<unsigned int> > vector_to_sort_;;
-    std::deque<std::vector<unsigned int> > deque_to_sort_;
-    std::vector<unsigned int> sequence_;
-    unsigned int orphan_;
 
     void save_possible_orphan_number();
     void create_insertion_order();
@@ -40,20 +32,28 @@ class PmergeMe
 
     template<typename T>
     void create_internally_sorted_pairs(T &container);
-
     template<typename T>
     void sort_pairs(T &container);
+    template<typename T, typename S>
+    void sort_larger_number_in_sequence(T &container, S &sequence);
+    template<typename T, typename S>
+    void first_element_insert_in_sequence(T &container, S &sequence);
+    template<typename T, typename S>
+    void insert_in_sequence(T &container, S sequence);
+    template<typename S>
+    void insert_possible_orphan(S &sequence);
 
-    template<typename T>
-    void sort_larger_number_in_sequence(T &container);
 
-    template<typename T>
-    void first_element_insert_in_sequence(T &container);
+    std::vector<unsigned int> input_;
+    bool is_already_sorted;
+    size_t size_input_;
+    std::vector<unsigned int> insertion_order_;
 
-    template<typename T>
-    void insert_in_sequence(T &container);
-
-    void insert_possible_orphan();
+    std::vector<std::vector<unsigned int> > vector_to_sort_;;
+    std::deque<std::deque<unsigned int> > deque_to_sort_;
+    std::vector<unsigned int> vector_sequence_;
+    std::deque<unsigned int> deque_sequence_;
+    unsigned int orphan_;
 };
 
 #endif
