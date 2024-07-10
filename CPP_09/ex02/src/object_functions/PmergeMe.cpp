@@ -143,6 +143,78 @@ std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
   return (sequence_);
 }
 
+template<typename T>
+void PmergeMe::create_internally_sorted_pairs(T &container)
+{
+  std::vector<unsigned int>::const_iterator it;
+  std::vector<unsigned int>::const_iterator end_node = input_.end();
+
+  for (it = input_.begin(); it != end_node && it + 1 != end_node; it += 2)
+  {
+    std::vector<unsigned int> pair_to_add;
+    pair_to_add.push_back(*it);
+    if (pair_to_add.front() > *(it + 1))
+      pair_to_add.push_back(*(it + 1));
+    else
+      pair_to_add.insert(pair_to_add.begin(), *(it + 1));
+    container.push_back(pair_to_add);
+  }
+}
+
+template<typename T>
+void PmergeMe::sort_pairs(T &container)
+{
+  if (container.size() == 1)
+    return;
+
+  size_t mid = container.size() / 2;
+  T left(container.begin(), container.begin() + mid);
+  T right(container.begin() + mid, container.end());
+  sort_pairs(left);
+  sort_pairs(right);
+
+  std::merge(left.begin(), left.end(), right.begin(), right.end(),
+                                                       container.begin());
+}
+
+template<typename T>
+void PmergeMe::sort_larger_number_in_sequence(T &container)
+{
+  typename T::const_iterator it;
+
+  for (it = container.begin(); it != container.end(); it++)
+  {
+    sequence_.push_back((*it).front());
+  }
+}
+
+template<typename T>
+void PmergeMe::first_element_insert_in_sequence(T &container)
+{
+  sequence_.push_back(container[0][1]);
+}
+
+template<typename T>
+void PmergeMe::insert_in_sequence(T &container)
+{
+  std::vector<unsigned int>::iterator position_insertion;
+  int amount_inserted_elements = 1; // -1 | 0 1 2
+  for(unsigned int idx = 0; idx != container.size() - 1; idx++)
+  {
+    int window = (insertion_order[idx]) + amount_inserted_elements;
+
+    int insertion_idx = insertion_order[idx];
+
+    int element_to_insert = container[insertion_idx][1];
+
+    position_insertion = std::upper_bound(sequence_.begin(),
+                              sequence_.begin() + window, element_to_insert);
+
+    sequence_.insert(position_insertion, element_to_insert);
+    amount_inserted_elements++;
+  }
+}
+
 void PmergeMe::insert_possible_orphan()
 {
   if (orphan_ == 0)
