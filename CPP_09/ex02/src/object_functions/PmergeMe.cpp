@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/10 17:26:34 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/10 18:30:57 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ PmergeMe::PmergeMe(const std::vector<unsigned int> &input)
   {
     is_already_sorted = true;
     input_ = input;
-    std::cout << "IS SORTED\n";
     return ;
   }
   is_already_sorted = false;
@@ -111,11 +110,13 @@ size_t PmergeMe::compute_jacobsthal_number(unsigned int n)
 
 std::deque<unsigned int> PmergeMe::deque_merge_insertion_sort()
 {
-  if (is_already_sorted)
+  if (is_already_sorted == true)
   {
     std::deque<unsigned int> sorted_input(input_.begin(), input_.end());
-    return sorted_input;
+    return (sorted_input);
   }
+  else if (deque_sequence_.empty() == false)
+    return (deque_sequence_);
 
   create_internally_sorted_pairs(deque_to_sort_);
   sort_pairs(deque_to_sort_);
@@ -144,7 +145,7 @@ std::deque<unsigned int> PmergeMe::deque_merge_insertion_sort()
 
 std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
 {
-  if (is_already_sorted == true)
+  if (is_already_sorted == true || vector_sequence_.empty() == false)
     return input_;
   create_internally_sorted_pairs(vector_to_sort_);
   sort_pairs(vector_to_sort_);
