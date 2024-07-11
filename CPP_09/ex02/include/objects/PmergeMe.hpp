@@ -53,6 +53,7 @@ class PmergeMe
     std::vector<unsigned int> vector_sequence_;
     std::deque<unsigned int> deque_sequence_;
     unsigned int orphan_;
+    bool orphan_got_saved_;
 };
 
 #endif

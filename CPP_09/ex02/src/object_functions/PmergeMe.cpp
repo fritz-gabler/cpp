@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 11:37:26 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 19:07:05 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ PmergeMe::PmergeMe(const std::vector<unsigned int> &input)
 {
   input_ = input;
   orphan_ = 0;
+  orphan_got_saved_ = false;
   save_possible_orphan_number();
   size_input_ = input.size();
   create_insertion_order();
@@ -55,6 +56,7 @@ void PmergeMe::save_possible_orphan_number()
     return ;
   orphan_ = input_.back();
   input_.pop_back();
+  orphan_got_saved_ = true;
   return ;
 }
 
@@ -209,7 +211,7 @@ void PmergeMe::insert_in_sequence(T &container, S &sequence)
 template<typename S>
 void PmergeMe::insert_possible_orphan(S &sequence)
 {
-  if (orphan_ == 0)
+  if (orphan_got_saved_ == false)
     return ;
   typename S::iterator insert_position =
     std::upper_bound(sequence.begin(), sequence.end(), orphan_);
