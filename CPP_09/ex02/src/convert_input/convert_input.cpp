@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 19:06:15 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/10 20:56:44 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 09:51:36 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void convert_input(int ac, char **av,
     convert.str(av[i]);
     unsigned int number_converted;
     convert >> number_converted;
-    std::cout << number_converted << " ";
     converted_input.push_back(number_converted);
     convert.clear();
   }
-  std::cout << std::endl;
 }
