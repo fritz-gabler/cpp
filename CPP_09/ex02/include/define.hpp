@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 12:58:11 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/10 20:29:52 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 09:29:30 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef enum e_log_level {
 #define WRONG_ARGS "wrong number of arguments, please input int numbers"
 #define NOT_DIGIT_MESSAGE "input can just consitst of positive digits"
 #define OVERFLOW_MESSAGE "one inputted number is bigger than UINT_MAX"
+#define IS_SORTED_ALREADY "input is already sorted"
 
 
 
