@@ -7,6 +7,8 @@
 
 //LOG
 void log(std::string message, t_log_level level);
+void vector_log(std::vector<unsigned int> sequence,
+                           std::vector<unsigned int> input, double duration);
 
 //INPUT
 bool input_validation(char **av, int ac);

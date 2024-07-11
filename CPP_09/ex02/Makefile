@@ -15,7 +15,7 @@ VPATH			:=		src src/object_functions src/log_function                  \
 								src/tests
 
 SRC_MAIN		=		main.cpp
-SRC_LOG     =   log.cpp
+SRC_LOG     =   log.cpp vector_log.cpp
 SRC_OBJ     =   PmergeMe.cpp
 SRC_CHECK   =   input_validation.cpp
 SRC_CONVERT =   convert_input.cpp
