@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:38:33 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/04 11:26:51 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 12:09:38 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,12 @@ bool RPN::no_greater_numbers_than_nine(const std::string &input) const
 {
   std::string cpy_input;
   std::istringstream convert;
-  int number;
+  unsigned int number;
 
   cpy_input = input;
   remove_operators(cpy_input);
 
-  for (convert.str(cpy_input); convert.eof() == false; convert >> number)
+  while (convert >> number)
   {
     if (number > 9)
       return (false);
