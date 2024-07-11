@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 12:56:35 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 13:17:15 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,12 @@ void BitcoinExchange::btc_value_get()
       map_save_next_line(date_saved, value_saved);
     }
     else
-      std::cout << RED_ERROR << "data.csv bad input => " << line << std::endl;
+    {
+      if (line.size() != 0)
+        std::cout << RED_ERROR << "data.csv bad input => " << line << std::endl;
+      else
+        std::cout << RED_ERROR << "data.csv bad input" << std::endl;
+    }
   }
   file.close();
 }
@@ -123,6 +128,8 @@ void BitcoinExchange::process_input_lines(const std::string &input)
       multiply_values(process);
       print_corresponding_pair(process);
     }
+    else if (process.line.size() == 0)
+      std::cout << RED_ERROR << "empty line" << std::endl;
     else if (value_line_check(process.line) == false)
       std::cout << RED_ERROR << "incorrect value " << process.line << std::endl;
     else if (multiplied_number_limit_check(process.line) == false)
@@ -143,7 +150,9 @@ bool BitcoinExchange::file_empty(std::ifstream &file, std::string &line) const
 
 bool BitcoinExchange::correct_line(const std::string &line)
 {
-  if (line.size() < 12)
+  if (line.size() == 0)
+    return (false);
+  else if (line.size() < 12)
     return (false);
   else if (line.size() < 14 && line[10] != ',')
     return (false);
