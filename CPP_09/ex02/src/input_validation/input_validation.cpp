@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 15:31:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/10 20:50:49 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 09:46:30 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 #include "define.hpp"
 #include <sstream>
 #include "header.hpp"
+#include <vector>
+#include <algorithm>
 
 
 static bool is_a_positive_digit( char **av, int ac);
 static bool input_with_in_u_int_limits( char **av, int ac);
 static bool is_digit_check(char *str);
 static bool convert_check(char *str);
+static bool is_already_sorted(int ac, char **av);
 
 bool input_validation(char **av, int ac)
 {
@@ -32,6 +35,11 @@ bool input_validation(char **av, int ac)
   else if (input_with_in_u_int_limits(av, ac) == false)
   {
     log(OVERFLOW_MESSAGE, ERROR);
+    return (false);
+  }
+  else if (is_already_sorted(ac, av) == false)
+  {
+    log(IS_SORTED_ALREADY, ERROR);
     return (false);
   }
   return (true);
@@ -78,4 +86,15 @@ static bool convert_check(char *str)
     return (false);
   convert.clear();
   return (true);
+}
+
+static bool is_already_sorted(int ac, char **av)
+{
+  std::vector<unsigned int> converted_input;
+  convert_input(ac, av, converted_input);
+
+  if (std::is_sorted(converted_input.begin(), converted_input.end()) == true)
+    return (false);
+
+ return (true);
 }
