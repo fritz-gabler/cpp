@@ -45,7 +45,6 @@ class PmergeMe
 
 
     std::vector<unsigned int> input_;
-    bool is_already_sorted;
     size_t size_input_;
     std::vector<unsigned int> insertion_order_;
 

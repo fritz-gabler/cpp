@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/10 21:24:04 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 09:50:39 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ PmergeMe::PmergeMe(const std::vector<unsigned int> &input)
 {
   if (std::is_sorted(input.begin(), input.end()) == true)
   {
-    is_already_sorted = true;
     input_ = input;
     return ;
   }
-  is_already_sorted = false;
   input_ = input;
   orphan_ = 0;
   save_possible_orphan_number();
@@ -67,6 +65,11 @@ void PmergeMe::save_possible_orphan_number()
 
 void PmergeMe::create_insertion_order()
 {
+  if ((input_.size() / 2) <= 2)
+  {
+    insertion_order_.push_back(1);
+    return ;
+  }
   std::vector<unsigned int> jacobsthal_number;
   build_jacopsthal_number(jacobsthal_number);
   std::vector<unsigned int>::const_iterator j_it
@@ -110,12 +113,7 @@ size_t PmergeMe::compute_jacobsthal_number(unsigned int n)
 
 std::deque<unsigned int> PmergeMe::deque_merge_insertion_sort()
 {
-  if (is_already_sorted == true)
-  {
-    std::deque<unsigned int> sorted_input(input_.begin(), input_.end());
-    return (sorted_input);
-  }
-  else if (deque_sequence_.empty() == false)
+  if (deque_sequence_.empty() == false)
     return (deque_sequence_);
 
   create_internally_sorted_pairs(deque_to_sort_);
@@ -145,7 +143,7 @@ std::deque<unsigned int> PmergeMe::deque_merge_insertion_sort()
 
 std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
 {
-  if (is_already_sorted == true || vector_sequence_.empty() == false)
+  if (vector_sequence_.empty() == false)
     return input_;
   create_internally_sorted_pairs(vector_to_sort_);
   sort_pairs(vector_to_sort_);
