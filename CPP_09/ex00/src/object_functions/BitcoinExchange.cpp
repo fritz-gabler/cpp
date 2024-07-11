@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 17:30:44 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 18:17:59 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,8 @@ void BitcoinExchange::process_input_lines(const std::string &input)
   while(std::getline(process.file, process.line))
   {
     if (correct_line(process.line) == true
-        && multiplied_number_limit_check(process.line) == true)
+        && multiplied_number_limit_check(process.line) == true
+        && input_smaller_one_thousand(process.line) == true)
     {
       split_date_and_value(process.line, process.separated_str);
       int_convert_date(process.separated_str[DATE], process.date_saved);
@@ -151,6 +152,8 @@ void BitcoinExchange::process_input_lines(const std::string &input)
     else if (value_line_check(process.line) == false)
       std::cout << RED_ERROR << "incorrect value " << process.line << std::endl;
     else if (multiplied_number_limit_check(process.line) == false)
+      std::cout << RED_ERROR << "too large a number." << std::endl;
+    else if (input_smaller_one_thousand(process.line) == false)
       std::cout << RED_ERROR << "too large a number." << std::endl;
     else
       std::cout << RED_ERROR << "bad input => " << process.line << std::endl;
@@ -356,6 +359,7 @@ bool BitcoinExchange::multiplied_number_limit_check(const std::string &line)
   std::string separated_line[2];
   int date_converted;
   float value_converted;
+  std::stringstream convert;
   float multiply_value;
 
   split_date_and_value(line, separated_line);
@@ -364,7 +368,23 @@ bool BitcoinExchange::multiplied_number_limit_check(const std::string &line)
   pair_save_next_line(date_converted, value_converted);
   find_corresponding_amount_to_value(multiply_value);
 
-  if (value_converted * multiply_value > 1000)
+  if (value_converted * multiply_value > std::numeric_limits<float>::max())
+    return (false);
+  return (true);
+}
+
+bool BitcoinExchange::input_smaller_one_thousand(const std::string line)
+{
+  std::string separated_line[2];
+  int date_converted;
+  float value_converted;
+  std::stringstream convert;
+
+  split_date_and_value(line, separated_line);
+  int_convert_date(separated_line[DATE], date_converted);
+  float_convert_value(separated_line[VALUE], value_converted);
+  pair_save_next_line(date_converted, value_converted);
+  if (value_converted > 1000)
     return (false);
   return (true);
 }
