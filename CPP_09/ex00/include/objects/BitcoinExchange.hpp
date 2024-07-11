@@ -21,6 +21,8 @@ class BitcoinExchange
     void process_input_lines(const std::string &input);
     bool file_empty(std::ifstream &file, std::string &line) const;
     bool correct_line(const std::string &line);
+    bool just_valid_characters(const std::string &line) const;
+    bool valid_character(const char c) const;
     bool date_line_validation(const std::string &line) const;
     bool format_date_check(const std::string &date) const;
     void array_date_convert(const std::string &date, int saved_date[3]) const;

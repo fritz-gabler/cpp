@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 13:17:15 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 15:10:03 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,11 @@ void BitcoinExchange::process_input_lines(const std::string &input)
     }
     else if (process.line.size() == 0)
       std::cout << RED_ERROR << "empty line" << std::endl;
+    else if (process.line.size() < 12)
+      std::cout << RED_ERROR << "line to short" << std::endl;
+    else if (just_valid_characters(process.line) == false)
+      std::cout << RED_ERROR << "invalid character => "
+        << process.line << std::endl;
     else if (value_line_check(process.line) == false)
       std::cout << RED_ERROR << "incorrect value " << process.line << std::endl;
     else if (multiplied_number_limit_check(process.line) == false)
@@ -158,11 +163,30 @@ bool BitcoinExchange::correct_line(const std::string &line)
     return (false);
   else if (isdigit(line[line.size() - 1]) == false)
     return (false);
+  else if (just_valid_characters(line) == false)
+    return (false);
   else if (date_line_validation(line) == false)
     return (false);
   else if (value_line_check(line) == false)
     return (false);
   return (true);
+}
+
+bool BitcoinExchange::just_valid_characters(const std::string &line) const
+{
+  for (int i = 0; line[i] != '\0'; i++)
+  {
+    if (valid_character(line[i]) == false)
+      return (false);
+  }
+  return (true);
+}
+
+bool BitcoinExchange::valid_character(const char c) const
+{
+  if (c == ' ' || c == '|' || c == '-' || c == ',' || c == '.' || isdigit(c))
+    return (true);
+  return (false);
 }
 
 bool BitcoinExchange::date_line_validation(const std::string &line) const
