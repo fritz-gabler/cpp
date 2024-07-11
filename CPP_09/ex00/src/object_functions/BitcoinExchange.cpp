@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 15:10:03 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 17:30:44 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,21 @@ void BitcoinExchange::btc_value_get()
 {
   std::ifstream file;
   std::string line;
+  std::string data;
   std::string separated_str[2];
   int date_saved;
   float value_saved;
 
-  file.open("data.csv");
-  if (file_empty(file, line) == true)
+  data = "data.csv";
+  file.open(data);
+  if (file_empty(data) == true)
   {
     std::cout << RED_ERROR << "data.csv file is empty\n";
+    return ;
+  }
+  else if (is_file_header(file) == false)
+  {
+    std::cout << RED_ERROR << NO_FILE_HEADER;
     return ;
   }
   while (std::getline(file, line))
@@ -110,11 +117,17 @@ void BitcoinExchange::process_input_lines(const std::string &input)
   t_file_processing process;
 
   process.file.open(input.c_str());
-  if (file_empty(process.file, process.line) == true)
+  if (file_empty(input) == true)
   {
     std::cout << RED_ERROR << "File " << input <<  " is empty\n";
     return ;
   }
+  else if (is_file_header(process.file) == false)
+  {
+    std::cout << RED_ERROR << NO_FILE_HEADER;
+    return ;
+  }
+
   while(std::getline(process.file, process.line))
   {
     if (correct_line(process.line) == true
@@ -144,14 +157,33 @@ void BitcoinExchange::process_input_lines(const std::string &input)
   }
 }
 
-bool BitcoinExchange::file_empty(std::ifstream &file, std::string &line) const
+bool BitcoinExchange::file_empty(const std::string &input) const
 {
+  std::ifstream file;
+  std::string line;
+
+  file.open(input.c_str());
   std::getline(file, line);
   if (line.empty() == true)
+  {
+    file.close();
     return (true);
+  }
+  file.close();
   return (false);
 }
 
+bool BitcoinExchange::is_file_header(std::ifstream &file)
+{
+  std::string line;
+
+  std::getline(file, line);
+  if (line.compare("date,exchange_rate") == IS_SAME
+     || line.compare("date | value") == IS_SAME)
+    return (true);
+  file.close();
+  return (false);
+}
 
 bool BitcoinExchange::correct_line(const std::string &line)
 {

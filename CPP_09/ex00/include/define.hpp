@@ -9,5 +9,7 @@
 
 #define YEAR_ERROR "Invalid Date "
 #define RED_ERROR RED << "[ERROR] " << RESET
+#define NO_FILE_HEADER "file header is missing\n"
+#define IS_SAME 0
 
 #endif

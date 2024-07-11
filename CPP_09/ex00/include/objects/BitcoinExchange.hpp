@@ -19,7 +19,8 @@ class BitcoinExchange
     bool can_open_file(const std::string &input);
     void btc_value_get();
     void process_input_lines(const std::string &input);
-    bool file_empty(std::ifstream &file, std::string &line) const;
+    bool file_empty(const std::string &input) const;
+    bool is_file_header(std::ifstream &file);
     bool correct_line(const std::string &line);
     bool just_valid_characters(const std::string &line) const;
     bool valid_character(const char c) const;
