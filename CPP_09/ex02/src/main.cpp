@@ -6,12 +6,14 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 16:38:59 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/10 21:15:27 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 09:56:58 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
 #include <vector>
+#include <time.h>
+#include <iomanip>
 
 int main(int ac, char **av)
 {
@@ -25,15 +27,20 @@ int main(int ac, char **av)
 
   std::vector<unsigned int> input;
   convert_input(ac, av, input);
-  std::vector<unsigned int>::iterator it = input.begin();
-  for (; it != input.end(); it++)
-  {
-    std::cout << *it << " ";
-  }
-  std::cout << std::endl;
-  std::cout << "hallo\n";
-  PmergeMe test_class(input);
-  test_class.vector_merge_insertion_sort();
-  test_class.deque_merge_insertion_sort();
+
+  clock_t time;
+  double duration;
+  
+  start_time(time);
+  PmergeMe vector_class(input);
+  vector_class.vector_merge_insertion_sort();
+  get_stopped_time(time, duration);
+  std::cout << duration << std::endl;
+
+  start_time(time);
+  PmergeMe deque_class(input);
+  vector_class.deque_merge_insertion_sort();
+  get_stopped_time(time, duration);
+  std::cout << duration << " μs."<< std::endl;
   return (true);
 }
