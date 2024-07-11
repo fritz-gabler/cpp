@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 09:50:39 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 10:45:41 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,22 +122,6 @@ std::deque<unsigned int> PmergeMe::deque_merge_insertion_sort()
   sort_larger_number_in_sequence(deque_to_sort_, deque_sequence_);
   insert_in_sequence(deque_to_sort_, deque_sequence_);
   insert_possible_orphan(deque_sequence_);
-
-
-  std::deque<std::deque<unsigned int> >::iterator it;
-  for (it = deque_to_sort_.begin(); it != deque_to_sort_.end(); it++)
-  {
-    std::cout << "pair: " << (*it).front() << " " << (*it).back() << std::endl;
-  }
-  std::cout << std::endl << std::endl;
-
-  std::deque<unsigned int>::iterator it_s;
-
-  for (it_s = deque_sequence_.begin(); it_s != deque_sequence_.end(); it_s++)
-  {
-    std::cout << *it_s << " ";
-  }
-  std::cout << std::endl;
   return (deque_sequence_);
 }
 
@@ -151,21 +135,6 @@ std::vector<unsigned int> &PmergeMe::vector_merge_insertion_sort()
   sort_larger_number_in_sequence(vector_to_sort_, vector_sequence_);
   insert_in_sequence(vector_to_sort_, vector_sequence_);
   insert_possible_orphan(vector_sequence_);
-
-  std::vector<std::vector<unsigned int> >::iterator it;
-  for (it = vector_to_sort_.begin(); it != vector_to_sort_.end(); it++)
-  {
-    std::cout << "pair: " << (*it).front() << " " << (*it).back() << std::endl;
-  }
-  std::cout << std::endl << std::endl;
-
-  std::vector<unsigned int>::iterator it_s;
-
-  for (it_s = vector_sequence_.begin(); it_s != vector_sequence_.end(); it_s++)
-  {
-    std::cout << *it_s << " ";
-  }
-  std::cout << std::endl;
   return (vector_sequence_);
 }
 
@@ -247,7 +216,6 @@ void PmergeMe::insert_possible_orphan(S &sequence)
 {
   if (orphan_ == 0)
     return ;
-  std::cout << "ORPHAN: " << orphan_ << std::endl;
   typename S::iterator insert_position =
     std::upper_bound(sequence.begin(), sequence.end(), orphan_);
 
