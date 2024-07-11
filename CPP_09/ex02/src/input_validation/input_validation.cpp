@@ -6,16 +6,16 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 15:31:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 09:46:30 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 11:45:28 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <cctype>
 #include "define.hpp"
 #include <sstream>
 #include "header.hpp"
 #include <vector>
+#include <limits>
 #include <algorithm>
 
 
@@ -37,7 +37,7 @@ bool input_validation(char **av, int ac)
     log(OVERFLOW_MESSAGE, ERROR);
     return (false);
   }
-  else if (is_already_sorted(ac, av) == false)
+  else if (is_already_sorted(ac, av) == true)
   {
     log(IS_SORTED_ALREADY, ERROR);
     return (false);
@@ -93,8 +93,12 @@ static bool is_already_sorted(int ac, char **av)
   std::vector<unsigned int> converted_input;
   convert_input(ac, av, converted_input);
 
-  if (std::is_sorted(converted_input.begin(), converted_input.end()) == true)
-    return (false);
+  for (size_t i = 0; i < converted_input.size() - 1; ++i)
+  {
+    if (converted_input[i] > converted_input[i + 1])
+      return false;
+  }
+  return true;
 
  return (true);
 }

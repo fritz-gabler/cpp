@@ -4,6 +4,7 @@
 #include "define.hpp"
 #include <string>
 #include <sys/time.h>
+#include <vector>
 
 //LOG
 void log(std::string message, t_log_level level);

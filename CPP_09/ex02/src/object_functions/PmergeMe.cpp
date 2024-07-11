@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 10:43:28 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 10:45:41 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 11:37:26 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@
 
 PmergeMe::PmergeMe(const std::vector<unsigned int> &input)
 {
-  if (std::is_sorted(input.begin(), input.end()) == true)
-  {
-    input_ = input;
-    return ;
-  }
   input_ = input;
   orphan_ = 0;
   save_possible_orphan_number();
