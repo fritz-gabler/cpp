@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/03 10:41:48 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 12:50:43 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "define.hpp"
 #include "sstream"
 #include "file_processing.hpp"
+#include <limits>
+#include <algorithm>
 
 /////////////////////////////CONSTRUCTOR AND DESTRUCTOR////////////////////////
 
@@ -54,7 +56,7 @@ bool BitcoinExchange::can_open_file(const std::string &input)
   
   std::ifstream file;
 
-  file.open(input);
+  file.open(input.c_str());
 
   if (file.is_open() == false)
     return (false);
@@ -102,7 +104,7 @@ void BitcoinExchange::process_input_lines(const std::string &input)
 {
   t_file_processing process;
 
-  process.file.open(input);
+  process.file.open(input.c_str());
   if (file_empty(process.file, process.line) == true)
   {
     std::cout << RED_ERROR << "File " << input <<  " is empty\n";
@@ -303,12 +305,12 @@ bool BitcoinExchange::multiplied_number_limit_check(const std::string &line)
 void BitcoinExchange::int_convert_date(const std::string &date,
                                                 int &saved_date)
 {
-  std::string cpy_date;
+  std::string cpy_date = date;
   std::istringstream convert;
 
-  cpy_date = date;
   cpy_date.erase(std::remove(cpy_date.begin(), cpy_date.end(), '-'),
-                                                             cpy_date.end());
+                                                              cpy_date.end());
+
   convert.str(cpy_date);
   convert >> saved_date;
 }
