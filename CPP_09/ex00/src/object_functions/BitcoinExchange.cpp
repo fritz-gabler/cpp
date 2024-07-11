@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 18:17:59 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 19:10:50 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void BitcoinExchange::btc_value_get()
   float value_saved;
 
   data = "data.csv";
-  file.open(data);
+  file.open(data.c_str());
   if (file_empty(data) == true)
   {
     std::cout << RED_ERROR << "data.csv file is empty\n";
