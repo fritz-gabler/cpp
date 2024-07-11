@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:15:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 12:50:43 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 12:56:35 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,6 +278,8 @@ bool BitcoinExchange::value_within_limits(const std::string &value) const
   convert.str(value);
 
   convert >> check_value;
+  if (convert.fail())
+    return (false);
 
   if (check_value > std::numeric_limits<float>::max())
     return (false);
