@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:38:33 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 12:09:38 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 12:57:55 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ bool RPN::no_greater_numbers_than_nine(const std::string &input) const
 
   while (convert >> number)
   {
+    if (convert.fail())
+      return (false);
     if (number > 9)
       return (false);
   }
