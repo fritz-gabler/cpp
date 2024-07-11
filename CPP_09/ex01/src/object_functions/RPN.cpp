@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: fgabler <fgabler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:38:33 by fgabler           #+#    #+#             */
-/*   Updated: 2024/07/11 12:57:55 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/11 18:33:08 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ void RPN::calculate(const std::string &input)
       multiply();
     else if (input[i] == '+' && stack_.size() >= 2)
       add();
-    else if (input[i] == '-'&& stack_.size() >= 2
-              && divisor_is_null() == false)
+    else if (input[i] == '-'&& stack_.size() >= 2)
       subtract();
     else if (input[i] == '/' && stack_.size() >= 2)
       divide();
@@ -141,13 +140,6 @@ bool RPN::is_operator(char c) const
   return (false);
 }
 
-bool RPN::divisor_is_null()
-{
-  if (stack_.top() == 0)
-    return (true);
-  return (false);
-}
-
 void RPN::multiply()
 {
   double factor[2];
@@ -194,6 +186,13 @@ void RPN::divide()
   stack_.pop();
   dividend = stack_.top();
   stack_.pop();
+  if (divisor == 0)
+    throw divisor_is_zero_exception();
 
   stack_.push(dividend / divisor);
+}
+
+const char *RPN::divisor_is_zero_exception::what() const throw()
+{
+  return ("Dividing by zero is not a good idea.");
 }
