@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 17:31:29 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/10 16:54:33 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/25 12:20:57 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
   form_execution_check(executor);
 
   std::string message;
-  std::ofstream outfile(std::string(target_ + "_shrubbery").c_str());
+  std::ofstream outfile(std::string(target_get() + "_shrubbery").c_str());
 
   if (outfile.fail() == true)
     throw File_failed_to_open();
   outfile << trees_[0] << std::endl;
   outfile << trees_[1] << std::endl;
-  message = "Trees are now in file: " + target_ + "_shrubbery";
+  message = "Trees are now in file: " + target_get() + "_shrubbery";
   print_message_with_level(message, NOTE);
   outfile.close();
 }

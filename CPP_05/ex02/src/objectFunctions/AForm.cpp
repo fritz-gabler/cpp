@@ -6,7 +6,7 @@
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:11:46 by fgabler           #+#    #+#             */
-/*   Updated: 2024/05/14 07:20:03 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/25 12:19:32 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,16 @@ unsigned int AForm::get_required_grade_to_execute() const {
   return (grade_required_to_execute_);
 }
 
-const std::string &AForm::get_name() const { return (name_); }
+const std::string &AForm::get_name() const
+{
+  return (name_);
+}
+
+const std::string &AForm::target_get() const
+{
+  return (target_);
+}
+
 
 bool AForm::is_form_signed() const { return (is_signed_); }
 

@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 17:31:01 by fgabler           #+#    #+#             */
-/*   Updated: 2024/06/03 18:48:50 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/25 12:20:12 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
   print_message_with_level(message, NOTE);
   random_number = rand();
   if (random_number % 2 == 1){
-    message = target_ + " has been robotomized successfull";
+    message = target_get() + " has been robotomized successfull";
     print_message_with_level(message, NOTE);
   }
   else {
-    message = target_ + " robotomy failed";
+    message = target_get() + " robotomy failed";
     print_message_with_level(message, NOTE);
   }
 }
