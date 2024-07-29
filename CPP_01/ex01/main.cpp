@@ -6,7 +6,7 @@
 /*   By: fgabler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:50:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/04/23 17:52:41 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/29 19:07:08 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ int	main(void)
 
 	getInput(zombieName, numberOfZombies);
 	saveZombie = zombieHorde(numberOfZombies, zombieName);
+  if (saveZombie == NULL)
+    return (1);
 	announceAllZombies(saveZombie, numberOfZombies);
 	delete [] saveZombie;
+  return (0);
 }
 
 static void	getInput(std::string &zombieName, int &numberOfZombies)
