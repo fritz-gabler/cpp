@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HeaderPrint.cpp                                    :+:      :+:    :+:   */
+/*   header_print.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgabler <mail@student.42heilbronn.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:01:44 by fgabler           #+#    #+#             */
-/*   Updated: 2024/03/10 11:39:02 by fgabler          ###   ########.fr       */
+/*   Updated: 2024/07/29 16:49:29 by fgabler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Header.hpp"
+#include "header.hpp"
 
-void	HeaderPrint(void)
+void	header_print(void)
 {
 	std::cout << WHITE;
 	std::cout << "/‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾\\\n";
